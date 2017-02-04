@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>2 功能 | 从设计到实现 | 手把手教你做android应用开发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="功能的确定产品的功能并不是在确定了产品之后才开始考虑的，功能与创意选择其实是一个“你中有我，我中有你”的关系。为了体现产品设计的阶段性，我才将它单独提出来分析。
+这里讨论的产品功能，是建立在选定了某个基础之上的。比如我们之前选定了天气预报，那么就将产品功能围绕天气预报讨论。
+头脑风暴一开始，我们可以对产品进行一次头脑风暴，找出它的核心功能和可以拓展的外延。
+什么是头脑风暴？
+
+
+简单来说，就是给定">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2 功能">
+<meta property="og:url" content="http://book.anddle.com/1_创意/2_功能/index.html">
+<meta property="og:site_name" content="从设计到实现">
+<meta property="og:description" content="功能的确定产品的功能并不是在确定了产品之后才开始考虑的，功能与创意选择其实是一个“你中有我，我中有你”的关系。为了体现产品设计的阶段性，我才将它单独提出来分析。
+这里讨论的产品功能，是建立在选定了某个基础之上的。比如我们之前选定了天气预报，那么就将产品功能围绕天气预报讨论。
+头脑风暴一开始，我们可以对产品进行一次头脑风暴，找出它的核心功能和可以拓展的外延。
+什么是头脑风暴？
+
+
+简单来说，就是给定">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/brain_storm.jpg">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/brain_storm_function.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/brain_storm_function_arragement.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/brain_storm_function_list.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/mindnode_logo.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/mindnode_ui.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/wether_forcast_brain_storm.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/mindnode_brainstorm_function_arrangement.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/weather_app_draft2.png">
+<meta property="og:updated_time" content="2017-02-04T15:04:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2 功能">
+<meta name="twitter:description" content="功能的确定产品的功能并不是在确定了产品之后才开始考虑的，功能与创意选择其实是一个“你中有我，我中有你”的关系。为了体现产品设计的阶段性，我才将它单独提出来分析。
+这里讨论的产品功能，是建立在选定了某个基础之上的。比如我们之前选定了天气预报，那么就将产品功能围绕天气预报讨论。
+头脑风暴一开始，我们可以对产品进行一次头脑风暴，找出它的核心功能和可以拓展的外延。
+什么是头脑风暴？
+
+
+简单来说，就是给定">
+<meta name="twitter:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/brain_storm.jpg">
+    
+        <link rel="alternative" href="/atom.xml" title="从设计到实现" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">安豆</h5>
+          <a href="mailto:anddlecn@gmail.com" title="anddlecn@gmail.com" class="mail">anddlecn@gmail.com</a>
+          <span class="mail">QQ群：348702074</span><br/>
+          <span class="mail">订阅号：xxxxx</span>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                网站首页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第1章-创意/"  >
+                <i class="icon icon-lg icon-birthday-cake"></i>
+                第1章 创意
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resources/"  >
+                <i class="icon icon-lg icon-download"></i>
+                资源下载
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">2 功能</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">2 功能</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-03T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-03
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第1章-创意/">第1章-创意</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#功能的确定"><span class="post-toc-text">功能的确定</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#头脑风暴"><span class="post-toc-text">头脑风暴</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法1"><span class="post-toc-text">方法1</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#方法2"><span class="post-toc-text">方法2</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#举例"><span class="post-toc-text">举例</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#选定功能"><span class="post-toc-text">选定功能</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#技术验证"><span class="post-toc-text">技术验证</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#功能筛选"><span class="post-toc-text">功能筛选</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#功能流程"><span class="post-toc-text">功能流程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下一版功能"><span class="post-toc-text">下一版功能</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-1_创意/2_功能"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">2 功能</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月03日 9:00" datetime="2017-01-03T01:00:00.000Z"  itemprop="datePublished">2017-01-03</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第1章-创意/">第1章-创意</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="功能的确定"><a href="#功能的确定" class="headerlink" title="功能的确定"></a>功能的确定</h1><p>产品的功能并不是在确定了产品之后才开始考虑的，功能与创意选择其实是一个“你中有我，我中有你”的关系。为了体现产品设计的阶段性，我才将它单独提出来分析。</p>
+<p>这里讨论的产品功能，是建立在选定了某个基础之上的。比如我们之前选定了<code>天气预报</code>，那么就将产品功能围绕<code>天气预报</code>讨论。</p>
+<h2 id="头脑风暴"><a href="#头脑风暴" class="headerlink" title="头脑风暴"></a>头脑风暴</h2><p>一开始，我们可以对产品进行一次头脑风暴，找出它的核心功能和可以拓展的外延。</p>
+<p>什么是头脑风暴？</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/brain_storm.jpg" width="300" alt=" brain_stor"></div>
+
+<p>简单来说，就是给定一个主题，让一群身份不同的人漫无边际的想一些点子。之后将这些点子归类整理，进一步讨论它们的可行性和重要性，最后形成一个提案。</p>
+<p>在我们这里，可以简单的理解成：为了挖掘产品的潜在的功能，我们先不管能不能实现，不管实现了有多大的意义，不管要付出多大的代价，是把我们能想到的功能都找出来。</p>
+<p>进行头脑风暴的人最好由不同行业、不同背景的人组成，这样考虑的问题就能多角度，更全面。不过即使只有你一个人也行，毕竟你要做一个能让自己满意的产品才会感觉到快乐，对吧。</p>
+<h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h3><p>可以将我们风暴的内容，写到小纸条上，贴在黑板上，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/brain_storm_function.png" width="300" alt=" brain_storm_function"></div>
+
+<p>风暴结束后，将这些小纸条按照内容进行分类整理出来，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/brain_storm_function_arragement.png" width="300" alt=" brain_storm_function_arragement"></div>
+
+<p>最后按照功能的重要性、相关性，形成我们的功能列表，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/brain_storm_function_list.png" width="250" alt=" brain_storm_function_list"></div>
+
+<h3 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h3><p>在电脑上用思导图软件，将风暴的内容写在上面，例如使用Mac平台上的<a href="https://mindnode.com/" target="_blank" rel="external">MindNode</a>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/mindnode_logo.png" width="150" alt=" mindnode_logo"></div>
+
+<p>然后通过拖动的方式将它们进行整理，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/mindnode_ui.png" width="500" alt=" mindnode_ui"></div>
+
+<p>最后再形成功能列表。</p>
+<p>除了头脑风暴，我还可以去软件市场下载同类型的产品，逐个研究它们具有哪些功能，对那些确实优秀的功能点加以优化，做出修改，进行微创新。</p>
+<h3 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h3><p>我们先来风暴一下<code>天气预报</code>要有些什么样的功能：</p>
+<ol>
+<li>能够连接网络，从网络获取数据，用来显示；</li>
+<li>能够将获取的数据，例如当日的温度、湿度、风向、是否晴天下雨、紫外线指数、穿衣指数、污染指数等等，显示出来；</li>
+<li>可以显示当日之后多天的预报，采用曲线图的方式呈现；</li>
+<li>可以显示当日之前任何日期的实际天气情况；</li>
+<li>能够设定当前的位置，获取天气情况；</li>
+<li>能够配合当前的天气，显示一张合适的背景，比如下雨的时候，背景就是一张雨景的照片；</li>
+<li>能够配合当前的天气，显示动态的背景，比如下雨的时候，背景就是雨水滑落的动态效果；</li>
+<li>能够接收提醒，比如下雨了，发出一个通知提醒用户带雨伞；</li>
+<li>能够提供一个桌面小工具，在桌面就能查看到天气信息；</li>
+<li>天气数据到的源可以选择，阿里提供的、雅虎提供的、腾讯提供的、百度提供的，都可以切换；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/wether_forcast_brain_storm.png" width="600" alt=" wether_forcast_brain_stor"></div>
+
+<p>虽然我们还可以风暴出很多<code>天气预报</code>可以具有的功能，但是作为第一个例子，我们暂时就列出这么多吧。</p>
+<p>接下来将功能分类，有的分类项也许有重叠，但是没有关系，</p>
+<ul>
+<li><p>外观类：</p>
+<ol>
+<li>配合天气显示的背景：动态图或者静态图；</li>
+<li>显示温度、湿度、风向、天气、紫外线指数、穿衣指数、污染指数；</li>
+<li>未来天气的预报，采用变化的曲线表示；</li>
+<li>桌面小工具；</li>
+</ol>
+</li>
+<li><p>功能点：</p>
+<ol>
+<li>通过网络获取天气数据；</li>
+<li>多个天气数据源的选择；</li>
+<li>多个地点的位置设定；</li>
+<li>桌面小工具</li>
+<li>提醒功能；</li>
+<li>多天预报；</li>
+<li>历史天气查询；</li>
+</ol>
+</li>
+</ul>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/mindnode_brainstorm_function_arrangement.png" width="600" alt=" mindnode_brainstorm_function_arrangement"></div>
+
+<h2 id="选定功能"><a href="#选定功能" class="headerlink" title="选定功能"></a>选定功能</h2><p>列出一堆的功能后，我们就要考虑给他们排列个重要程度了，确定哪些功能是必须的，哪些是可选的，他们实现起来复杂度有多大。</p>
+<p>对于复杂度很高的功能，我们可能还要进行一次头脑风暴，理清楚它的重要性，看能不能把它分解成相对简单的功能来加入。如果不能，那么可能就得暂时放弃了。</p>
+<p>有的功能可能还要依据现有的素材，看能不能提供，例如<code>紫外线指数</code>，如果网络端都没有这样的参数，那写在功能列表里面也是没有用的。由此我们也可以看出，<code>头脑风暴</code>之后，多种成员参与的重要性，如果有一位开发者，他可以很快的判断这个功能点从技术上讲实现起来是否可行。</p>
+<h3 id="技术验证"><a href="#技术验证" class="headerlink" title="技术验证"></a>技术验证</h3><p>坦白的讲，技术验证并不是在功能确定之后才开始进行的。它应该在确定功能的时候给予技术上的配合，告诉方案的提出者：“这样的功能从技术上讲是可以（不可以）办到的”。</p>
+<p>能越早回答这样的问题，就能越早发现并减少项目的风险。</p>
+<p>在<code>天气预报</code>当中，最需要验证的并不是设计出一个界面设计出来后能不能做出来，而是去哪里获取天气数据。</p>
+<p>天气数据才是功能的核心。从哪里获取数据呢？</p>
+<p>我们没有自己的观测站，所以数据肯定是要从其他公开的渠道获取：通过网络蜘蛛爬取；通过第三方提供的标准API接口获取，例如阿里提供、雅虎提供、腾讯提供或者百度提供。</p>
+<p>假如我能获取到第三方的数据，那么我是否需要自己建设一个提供天气信息的服务器呢？</p>
+<p>就我个人来讲，我希望使用自己的服务器提供天气数据，把收集到的数据都整理到自己的服务器上，一旦某一处的数据出现问题，还可以自动切换到别处的，拥有更好的健壮性。</p>
+<p>此外，我也可以自己定义天气数据的查询方式和回传内容，可操控性更好，不会担心数据源的格式发生改变，造成应用获取数据出错的问题。</p>
+<p>因此我决定搭建一个服务器，为大家提供这样的数据获取方式，就不麻烦大家将精力分散到与安卓入门开发关系不大的领域去了。</p>
+<p>不过，我这里提供的数据都是构造出来的，并不能真实的天气数据，目的只是为了帮助大家学习开发一款应用。毕竟去抓取网络数据有要花费额外的心思，偏离了我的本意。</p>
+<p>至此，我们不需要为数据展现的内容而担心了，只要能想到的数据，我都可以在服务器端通过构造产生。之后的界面设计，就需要根据这些能获取到的信息来设计，</p>
+<table>
+<thead>
+<tr>
+<th>数据项</th>
+<th>描述</th>
+<th>取值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>实时温度</td>
+<td>当前查询时的天气温度</td>
+<td>整数数值</td>
+</tr>
+<tr>
+<td>实时风力</td>
+<td>当前查询时的风力大小</td>
+<td>0-17级</td>
+</tr>
+<tr>
+<td>实时风向</td>
+<td>当前查询时的风向</td>
+<td>东 西 南 北 东南 东北 西南 西北</td>
+</tr>
+<tr>
+<td>实时天气</td>
+<td>当前查询时的天气状况</td>
+<td>晴天、雨天、多云、多云间晴、雾、雪</td>
+</tr>
+<tr>
+<td>当日温度范围</td>
+<td>当日温度范围</td>
+<td>整数数值范围</td>
+</tr>
+<tr>
+<td>实时空气质量</td>
+<td>当前查询时的空气质量</td>
+<td>优 良 轻度污染 重度污染 不利于生存</td>
+</tr>
+<tr>
+<td>空气湿度</td>
+<td>当前查询时的空气湿度</td>
+<td>0-100%</td>
+</tr>
+<tr>
+<td>运动指数</td>
+<td>当前查询时的运动指数</td>
+<td>非常适合 适合 不适合</td>
+</tr>
+<tr>
+<td>紫外线指数</td>
+<td>当前查询时的紫外线强度</td>
+<td>强 中 弱</td>
+</tr>
+<tr>
+<td>未来5天预报</td>
+<td>未来5天天气状况、最高最低温度</td>
+</tr>
+</tbody>
+</table>
+<h3 id="功能筛选"><a href="#功能筛选" class="headerlink" title="功能筛选"></a>功能筛选</h3><p>下面，我们就来分析一下这些功能，并为它们的重要性和难易程度作出评价。评价的原则很简单：我们只是为了展现开发的各个关节，所以尽量把功能做的简单，降低我们第一次的学习门槛</p>
+<ul>
+<li>外观类：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>分析</th>
+<th style="text-align:center">难易程度</th>
+<th style="text-align:center">重要性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>静态图背景</td>
+<td>放一张静态图片即可</td>
+<td style="text-align:center">易</td>
+<td style="text-align:center">中</td>
+</tr>
+<tr>
+<td>动态图背景</td>
+<td>设置循环的动画效果</td>
+<td style="text-align:center">难</td>
+<td style="text-align:center">中</td>
+</tr>
+<tr>
+<td>显示温度、湿度、风向等天气指数</td>
+<td>具体显示哪些数据依赖于数据源</td>
+<td style="text-align:center">易</td>
+<td style="text-align:center">高</td>
+</tr>
+<tr>
+<td>天气变化的曲线表示</td>
+<td>这需要一个做曲线图的特殊组件</td>
+<td style="text-align:center">难</td>
+<td style="text-align:center">中</td>
+</tr>
+<tr>
+<td>桌面小工具</td>
+<td>安卓系统提供了桌面工具的框架机制</td>
+<td style="text-align:center">中</td>
+<td style="text-align:center">中</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>功能点：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>分析</th>
+<th style="text-align:center">难易程度</th>
+<th style="text-align:center">重要性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>通过网络获取天气数据</td>
+<td>这功能必须有，不然就没有显示的内容</td>
+<td style="text-align:center">易</td>
+<td style="text-align:center">高</td>
+</tr>
+<tr>
+<td>多个天气数据源的选择</td>
+<td>访问自己架设的服务器，不需要用户去选择</td>
+<td style="text-align:center">易</td>
+<td style="text-align:center">低</td>
+</tr>
+<tr>
+<td>多个地点的位置设定</td>
+<td>刚开始简化一点，只提供当地的天气预报，由服务器决定</td>
+<td style="text-align:center">易</td>
+<td style="text-align:center">低</td>
+</tr>
+<tr>
+<td>桌面小工具</td>
+<td>安卓系统提供了桌面工具的框架机制</td>
+<td style="text-align:center">中</td>
+<td style="text-align:center">中</td>
+</tr>
+<tr>
+<td>提醒功能</td>
+<td>需要网络端支持主动的推送数据</td>
+<td style="text-align:center">难</td>
+<td style="text-align:center">低</td>
+</tr>
+<tr>
+<td>多天预报</td>
+<td>天气类App的标配</td>
+<td style="text-align:center">易</td>
+<td style="text-align:center">高</td>
+</tr>
+<tr>
+<td>历史天气查询</td>
+<td>意义不大，用户更关心未来的天气</td>
+<td style="text-align:center">中</td>
+<td style="text-align:center">低</td>
+</tr>
+</tbody>
+</table>
+<p>我们把重要性低的、开发难的功能暂时放一放，于是得到了下面的功能清单：</p>
+<ol>
+<li>通过网络获取天气数据；</li>
+<li>显示天气预报的位置；</li>
+<li>显示当前时刻的：温度、温度变化范围、湿度、风向、风力、天气、紫外线指数、运动指数等信息；</li>
+<li>未来5天天气预报，包括天气状况、温度变化范围；</li>
+</ol>
+<p>此外，为了近一步简化开发，我们还可以假定：所有的数据都是从网络获取，如果没有网络，那么就不能获取到天气信息。也就是说获取到数据不需要存储到手机上，这一点又降低了开发的难度。</p>
+<h2 id="功能流程"><a href="#功能流程" class="headerlink" title="功能流程"></a>功能流程</h2><p>确定好功能后，就要根据这些功能，为应用设计一套使用的逻辑，比如需要几个界面，每个界面做些什么事情，这些界面都要覆盖到所有的功能点。</p>
+<p><code>天气预报</code>的流程也许就是这样：</p>
+<ol>
+<li>App启动之后，自动去网络获取信息；</li>
+<li>当日天气信息和近日的预报信息需要展示到界面上，但是具体怎么展示就要看设计阶段的设计方案了；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/weather_app_draft2.png" width="300" alt=" weather_app_draft2"></div>
+
+<p>流程的设定和设计阶段有一定的交集。前者只是一个原则上的草图，而后者将会从设计的角度打磨出一款精品。</p>
+<p>这时候的草图叫做框线图，就是一个手稿，一个示意图。这张图还要交给设计师，和设计师一起讨论设计的方案，再由设计师重新操刀，进行大刀阔斧的修改，将草图蜕变成真正的产品形态，最后形成高保真图、产品原型和UI素材。</p>
+<h2 id="下一版功能"><a href="#下一版功能" class="headerlink" title="下一版功能"></a>下一版功能</h2><p>对于那些我们没有被选定进来的功能，我们可以将它们放到该App下个版本当中。例如，位置的设定，桌面小工具，天气预报的曲线图等等。</p>
+<p>未来版本的天气预报App不仅需要修复之前存在的设计缺陷，也要加入新的功能，让用户获得更好的使用体验。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-04T15:04:46.000Z" itemprop="dateUpdated">2017年2月4日 23:04</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://book.anddle.com">
+            <img src="/img/avatar.png" alt="安豆">
+            安豆
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/1_创意/2_功能/&title=《2 功能》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/1_创意/2_功能/&title=《2 功能》 — 从设计到实现&source=my description" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/1_创意/1_创意/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">1 创意</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            <span>本站内容均为原创内容，欢迎转载，但请务必注明出处</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>从设计到实现 &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/1_创意/2_功能/&title=《2 功能》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/1_创意/2_功能/&title=《2 功能》 — 从设计到实现&source=my description" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK4AAACuCAAAAACKZ2kyAAABzklEQVR42u3ay07DMBAFUP7/p4uE2KHQez2xW9DxCsUmOelilHl8fMTr8bWurvzcTa5f7d6wcHFxx9zHr+sKlxCv7pNcv3wKLi7uQW774Dww5feP/hcXF/fNuO1u/nq4uLh/l5t8rODi4v4nbpL8tCEveaWNuRouLu6A2xZMd/y9sb6Li4tbch/lWmu0zJ/7fTdcXNwj3PZhSejJ2zBJcjX6bXBxcZe4ScBqiZP7PEmZcHFxX8TNk5+8bJGUP6LAiouLe4Tbtkvb8Yu2xRKdxMXFPcK9q7SR0NviSzG4iYuLeys3H61o26VrZ6IQhouLu5k7qTkkV9rdxYYrLi7uBm47bJGXPyZt1+iVcHFxN3CTQ22DZH4SFxf3VdzJkESeGiVlkehHwcXFPcJNyiJtGGo/mPJGDi4u7hnupO2Rl1TaJsrlK+Hi4h7k5ilKHnrWRi6etHlwcXEPctcCTRvU2vsUVVVcXNxbufM+ZjvMcagRi4uLO+auJSSTMkcb8hYrr7i4uGNuPk7Rnm9ToGI2BBcX9w247e7aAMeTzylcXNy35CbNlTyJasuvuLi4J7lrRdIWnXNvKIvg4uIOuJOCadKUTT6D1sbCcHFxN3A/AY4PV66Yvel0AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261181710&web_id=1261181710')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+
+</body>
+</html>
