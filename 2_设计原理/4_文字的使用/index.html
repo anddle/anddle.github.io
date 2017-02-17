@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>4 文字的使用 | 从设计到实现 | 手把手教你做android应用开发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="文字的使用文字是应用当中使用最多的要素。显示一段供用户阅读的文字，程序运行时的信息提示都离不开它。
+文字是内容的实际体现者，因此设计师需要将用户的注意力尽可能的吸引到文字当中。
+字体可以分成两种类型：有衬线的-serif；无衬线的-sans-serif，也简称sans。serif的笔划端部会多出来一截修饰；sans的笔划端部是平的。
+
+
+在过去，serif通常用来做文章的内容，sans用来做标题；">
+<meta property="og:type" content="article">
+<meta property="og:title" content="4 文字的使用">
+<meta property="og:url" content="http://book.anddle.com/2_设计原理/4_文字的使用/index.html">
+<meta property="og:site_name" content="从设计到实现">
+<meta property="og:description" content="文字的使用文字是应用当中使用最多的要素。显示一段供用户阅读的文字，程序运行时的信息提示都离不开它。
+文字是内容的实际体现者，因此设计师需要将用户的注意力尽可能的吸引到文字当中。
+字体可以分成两种类型：有衬线的-serif；无衬线的-sans-serif，也简称sans。serif的笔划端部会多出来一截修饰；sans的笔划端部是平的。
+
+
+在过去，serif通常用来做文章的内容，sans用来做标题；">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/serif_sans_difference2.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/english_script_type.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/tall_script_type.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/dense_script_type.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/arial_font.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/font_style.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/fontfamily_sample.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/noto_font_weight.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/roboto_font_weight.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/2_4_table_text_format.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/noto_font_unzip.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/installed_noto_font.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/select_noto_font.png">
+<meta property="og:updated_time" content="2017-02-17T03:11:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="4 文字的使用">
+<meta name="twitter:description" content="文字的使用文字是应用当中使用最多的要素。显示一段供用户阅读的文字，程序运行时的信息提示都离不开它。
+文字是内容的实际体现者，因此设计师需要将用户的注意力尽可能的吸引到文字当中。
+字体可以分成两种类型：有衬线的-serif；无衬线的-sans-serif，也简称sans。serif的笔划端部会多出来一截修饰；sans的笔划端部是平的。
+
+
+在过去，serif通常用来做文章的内容，sans用来做标题；">
+<meta name="twitter:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/serif_sans_difference2.png">
+    
+        <link rel="alternative" href="/atom.xml" title="从设计到实现" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">安豆</h5>
+          <a href="mailto:anddlecn@gmail.com" title="anddlecn@gmail.com" class="mail">anddlecn@gmail.com</a>
+          <span class="mail">QQ群：348702074</span><br/>
+          <span class="mail"></span>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                网站首页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第1章-创意/"  >
+                <i class="icon icon-lg icon-birthday-cake"></i>
+                第1章 创意
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第2章-设计原理/"  >
+                <i class="icon icon-lg icon-eyedropper"></i>
+                第2章 设计原理
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resources/"  >
+                <i class="icon icon-lg icon-download"></i>
+                资源下载
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://anddle.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                安豆主站
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/index.html"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">4 文字的使用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">4 文字的使用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-07T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-07
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第2章-设计原理/">第2章-设计原理</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>本节目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#文字的使用"><span class="post-toc-text">文字的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字体"><span class="post-toc-text">字体</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Noto"><span class="post-toc-text">Noto</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Roboto"><span class="post-toc-text">Roboto</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#大小"><span class="post-toc-text">大小</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#格式"><span class="post-toc-text">格式</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#颜色"><span class="post-toc-text">颜色</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#字体颜色"><span class="post-toc-text">字体颜色</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#浅色背景"><span class="post-toc-text">浅色背景</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#深色背景"><span class="post-toc-text">深色背景</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#字体的下载和使用"><span class="post-toc-text">字体的下载和使用</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2_设计原理/4_文字的使用"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">4 文字的使用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月07日 9:00" datetime="2017-01-07T01:00:00.000Z"  itemprop="datePublished">2017-01-07</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第2章-设计原理/">第2章-设计原理</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="文字的使用"><a href="#文字的使用" class="headerlink" title="文字的使用"></a>文字的使用</h1><p>文字是应用当中使用最多的要素。显示一段供用户阅读的文字，程序运行时的信息提示都离不开它。</p>
+<p>文字是内容的实际体现者，因此设计师需要将用户的注意力尽可能的吸引到文字当中。</p>
+<p>字体可以分成两种类型：有衬线的-<code>serif</code>；无衬线的-<code>sans-serif</code>，也简称<code>sans</code>。<code>serif</code>的笔划端部会多出来一截修饰；<code>sans</code>的笔划端部是平的。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/serif_sans_difference2.png" width="450" alt=" serif_sans_difference2"></div>
+
+<p>在过去，<code>serif</code>通常用来做文章的内容，<code>sans</code>用来做标题；但是现在，内容也开始使用<code>serif</code>了，这是一种新的趋势。在安卓系统中，就采用了<code>sans</code>字体做文字的默认显示。</p>
+<p>不同的文字内容，需要吸引用户不同程度的注意力。例如，按钮上的文字和内容都需要吸引用户的注意力，但是它们的重要程度是不一样的。这种吸引的程度可以通过<code>字体的大小</code>和<code>字体的颜色</code>来实现。</p>
+<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><p>前面提到的<code>serif</code>与<code>sans-serif</code>是通过衬线将字体分成了2类。接下来我们开始认识认识字体。</p>
+<p>从文字的形状出发，可以将文字分成三类，</p>
+<ol>
+<li><p>English-like：英文、拉丁文等字母组合型的文字；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/english_script_type.png" width="200" alt=" english_script_type"></div>
+</li>
+<li><p>Tall：像阿拉伯文字、泰文这种像绘画片段组合成的文字；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/tall_script_type.png" width="200" alt=" tall_script_type"></div>
+</li>
+<li><p>Dense：像中文、日文、韩文等具有高密度笔画等文字；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/dense_script_type.png" width="200" alt=" dense_script_type"></div>
+
+</li>
+</ol>
+<p>我们主要进行中文应用的开发，所以会遇到很多<code>Dense</code>类型的字体。</p>
+<p><code>字体</code>和<code>某个具体的字体</code>是两个不同的概念，前者是对具有相同间架结构文字的总称，是个很宽泛的概念；而具体的字体指的是使用时，为了显示某个文字而具体使用的文字形状。</p>
+<p>例如<code>Arial</code>字体，它下面就拥有多个<code>子项目</code>-<code>字体家族</code>。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/arial_font.png" width="300" alt=" arial_font"></div>
+
+<p>字体家族-<code>font family</code>是一个家族的名字，它的下面可以有多种字形-<code>style</code>。例如<code>Arial</code>字体家族，它就拥有多个字形：<code>Regular-常规</code> <code>Italic-斜体</code> <code>Bold-粗体</code> <code>Bold Italic-斜粗体</code>，这几种字形也是其他字体家族中最经常具有的。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/font_style.png" width="600" alt=" font_style"></div>
+
+<p>某个具体的字体，例如<code>Arial Regular</code>，就是由它所在的字体家族和字形来决定。所以每说到一个具体的字体，都可以找到它对应的字体家族和字形。</p>
+<p>例如下面的<code>Arial</code> <code>Arial Black</code> <code>Arial Hebrew</code>，分别对应着3种不同的字体家族；而每个字体家族下面都有各自具体的字型。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/fontfamily_sample.png" width="200" alt=" fontfamily_sample"></div>
+
+<p>可以看到，有的字体家族下面可以只存在一种字形，也可以存在多种字形。这就完全看字体设计师的实现了。</p>
+<p><em>例子里面的字体都是<code>Arial</code>字体，它下面的子项名称中虽然都有<code>Arial</code>，但都属于不同的字体家族。</em></p>
+<h3 id="Noto"><a href="#Noto" class="headerlink" title="Noto"></a>Noto</h3><p>对于<code>Dense</code>类型的文字，安卓系统使用Google提供的开源字体<code>Noto</code>。</p>
+<p><code>Noto</code>字体家族本身拥有了很多字体：Noto Sans，Noto Serif，Noto Momo……。</p>
+<p><code>Noto</code>拥有从英文字母到汉字的所有文字，对于我们开发中文应用，完全没有问题。显示简体中文的时候，使用的是<code>Noto Sans CJK SC</code>。</p>
+<p>Noto有7种字形：Thin，Light，DemiLight，Regular，Medium，Bold，Black。它们对应的具体字体的粗细是各不相同。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/noto_font_weight.png" width="300" alt=" noto_font_weight"></div>
+
+<p>关于<code>Noto</code>字体名字的由来，还有一个这样的小故事：</p>
+<p><em>电脑中显示字符的时候，如果系统中没有安装对应的字体，那么就会在屏幕上显示一个空白的方框-<code>口</code>来代替。如果连续出现很多个不能显示的文字，显示的内容就像是<code>口口口口口</code>。外国人觉得这个方框像我们中国的豆腐，于是就叫它<code>tofu</code>。为了消灭这些豆腐，<code>No tofu</code>的口号就成为了<code>Noto</code>的名字。看来<code>Noto</code>为此发了大愿，消灭文字显示中的一切盲区。</em></p>
+<p>大家可以在Google提供的<a href="https://www.google.com/get/noto" target="_blank" rel="external">官方网站</a>获得<code>Noto</code>字体更为细节的信息。</p>
+<h3 id="Roboto"><a href="#Roboto" class="headerlink" title="Roboto"></a>Roboto</h3><p>对于<code>English-like</code>类型的文字，安卓系统使用Google提供的开源字体<code>Roboto</code>，它看上去要宽且圆润，现在在很多平台上得到了广泛的应用。</p>
+<p>Roboto有6种字形：Thin，Light，Regular，Medium，Bold，Black。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/roboto_font_weight.png" width="200" alt=" roboto_font_weight"></div>
+
+<p><code>Roboto</code>与<code>Noto</code>是兼容的，当选定Roboto的一种粗细的笔划时，就能在<code>Noto</code>当中找到对应粗细的笔划。</p>
+<p>大家可以在Google提供的<a href="https://fonts.google.com/" target="_blank" rel="external">官方网站</a>获得<code>Roboto</code>字体更为细节的信息。</p>
+<h2 id="大小"><a href="#大小" class="headerlink" title="大小"></a>大小</h2><p>不同的位置，文字显示的大小也可能有所不同。<code>Material Design</code>对界面上各个显示元素中使用到的文字大小，作出了规定。</p>
+<p>显示<code>English-like</code>内容的时候，在中文系统中显示英文：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">显示的位置</th>
+<th style="text-align:center">字体类型</th>
+<th style="text-align:center">字体大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Display 4</td>
+<td style="text-align:center">Light</td>
+<td style="text-align:center">112sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Display 3</td>
+<td style="text-align:center">Regular</td>
+<td style="text-align:center">56sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Display 2</td>
+<td style="text-align:center">Regular</td>
+<td style="text-align:center">45sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Display 1</td>
+<td style="text-align:center">Regular</td>
+<td style="text-align:center">34sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Headline</td>
+<td style="text-align:center">Regular</td>
+<td style="text-align:center">24sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Title</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">20sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Subheading</td>
+<td style="text-align:center">Regular</td>
+<td style="text-align:center">16sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Body 2</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">14sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Body 1</td>
+<td style="text-align:center">Regular</td>
+<td style="text-align:center">14sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Caption</td>
+<td style="text-align:center">Regular</td>
+<td style="text-align:center">12sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Button</td>
+<td style="text-align:center">Meduim</td>
+<td style="text-align:center">14sp</td>
+</tr>
+</tbody>
+</table>
+<p>显示<code>Dense</code>内容的时候，在中文系统中显示汉字：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">显示的位置</th>
+<th style="text-align:center">字体类型</th>
+<th style="text-align:center">字体大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Display 4</td>
+<td style="text-align:center">Light</td>
+<td style="text-align:center">112sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Display 3</td>
+<td style="text-align:center">Regular</td>
+<td style="text-align:center">56sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Display 2</td>
+<td style="text-align:center">Regular</td>
+<td style="text-align:center">45sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Display 1</td>
+<td style="text-align:center">Regular</td>
+<td style="text-align:center">34sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Headline</td>
+<td style="text-align:center">Regular</td>
+<td style="text-align:center">24sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Title</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">21sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Subheading</td>
+<td style="text-align:center">Regular</td>
+<td style="text-align:center">17sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Body 2</td>
+<td style="text-align:center">Medium</td>
+<td style="text-align:center">15sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Body 1</td>
+<td style="text-align:center">Regular</td>
+<td style="text-align:center">15sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Caption</td>
+<td style="text-align:center">Regular</td>
+<td style="text-align:center">13sp</td>
+</tr>
+<tr>
+<td style="text-align:center">Button</td>
+<td style="text-align:center">Meduim</td>
+<td style="text-align:center">15sp</td>
+</tr>
+</tbody>
+</table>
+<p>规律就是，显示正文时（从<code>title</code>开始），中文比显示英文要大1sp。</p>
+<p><em><code>Display</code>对大家来说可能比较陌生：它的用法是将文字作为一个大区域的显示，例如手机待机时屏幕上显示的时间信息，就是将文字当作<code>Display</code>来运用的。</em></p>
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><p>为了便于用户阅读，让用户有良好的阅读体验，我们还要考虑文字当中，</p>
+<ul>
+<li><p>行之间的间距。</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/2_4_table_text_format.png" width="300" alt=" 2_4_table_text_format"></div>
+</li>
+<li><p>每一行占据的宽度。对于长段的内容，字符控制在60个每行；对于简短的内容，字符控制在30个每行。</p>
+</li>
+</ul>
+<h2 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h2><p>文字使用的颜色与背景的颜色相关，采用白色或者黑色，目的是提高文字的可读性，不要让文字的颜色和背景的颜色混在一起。</p>
+<p>文字的颜色需要根据显示的位置体现出不同的深浅颜色。这种颜色的深浅是通过调整字体的透明度实现的，而不是将字体设置成一种灰色。</p>
+<h3 id="字体颜色"><a href="#字体颜色" class="headerlink" title="字体颜色"></a>字体颜色</h3><p>安卓系统根据显示内容的重要性，将文字主要分成了好些类：textColorPrimary textColorSecondary <code>textColorPrimaryActivated textColorSecondaryInverse</code> 等等。不过最重要的就是：</p>
+<ul>
+<li><code>textColorPrimary</code>：就是<code>Primary text</code>-主要文字内容使用的颜色。它使用在文字的<code>title</code>，<code>headline</code>，<code>subhead</code>，<code>Body1～2</code>，<code>Button</code>这些位置。</li>
+<li><code>textColorSecondary</code>：就是<code>Secondary text</code>-次要文字内容使用的颜色。它使用在<code>Display 1～4</code>，<code>Caption</code>这些位置。</li>
+</ul>
+<h3 id="浅色背景"><a href="#浅色背景" class="headerlink" title="浅色背景"></a>浅色背景</h3><p>对于浅色背景，字体使用纯黑色-<code>#000000</code>，根据使用场景的不同，透明度不同，</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">使用的场景</th>
+<th style="text-align:center">透明度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Primary text</td>
+<td style="text-align:center">87%</td>
+</tr>
+<tr>
+<td style="text-align:center">Secondary text</td>
+<td style="text-align:center">54%</td>
+</tr>
+<tr>
+<td style="text-align:center">Disable text, Hint text</td>
+<td style="text-align:center">38%</td>
+</tr>
+</tbody>
+</table>
+<p>假如文字需要与图标配合使用，那么文字的颜色也是使用纯黑色-<code>#000000</code>，但是会根据图片当前是否处于激活的状态而不同，</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">图标激活状态</th>
+<th style="text-align:center">图标对应文字的透明度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">激活</td>
+<td style="text-align:center">54%</td>
+</tr>
+<tr>
+<td style="text-align:center">未激活</td>
+<td style="text-align:center">38%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="深色背景"><a href="#深色背景" class="headerlink" title="深色背景"></a>深色背景</h3><p>对于深色背景，字体使用纯白色-<code>#FFFFFF</code>，根据使用场景的不同，透明度不同，</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">使用的场景</th>
+<th style="text-align:center">透明度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Primary text</td>
+<td style="text-align:center">100%</td>
+</tr>
+<tr>
+<td style="text-align:center">Secondary text</td>
+<td style="text-align:center">70%</td>
+</tr>
+<tr>
+<td style="text-align:center">Disable text, Hint text</td>
+<td style="text-align:center">50%</td>
+</tr>
+</tbody>
+</table>
+<p>假如文字需要与图标配合使用，那么文字的颜色也是使用纯白色-<code>#FFFFFF</code>，但是会根据图片当前是否处于激活的状态而不同，</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">图标激活状态</th>
+<th style="text-align:center">图标对应文字的透明度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">激活</td>
+<td style="text-align:center">100%</td>
+</tr>
+<tr>
+<td style="text-align:center">未激活</td>
+<td style="text-align:center">50%</td>
+</tr>
+</tbody>
+</table>
+<h2 id="字体的下载和使用"><a href="#字体的下载和使用" class="headerlink" title="字体的下载和使用"></a>字体的下载和使用</h2><p>前面提到的<code>Noto</code>字体和<code>Roboto</code>字体，可以分别在<br><a href="https://www.google.com/get/noto" target="_blank" rel="external">Noto的官网</a> 和<a href="https://fonts.google.com/" target="_blank" rel="external">Robot的官网</a>看到更为详细的介绍，并下载。</p>
+<p>假如你的电脑上并没有安装这两种字体，请去官网下载。</p>
+<p>下载以后(这里用安装Noto的简体中文字体来举例),</p>
+<ol>
+<li><p>将得到的压缩包解压；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/noto_font_unzip.png" width="200" alt=" noto_font_unzip"></div>
+</li>
+<li><p>依次双击字体文件<code>*.ttf</code>或<code>*.otf</code>；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/installed_noto_font.png" width="200" alt=" installed_noto_font"></div>
+
+</li>
+</ol>
+<p>这样就可以将这些自己安装到电脑上了，在设计的过程中，就能够选择到对应的字体了。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/select_noto_font.png" width="300" alt=" select_noto_font"></div>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-17T03:11:28.000Z" itemprop="dateUpdated">2017年2月17日 11:11</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://book.anddle.com">
+            <img src="/img/avatar.png" alt="安豆">
+            安豆
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/2_设计原理/4_文字的使用/&title=《4 文字的使用》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/2_设计原理/4_文字的使用/&title=《4 文字的使用》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2_设计原理/3_颜色的运用/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">3 颜色的运用</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2_设计原理/5_图标的使用/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">5 图标的使用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            <span>本站内容均为原创内容，欢迎转载，但请务必注明出处</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>从设计到实现 &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/2_设计原理/4_文字的使用/&title=《4 文字的使用》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/2_设计原理/4_文字的使用/&title=《4 文字的使用》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3aQWrEMAwF0Ln/pVOYVTcJX5JbiP28KslM4jcFIUv6fOJ1fVdy/bpZd9/9fff58wsWBgbGaxnX40q2ewd73mjy0yR7w8DAOIeRPy6PdfMAnT8HAwMDY/L6XlDGwMDAmAfc5/Ca3E0+j4GBgVE9xCZ3q9vKw/GyszgGBsYLGdXGwH/+/Yf9DQwMjJcwruLqHXGT9452hYGBsTUjT9eS671jbS/pjOZBMDAwtmA8J2F5saxXMqsW9W6/i4GBcQwj+XI1FPZSxuqJFQMD4wRGPu5QLdD3WgXlYhwGBsYBjPnwVvUou/jsiYGBsTWjOuKQvCw/iFaf3/zPYGBgvJyRvGBOzYN4s0WKgYFxAGNVizE/+q5NQDEwMPZmJEledSyj2gyYjH1gYGCcw8iPoL10sFfgy4uAGBgYZzJGow/j64sbmRgYGNsxqqWuaksyTx/LKSYGBsbWjLxknzcd56W0fCcYGBjnMJKXJeG1mvCtOtxiYGDsyuild9UhsEnzMtobBgbGAYxkPKIauXtht3r9dmYEAwNjI8YkRCbgvP05aYViYGDszbiKq9dUyENzUtS7ncPFwMDYlNELcJPhjPm7mgAMDIyXM6qpW7V50BsFy1ueGBgY5zDyklk++tBrGFQDMQYGBkbymUkjM3lmdKjGwMDAiAe58uQyGeYo/CgYGBgHMKrNyGqhv9rULA9kYGBgbM1ozmgM2op5ythrrGJgYGzE+AE4yPoIGSsc4gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261181710&web_id=1261181710')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>5 图标的使用 | 从设计到实现 | 手把手教你做android应用开发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="图标的使用图标能给人带来最直观的印象，有的时候再多的解释也抵不过一个图标。
+安卓应用的图标分成两类，
+
+应用图标：在主界面上代表着整个应用的那个启动图标，是给用户第一印象的图标。一个应用开发成功后会不会被用户下载，也许就取决于用户看它的第一眼。
+  
+
+系统图标：在应用里面使用的各种具有特别意义的图标，引导用户进行更多的操作。
+  
+
+
+
+应用图标应用图标的设计也是对Material Design">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5 图标的使用">
+<meta property="og:url" content="http://book.anddle.com/2_设计原理/5_图标的使用/index.html">
+<meta property="og:site_name" content="从设计到实现">
+<meta property="og:description" content="图标的使用图标能给人带来最直观的印象，有的时候再多的解释也抵不过一个图标。
+安卓应用的图标分成两类，
+
+应用图标：在主界面上代表着整个应用的那个启动图标，是给用户第一印象的图标。一个应用开发成功后会不会被用户下载，也许就取决于用户看它的第一眼。
+  
+
+系统图标：在应用里面使用的各种具有特别意义的图标，引导用户进行更多的操作。
+  
+
+
+
+应用图标应用图标的设计也是对Material Design">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/app_icons_example.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/system_icons.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_grid_keyline.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_grid_scale.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/2_5_table_app_icon_size.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_shape.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/system_icons.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/2_5_table_system_icon_tint.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/2_5_table_system_icon_edge.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/2_5_table_system_icon_shadow.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/2_5_table_system_icon_light.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_color_cool.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_color_fresh.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_color_hot.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_color_warm.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_color_neutral.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_color_example.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/system_icons.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_grid_keyline.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_grid_scale.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_area.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/2_5_table_system_icon_size.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_shape.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/system_corner_key_point.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_stroke.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_touch_area.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/2_5_table_system_icon_color_light_theme.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_color_light_bg.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/2_5_table_system_icon_color_dark_theme.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_color_dark_bg.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/material_icon_official_website.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/iconfount_website.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/android_asset_studio1.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/android_asset_studio2.png">
+<meta property="og:updated_time" content="2017-02-17T03:11:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="5 图标的使用">
+<meta name="twitter:description" content="图标的使用图标能给人带来最直观的印象，有的时候再多的解释也抵不过一个图标。
+安卓应用的图标分成两类，
+
+应用图标：在主界面上代表着整个应用的那个启动图标，是给用户第一印象的图标。一个应用开发成功后会不会被用户下载，也许就取决于用户看它的第一眼。
+  
+
+系统图标：在应用里面使用的各种具有特别意义的图标，引导用户进行更多的操作。
+  
+
+
+
+应用图标应用图标的设计也是对Material Design">
+<meta name="twitter:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/app_icons_example.png">
+    
+        <link rel="alternative" href="/atom.xml" title="从设计到实现" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">安豆</h5>
+          <a href="mailto:anddlecn@gmail.com" title="anddlecn@gmail.com" class="mail">anddlecn@gmail.com</a>
+          <span class="mail">QQ群：348702074</span><br/>
+          <span class="mail"></span>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                网站首页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第1章-创意/"  >
+                <i class="icon icon-lg icon-birthday-cake"></i>
+                第1章 创意
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第2章-设计原理/"  >
+                <i class="icon icon-lg icon-eyedropper"></i>
+                第2章 设计原理
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resources/"  >
+                <i class="icon icon-lg icon-download"></i>
+                资源下载
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://anddle.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                安豆主站
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/index.html"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">5 图标的使用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">5 图标的使用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-08T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-08
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第2章-设计原理/">第2章-设计原理</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>本节目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#图标的使用"><span class="post-toc-text">图标的使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#应用图标"><span class="post-toc-text">应用图标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#系统图标"><span class="post-toc-text">系统图标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#工具"><span class="post-toc-text">工具</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2_设计原理/5_图标的使用"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">5 图标的使用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月08日 9:00" datetime="2017-01-08T01:00:00.000Z"  itemprop="datePublished">2017-01-08</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第2章-设计原理/">第2章-设计原理</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="图标的使用"><a href="#图标的使用" class="headerlink" title="图标的使用"></a>图标的使用</h1><p>图标能给人带来最直观的印象，有的时候再多的解释也抵不过一个图标。</p>
+<p>安卓应用的图标分成两类，</p>
+<ul>
+<li><p>应用图标：在主界面上代表着整个应用的那个启动图标，是给用户第一印象的图标。一个应用开发成功后会不会被用户下载，也许就取决于用户看它的第一眼。</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/app_icons_example.png" width="300" alt=" app_icons_example"></div>
+</li>
+<li><p>系统图标：在应用里面使用的各种具有特别意义的图标，引导用户进行更多的操作。</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/system_icons.png" width="500" alt=" system_icons"></div>
+
+</li>
+</ul>
+<h2 id="应用图标"><a href="#应用图标" class="headerlink" title="应用图标"></a>应用图标</h2><p>应用图标的设计也是对<code>Material Design</code>的一种体现：制作应用图标的过程，就是对一张纸进行裁剪、折叠、上色、增加阴影的过程。</p>
+<p>虽然应用图标可以被设计得千奇百怪，但是它还是有很多的套路可以使用的，只要遵守这些套路，你设计出来的图标也不会难看到哪里去。</p>
+<p>先来说说应用图标的一定要执行的规则：</p>
+<ol>
+<li><p>Google给出了图标设计的网格图。设计应用图标的时候，要参考这个网格对图案进行布局和排列。</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_grid_keyline.png" width="300" alt=" app_icon_grid_keyline"></div>
+</li>
+<li><p>安卓系统希望应用的图标框定在48dp尺寸方框以内，并且拥有1dp的边框（包含在48dp的尺寸以内）。为了作图的细致，建议我们将48dp的图标先放大4倍，也就是变成192dp（边框4dp），再进行设计。</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_grid_scale.png" width="600" alt=" app_icon_grid_scale"></div>
+</li>
+<li><p>图标可以根据设计线，做成圆角方形、圆形、竖长方形、横长方形。各个形状的区域尺寸分别是：</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/2_5_table_app_icon_size.png" width="200" alt=" 2_5_table_app_icon_size"></div>
+
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_shape.png" width="500" alt=" app_icon_shape"></div>
+
+<p> 需要注意的是：虽然图标的形状不同，但是它们都是被限定在了192dp（缩放后）的正方形方框当中；标注出的尺寸都是放大了4倍以后的尺寸。</p>
+</li>
+<li><p>图标制作的时候，选择简单明了的几何图行。</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/system_icons.png" width="500" alt=" system_icons"></div>
+
+</li>
+</ol>
+<p>之后就是和设计相关的要素了。一个图标由7个要素组成：</p>
+<ol>
+<li><p>背景：图标的背景，这个背景的大小是由图标的形状决定的，例如圆角方形、圆形等等，并不占用图标的整个区域。</p>
+</li>
+<li><p>前景：图标的前景，通常就是表达应用含义的几何图形。</p>
+</li>
+<li><p>颜色：颜色的选择与应用界面颜色的选择一样，要选择能体现应用内容的色调。颜色不宜不多，最好不要超过3个。颜色可以只是放在前景当中，也可以只放在背景当中。</p>
+</li>
+<li><p>tint边沿：tint是一个遮罩，可以把它理解成给图层带上了一顶帽子。这顶帽子可以有自己的颜色和透明度，与它盖住的图层混合，显示出不同的效果。我们会在后面详细讲述tint。tint边沿出现在前景和背景的上边沿。它是有规定的：</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/2_5_table_system_icon_tint.png" width="150" alt=" 2_5_table_system_icon_tint"></div>
+</li>
+<li><p>阴影边沿：出现在前景和背景的下边沿。它是有规定的：</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/2_5_table_system_icon_edge.png" width="200" alt=" 2_5_table_system_icon_edge"></div>
+</li>
+<li><p>阴影：前景在背景上会留下投影，这个投影也是有规定的：</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/2_5_table_system_icon_shadow.png" width="200" alt=" 2_5_table_system_icon_shadow"></div>
+
+<p> 前景相对于背景的高度是1dp。</p>
+</li>
+<li><p>光照：图标拥有从左上方45度角照射过来的光源。要注意的是：这个光源仅仅局限在图标的内部。光源的属性如下：</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/2_5_table_system_icon_light.png" width="200" alt=" 2_5_table_system_icon_light"></div>
+
+</li>
+</ol>
+<p>最后我们讲讲前面提到的tint与shade的颜色。<br>tint与shade都是在原来图层的上方添加一个遮罩，让遮罩与图层叠加，产生不同的颜色效果。</p>
+<ol>
+<li><p>首先确定主色调的类型：冷色？暖色？</p>
+</li>
+<li><p>根据下表，选择tint与shade的颜色。</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_color_cool.png" width="500" alt=" app_icon_color_cool"></div><br> <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_color_fresh.png" width="500" alt=" app_icon_color_fresh"></div><br> <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_color_hot.png" width="500" alt=" app_icon_color_hot"></div><br> <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_color_warm.png" width="500" alt=" app_icon_color_war"></div><br> <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_color_neutral.png" width="500" alt=" app_icon_color_neutra"></div>
+
+</li>
+</ol>
+<p>例如主颜色是Yellow 500，它属于<code>Warn</code>暖色。因此，</p>
+<ul>
+<li><p>它的tint颜色就是主颜色添加20%的白色。</p>
+</li>
+<li><p>它的shade颜色就是主颜色，添加20%的Deep Orange 900</p>
+</li>
+</ul>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/app_icon_color_example.png" width="500" alt=" app_icon_color_example"></div>
+
+<h2 id="系统图标"><a href="#系统图标" class="headerlink" title="系统图标"></a>系统图标</h2><p>下面这些常见的图标都是系统图标。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/system_icons.png" width="500" alt=" system_icons"></div>
+
+<p>它们都是使用粗线条的几何图案，非常简约。设计系统图标也是很套路的事情。</p>
+<p>先来说说应用图标的一定要执行的规则：</p>
+<ol>
+<li><p>Google为这个类型的图标设计了网格图，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_grid_keyline.png" width="200" alt=" system_icon_grid_keyline"></div>
+</li>
+<li><p>安卓系统希望应用的图标框定在24dp尺寸方框以内。</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_grid_scale.png" width="300" alt=" system_icon_grid_scale"></div>
+</li>
+<li><p>图案在20*20以内，多余的4dp作为边框空着。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_area.png" width="300" alt=" system_icon_area"></div>
+</li>
+<li><p>图标可以根据设计线，做成圆角方形、圆形、竖长方形、横长方形。各个形状的区域尺寸分别是：</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/2_5_table_system_icon_size.png" width="200" alt=" 2_5_table_system_icon_size"></div>
+
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_shape.png" width="400" alt=" system_icon_shape"></div>
+
+<p> 需要注意的是：虽然图标的形状可能不同，但是它们都是被限定在了24dp的正方形的方框当中。</p>
+</li>
+</ol>
+<p>之后就是和设计相关的要素了：</p>
+<ol>
+<li><p>图标的外部边缘都是2dp的弧形，而内部边缘都是方形；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/system_corner_key_point.png" width="500" alt=" system_corner_key_point"></div>
+</li>
+<li><p>做图的笔划粗细要一致，而且笔划是方形的。笔划掉粗细是2dp。</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_stroke.png" width="500" alt=" system_icon_stroke"></div>
+
+<p> 假如图形很复杂，2dp实在是显得拥挤，那可以适当用细一些的笔划，例如1.5dp。如果还很难画，那就的想想是不是你的图标太复杂，要考虑更简单的图案了。</p>
+</li>
+<li><p>图标在界面上布局的时候，要让它拥有额外的边距。加上边距，整个图标的尺寸要达到48dp。也就是说，它上下左右的边距要有24dp。为什么呢？因为系统图标大多是需要让用户点击的，经过测试，人的手指点击时接触屏幕的区域大小差不多就是48dp。</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_touch_area.png" width="300" alt=" system_icon_touch_area"></div>
+</li>
+<li><p>此外，在使用几何图形作为图标的时候，要选择平面的图形，有3D效果的就不需要了，因为<code>Material Design</code>是扁平化的设计。</p>
+</li>
+</ol>
+<p>系统图标的颜色设置也有需要遵循的规则，在亮暗不同的背景下，颜色不同，</p>
+<ul>
+<li><p>在亮背景下，使用黑色：</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/2_5_table_system_icon_color_light_theme.png" width="300" alt=" 2_5_table_system_icon_color_light_theme"></div>
+
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_color_light_bg.png" width="400" alt=" system_icon_color_light_bg"></div>
+
+
+</li>
+</ul>
+<ul>
+<li><p>在暗背景下，使用白色：</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/2_5_table_system_icon_color_dark_theme.png" width="300" alt=" 2_5_table_system_icon_color_dark_theme"></div>
+
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_color_dark_bg.png" width="400" alt=" system_icon_color_dark_bg"></div>
+
+</li>
+</ul>
+<h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><p>知道了制作图标的规则，一切就好办了。如果你是设计高手，可以用工具，从无到有，完全自己画一个图标。如果你时间有限、不善此道，那么可以从网上找到很多设计图标的素材。</p>
+<p>Google在<a href="https://material.io/icons/" target="_blank" rel="external">官网</a>上放出了很多现成的图标素材，涵盖了很多门类，基本上够我们直接拿过来使用了。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/material_icon_official_website.png" width="600" alt=" material_icon_official_website"></div>
+
+<p>阿里也提供了一个收集了很多图标的网站<a href="http://www.iconfont.cn/" target="_blank" rel="external">iconfont</a>，我们需要某个类型的图标时，可以去上面搜索。这几乎一定能满足我们的需要。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/iconfount_website.png" width="600" alt=" iconfount_website"></div>
+
+<p>制作图标的素材最好是矢量图，这样随便缩放素材的大小，图案的边缘都可以清晰可见。而且向我们要使用的图标素材都是很简单的几何图形，矢量图占用的存储空间会非常的小。</p>
+<p>还有一个实用的图标制作工具网站<a href="http://romannurik.github.io/AndroidAssetStudio/" target="_blank" rel="external">Android Asset Studio</a>。你可以选择制作应用图标或者系统图标，调整好参数以后，就能将图标下载到本地使用。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/android_asset_studio1.png" width="600" alt=" android_asset_studio1"></div>
+
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/android_asset_studio2.png" width="600" alt=" android_asset_studio2"></div>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-17T03:11:28.000Z" itemprop="dateUpdated">2017年2月17日 11:11</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://book.anddle.com">
+            <img src="/img/avatar.png" alt="安豆">
+            安豆
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/2_设计原理/5_图标的使用/&title=《5 图标的使用》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/2_设计原理/5_图标的使用/&title=《5 图标的使用》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2_设计原理/4_文字的使用/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">4 文字的使用</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2_设计原理/6_动画效果/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">6 动画效果</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            <span>本站内容均为原创内容，欢迎转载，但请务必注明出处</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>从设计到实现 &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/2_设计原理/5_图标的使用/&title=《5 图标的使用》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/2_设计原理/5_图标的使用/&title=《5 图标的使用》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aQW7DMAwEwPz/0+61QGN1KSpFLY1OQWA7Hh0YUuTrFa/r2/r5/d2Vd3fdPSG5vrUwMDAey7iGK3m5MSbZiOrvvqFiYGAcwEhCYR73kickm5K8GwYGBkY1pOb3Vp+DgYGBUQ2dVUCyERgYGBhjRrVMTTaielQ33rJltTgGBsYDGatK0098/kh/AwMD41GMq7iqTYIkRObh9fZ3MTAwtmbkAS5PzvIStBNwMTAwTmOsLT47BXA+olFIIjEwMLZgzCVznZRubYsUAwPjHMbc8GgnyFaHMMotTAwMjC0Yc+MUSYjsDFKUE1MMDIxjGEkIrobFTzdEMTAwTmBUj/Xzl64mi51NxMDA2JuRB7hOEdsJ30kCioGBcQ6jk9jlbc48cEeAaizHwMB4IKNTcOZNhaRgnvumgMHAwHgso6/MG59VduHQDQMDY2tG0oCce4m5UFu9JpocwcDAeDijP2A6N0jRueu2MYCBgbEpYy6zqh6ZzR3GVb/BwMDYm5EE3GWnd0uTxTcVOQYGxtaMTnsyD8qdZucvfwMYGBjHMDqAvEkwOTCRpIYYGBjbMa7immtkjkN5ZygWAwPjBEY1wFXbmQlswYAFBgbGAYx8zCJ/QjWwLjjhx8DAOIBRHWtY9erVgrZw3IaBgXEwo39Ylhe65TkRDAwMjKmAm5ej1Vbon/5vYGBg/ANGv+Bc1Rada5diYGDszagON4wftLa4TWAYGBhbM74Ajqh0clSqMygAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261181710&web_id=1261181710')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+
+</body>
+</html>

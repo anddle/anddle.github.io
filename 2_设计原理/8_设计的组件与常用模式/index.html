@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>8 设计的组件与常用模式 | 从设计到实现 | 手把手教你做android应用开发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="组件与常用模式前面已经比较全面的介绍了Material Design相关的设计哲学、设计原理和方法论。这一章开始，我们将看看这些原理是如何在安卓系统当中得到实践的。
+一个应用并不是完全从什么都没有来组建的，至少会有一匹一匹的砖嘛。而在界面设计当中，这些能够拿过来就使用的砖块就是控件。
+例如，按钮 滑动条 列表等等，都是可以直接拿过来用的砖块。
+Material Design最基础的体现，就是看看这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="8 设计的组件与常用模式">
+<meta property="og:url" content="http://book.anddle.com/2_设计原理/8_设计的组件与常用模式/index.html">
+<meta property="og:site_name" content="从设计到实现">
+<meta property="og:description" content="组件与常用模式前面已经比较全面的介绍了Material Design相关的设计哲学、设计原理和方法论。这一章开始，我们将看看这些原理是如何在安卓系统当中得到实践的。
+一个应用并不是完全从什么都没有来组建的，至少会有一匹一匹的砖嘛。而在界面设计当中，这些能够拿过来就使用的砖块就是控件。
+例如，按钮 滑动条 列表等等，都是可以直接拿过来用的砖块。
+Material Design最基础的体现，就是看看这">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/float_action_btn.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/raised_btn.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/flat_btn.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/flat_btn_pos.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/flat_btn_spec.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/flat_btn_press_effect.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/raised_btn_pos.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/raised_btn_spec.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/raised_btn_effect.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/float_action_btn_pos.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/float_action_btn_fade.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/float_action_btn_trans.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/float_action_btn_into_menu.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/float_action_btn_into_material.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_example.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_item_import_order.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_1_text.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_1_icon_text.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_1_avatar_text.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_1_avatar_text_icon.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_2_text.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_2_icon_text.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_2_avatar_text.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_2_avatar_text_icon.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_3_text.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_3_icon_text.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_3_avatar_text.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_3_avatar_text_icon.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_full_divider.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_half_divider.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/list_no_divider.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/toolbar_top.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/toolbar_map.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/toolbar_keyboard.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/app_bar_example.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/appbar_area.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/appbar_scroll_toolbar.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/appbar_scroll_toolbar_tab.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/appbar_scroll_toolbar_txt.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/appbar_scroll_toolbar_image.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/statusbar_example.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/navbar_example.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/statusbar_status.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/navbar_status.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/full_screen_lean_back.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/full_screen_immersive.png">
+<meta property="og:updated_time" content="2017-02-17T03:11:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="8 设计的组件与常用模式">
+<meta name="twitter:description" content="组件与常用模式前面已经比较全面的介绍了Material Design相关的设计哲学、设计原理和方法论。这一章开始，我们将看看这些原理是如何在安卓系统当中得到实践的。
+一个应用并不是完全从什么都没有来组建的，至少会有一匹一匹的砖嘛。而在界面设计当中，这些能够拿过来就使用的砖块就是控件。
+例如，按钮 滑动条 列表等等，都是可以直接拿过来用的砖块。
+Material Design最基础的体现，就是看看这">
+<meta name="twitter:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/float_action_btn.png">
+    
+        <link rel="alternative" href="/atom.xml" title="从设计到实现" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">安豆</h5>
+          <a href="mailto:anddlecn@gmail.com" title="anddlecn@gmail.com" class="mail">anddlecn@gmail.com</a>
+          <span class="mail">QQ群：348702074</span><br/>
+          <span class="mail"></span>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                网站首页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第1章-创意/"  >
+                <i class="icon icon-lg icon-birthday-cake"></i>
+                第1章 创意
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第2章-设计原理/"  >
+                <i class="icon icon-lg icon-eyedropper"></i>
+                第2章 设计原理
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resources/"  >
+                <i class="icon icon-lg icon-download"></i>
+                资源下载
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://anddle.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                安豆主站
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/index.html"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">8 设计的组件与常用模式</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">8 设计的组件与常用模式</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-11T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-11
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第2章-设计原理/">第2章-设计原理</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>本节目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#组件与常用模式"><span class="post-toc-text">组件与常用模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#按钮"><span class="post-toc-text">按钮</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Flat按钮"><span class="post-toc-text">Flat按钮</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Raised按钮"><span class="post-toc-text">Raised按钮</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#FloatingAction按钮"><span class="post-toc-text">FloatingAction按钮</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#列表"><span class="post-toc-text">列表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#应用栏与工具栏"><span class="post-toc-text">应用栏与工具栏</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#状态栏与导航栏"><span class="post-toc-text">状态栏与导航栏</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2_设计原理/8_设计的组件与常用模式"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">8 设计的组件与常用模式</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月11日 9:00" datetime="2017-01-11T01:00:00.000Z"  itemprop="datePublished">2017-01-11</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第2章-设计原理/">第2章-设计原理</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="组件与常用模式"><a href="#组件与常用模式" class="headerlink" title="组件与常用模式"></a>组件与常用模式</h1><p>前面已经比较全面的介绍了<code>Material Design</code>相关的设计哲学、设计原理和方法论。这一章开始，我们将看看这些原理是如何在安卓系统当中得到实践的。</p>
+<p>一个应用并不是完全从什么都没有来组建的，至少会有一匹一匹的砖嘛。而在界面设计当中，这些能够拿过来就使用的砖块就是控件。</p>
+<p>例如，<code>按钮</code> <code>滑动条</code> <code>列表</code>等等，都是可以直接拿过来用的砖块。</p>
+<p><code>Material Design</code>最基础的体现，就是看看这些砖长成什么样，以及如何用<code>Material Design</code>的理念将这些砖组合起来，构建成应用的界面。</p>
+<p>这样的砖块很多，Google在<code>Material Design</code>的<a href="https://material.io/guidelines" target="_blank" rel="external">规范</a>中给出了详细的定义。</p>
+<p>因此我不会一一列举，只是拿出其中一两个最为常见的、最为典型的砖块和大家讨论，看看<code>规范</code>该如何解读和使用。知道了这些典型砖块的实践方式以后，大家就能自己根据<code>设计规范</code>来查看资料了。</p>
+<p>我这里选取了<code>按钮</code> <code>列表</code> <code>应用栏</code> <code>系统栏</code>来详细的讨论。</p>
+<h2 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h2><p><code>Material Design</code>中有3类按钮：</p>
+<ul>
+<li><p>Floating action按钮：前面已经大致介绍过，它是一个圆形的按钮，悬浮在界面之上6dp的位置，当点击的时候，按钮会向上浮动（显示出更大的阴影），是界面中吸引用户的界面元素之一；</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/float_action_btn.png" width="100" alt=" float_action_btn"></div>
+</li>
+<li><p>Raised按钮：拥有背景颜色（Accent color）的按钮，点击时它在z轴的位置会向上变化；</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/raised_btn.png" width="200" alt=" raised_btn"></div>
+</li>
+<li><p>Flat按钮：按钮文字有颜色（Accent color）的按钮，点击时它在z轴的位置不会变化；</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/flat_btn.png" width="200" alt=" flat_btn"></div>
+
+</li>
+</ul>
+<h3 id="Flat按钮"><a href="#Flat按钮" class="headerlink" title="Flat按钮"></a>Flat按钮</h3><p>Flat按钮常常用在<code>toolbar</code>、<code>对话框</code>以及需要与很多文字配合的地方。通常用来告诉用户“我能提供一些轻量级的功能，这些功能并不是我的特色，你知道我有就行”。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/flat_btn_pos.png" width="300" alt=" flat_btn_pos"></div>
+
+<p>它的设计规范如下，</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最小宽度</td>
+<td>88dp</td>
+</tr>
+<tr>
+<td>高度</td>
+<td>36dp</td>
+</tr>
+<tr>
+<td>边角弧度半径</td>
+<td>2dp</td>
+</tr>
+<tr>
+<td>左右margin</td>
+<td>8dp</td>
+</tr>
+<tr>
+<td>左右padding</td>
+<td>8dp</td>
+</tr>
+<tr>
+<td>字体大小</td>
+<td>15sp</td>
+</tr>
+</tbody>
+</table>
+<p>当使用亮色主题并按下按钮的时候，按钮的背景颜色是#999999，透明度为40%；<br>当使用暗色主题并按下按钮的时候，按钮的背景颜色是#CCCCCC，透明度为25%；</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/flat_btn_spec.png" width="500" alt=" flat_btn_spec"></div>
+
+<p>当点击按钮的时候，会出现水波纹一样的动画，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/flat_btn_press_effect.gif" width="200" alt=" flat_btn_press_effect"></div>
+
+<h3 id="Raised按钮"><a href="#Raised按钮" class="headerlink" title="Raised按钮"></a>Raised按钮</h3><p>Raised按钮比Flat按钮能更加吸引用户的注意力。通常用来告诉用户“点击我以后，会启动我一个很重要的功能，你要特别注意”。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/raised_btn_pos.png" width="300" alt=" raised_btn_pos"></div>
+
+<p>它的设计规范如下，</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最小宽度</td>
+<td>88dp</td>
+</tr>
+<tr>
+<td>高度</td>
+<td>36dp</td>
+</tr>
+<tr>
+<td>默认z轴位置</td>
+<td>2dp</td>
+</tr>
+<tr>
+<td>按下时z轴位置</td>
+<td>8dp</td>
+</tr>
+<tr>
+<td>边角弧度半径</td>
+<td>2dp</td>
+</tr>
+<tr>
+<td>左右margin</td>
+<td>0dp</td>
+</tr>
+<tr>
+<td>左右padding</td>
+<td>16dp</td>
+</tr>
+<tr>
+<td>字体大小</td>
+<td>15sp</td>
+</tr>
+</tbody>
+</table>
+<p>当使用暗色主题时，背景的颜色如下，</p>
+<table>
+<thead>
+<tr>
+<th>按钮状态</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正常</td>
+<td>调色板500类型的颜色</td>
+</tr>
+<tr>
+<td>按下</td>
+<td>调色板700类型的颜色</td>
+</tr>
+</tbody>
+</table>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/raised_btn_spec.png" width="600" alt=" raised_btn_spec"></div>
+
+<p>当点击按钮的时候，会出现水波纹一样的动画，之后按钮在Z轴的位置也会提升，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/raised_btn_effect.gif" width="300" alt=" raised_btn_effect"></div>
+
+<h3 id="FloatingAction按钮"><a href="#FloatingAction按钮" class="headerlink" title="FloatingAction按钮"></a>FloatingAction按钮</h3><p>FloatAction按钮是界面当中最引人瞩目的按钮。它代表了这个界面能提供的最重要、最核心的功能。默认情况下它的尺寸是56dp，放在上方会小一点，是40dp。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/float_action_btn_pos.png" width="600" alt=" float_action_btn_pos"></div>
+
+<p>按照中心位置会内嵌一个系统图标，系统图标的大小我们在图标的章节讲过，是24dp。</p>
+<p>需要注意的是：并不是所有的界面一定要有个FloatAction按钮，它的存在完全是由应用的逻辑决定的。之所以我们看到那么多界面都有FloatAction按钮，是因为这是<code>Material Design</code>的典型特征，所以选择的很多例子都有它。如果某个界面确实需要FloatAction按钮，那么一个界面上也只能有一个，表明只有一个功能是最为重要的。</p>
+<p>FloatAction按钮还有一些常用的使用模式：</p>
+<ul>
+<li><p>当拥有FloatAction按钮的界面退出的时候，按钮要用动画的形式消失；<br>  当拥有FloatAction按钮的界面显示的时候，按钮要用动画的形式出现；</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/float_action_btn_fade.gif" width="300" alt=" float_action_btn_fade"></div>
+
+<p>  当拥有FloatAction按钮的界面在内部进行切换的时候，按钮要有动态变化的效果；</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/float_action_btn_trans.gif" width="300" alt=" float_action_btn_trans"></div>
+</li>
+<li><p>按钮点击后可以，展示出更多菜单；</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/float_action_btn_into_menu.gif" width="300" alt=" float_action_btn_into_menu"></div>
+
+
+</li>
+</ul>
+<ul>
+<li><p>按钮变化成一个新的纸片，纸片上展现更多的内容；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/float_action_btn_into_material.gif" width="300" alt=" float_action_btn_into_materia"></div>
+
+</li>
+</ul>
+<p>它的设计规范如下，</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标准尺寸</td>
+<td>56dp</td>
+</tr>
+<tr>
+<td>最小尺寸</td>
+<td>40dp</td>
+</tr>
+<tr>
+<td>内嵌图标尺寸</td>
+<td>24dp</td>
+</tr>
+<tr>
+<td>默认z轴位置</td>
+<td>6dp</td>
+</tr>
+<tr>
+<td>按下时z轴位置</td>
+<td>12dp</td>
+</tr>
+<tr>
+<td>背景颜色</td>
+<td>Accent Color</td>
+</tr>
+</tbody>
+</table>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><p>接下来，我们看看另外一个会经常用到的组件列表。</p>
+<p>列表用来显示展示类型相同的数据，比如都有头像、名字、职务等信息，不同的只是这些信息的具体内容。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_example.png" width="300" alt=" list_example"></div>
+
+<p>列表项是列表的一个显示单元，列表项的布局不要超过三行，如果确实要超过三行，那么就不应该使用列表来展示内容了。</p>
+<p>列表项的内容根据位置的不同，体现出的重要性也不同：</p>
+<ol>
+<li>靠左边的内容是最重要的，右边的次之；</li>
+<li>靠上边的内容是最重要的，下边的次之；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_item_import_order.png" width="300" alt=" list_item_import_order"></div>
+
+<p>常见的列表布局有以下三种，</p>
+<ol>
+<li><p>单行：有一行文字的显示</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_1_text.png" width="200" alt=" list_1_text"></div><br> <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_1_icon_text.png" width="200" alt=" list_1_icon_text"></div><br> <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_1_avatar_text.png" width="200" alt=" list_1_avatar_text"></div><br> <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_1_avatar_text_icon.png" width="200" alt=" list_1_avatar_text_icon"></div>
+</li>
+<li><p>双行：有两行文字的显示</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_2_text.png" width="200" alt=" list_1_text"></div><br> <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_2_icon_text.png" width="200" alt=" list_1_icon_text"></div><br> <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_2_avatar_text.png" width="200" alt=" list_1_avatar_text"></div><br> <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_2_avatar_text_icon.png" width="200" alt=" list_1_avatar_text_icon"></div>
+</li>
+<li><p>三行：有三行文字的显示 </p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_3_text.png" width="200" alt=" list_1_text"></div><br> <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_3_icon_text.png" width="200" alt=" list_1_icon_text"></div><br> <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_3_avatar_text.png" width="200" alt=" list_1_avatar_text"></div><br> <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_3_avatar_text_icon.png" width="200" alt=" list_1_avatar_text_icon"></div>
+
+</li>
+</ol>
+<p>这些布局中各个元素的位置，都在<a href="https://material.google.com/components/lists.html" target="_blank" rel="external">规范</a>中有明确的规定，经过<code>按钮</code>那一小节的讲述，我想大家一定具备看懂<code>规范</code>的能力，能够从中找到设置位置的关键点。</p>
+<p>在查看上面的示例时，大家应该注意到了列表项的分割线。这些分割线将列表区域按照逻辑区分开来，都是1dp的宽度。</p>
+<ul>
+<li><p>有的分割线贯穿了整个屏幕；</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_full_divider.png" width="300" alt=" list_full_divide"></div>
+</li>
+<li><p>有的只是将文字的部分分开；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_half_divider.png" width="300" alt=" list_half_divide"></div>
+</li>
+<li><p>有的没有分隔；</p>
+</li>
+</ul>
+<p>to   <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/list_no_divider.png" width="300" alt=" list_no_divide"></div></p>
+<p>关于分割线，在<code>Material Design</code>的规范当中，也有专门的<a href="https://material.google.com/components/dividers.html" target="_blank" rel="external">章节</a>细致的讲述。</p>
+<h2 id="应用栏与工具栏"><a href="#应用栏与工具栏" class="headerlink" title="应用栏与工具栏"></a>应用栏与工具栏</h2><p>工具栏的作用是把很多操作按钮集中起来，一起展现给用户。它可以放在应用界面的上部分、中间、底部，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/toolbar_top.png" width="350" alt=" toolbar_top"></div><br><div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/toolbar_map.png" width="350" alt=" toolbar_map"></div><br><div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/toolbar_keyboard.png" width="600" alt=" toolbar_keyboard"></div>
+
+<p>在安卓的设计当中，有个<code>ActionBar</code>的概念，它的作用就是展示一个应用的图标、名字，以及菜单、导航栏等内容，从安卓3.0开始它就被提出，并推广了起来。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/app_bar_example.png" width="400" alt=" app_bar_example"></div>
+
+<p>不过从安卓5.0开始，在<code>ActionBar</code>的基础上提出了<code>AppBar</code>。<code>AppBar</code>除了担当<code>ActionBar</code>的功能外，还增加了一些新的特性，例如滑动效果。新引入的具体的控件<code>ToolBar</code>接替了<code>ActionBar</code>的具体功能，成为<code>AppBar</code>最为核心的组件。</p>
+<p>为了便于理解，我举一个例子。Google在2015年进行拆分，成立了多家公司，并将它们规整到Alphabet公司旗下。而以前的Google只保留搜索业务，成为了一个比较单纯的公司。</p>
+<p><code>ActionBar</code>就相当于以前的Google公司；<code>AppBar</code>相当于Alphabet；<code>ToolBar</code>就是Alphabet成立后的Google。<code>AppBar</code>除了<code>ToolBar</code>以外，还可能包含更多组件在其中。</p>
+<p>应用栏的高度根据屏幕横竖状态的不同而不同，</p>
+<table>
+<thead>
+<tr>
+<th>屏幕状态</th>
+<th>高度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>竖屏</td>
+<td>56dp</td>
+</tr>
+<tr>
+<td>横屏</td>
+<td>48dp</td>
+</tr>
+</tbody>
+</table>
+<p>应用栏可以根据开发者的要求，变成透明的、半透明的、甚至不显示。</p>
+<p><code>AppBar</code>除了显示标题、菜单等功能外，还有令人炫目的滑动效果，这也是安卓系统使用<code>Material Design</code>的重要特色。</p>
+<p><code>AppBar</code>除了<code>Toolbar</code>以外，可以包含<code>分页标签Tabs</code> <code>图片</code>等等内容。<code>图片</code>占用的空间叫做可变空间-<code>Flexible space</code>，不一定就是放图片，也可以放其他的元素，只不过就界面设计来讲，显示图片的效果要很多。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/appbar_area.png" width="300" alt=" appbar_area"></div>
+
+<ul>
+<li><p><code>AppBar</code>只有<code>Toolbar</code>：内容滚动的过程中，<code>Toolbar</code>可以被顶到消失；也可通过下拉再次出现。</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/appbar_scroll_toolbar.gif" width="300" alt=" appbar_scroll_toolbar"></div>
+</li>
+<li><p><code>AppBar</code>有<code>Toolbar</code>和<code>Tab</code>：</p>
+<ol>
+<li><p>内容滚动的过程中，<code>Toolbar</code>可以被顶到消失，只留下<code>Tab</code>；也可通过下拉再次出现。</p>
+</li>
+<li><p>内容滚动的过程中，<code>Toolbar</code>和<code>Tab</code>都被顶到消失；也可通过下拉再次出现。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/appbar_scroll_toolbar_tab.gif" width="300" alt=" appbar_scroll_toolbar_tab"></div>
+</li>
+</ol>
+</li>
+<li><p><code>AppBar</code>有<code>Toolbar</code>和可变区域：</p>
+<ol>
+<li><p>内容滚动的过程中，可变区域可以被顶到消失，只留下<code>Toolbar</code>；也可通过下拉再次出现。</p>
+</li>
+<li><p>内容滚动的过程中，<code>Toolbar</code>和可变区域都被顶到消失；也可通过下拉再次出现。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/appbar_scroll_toolbar_txt.gif" width="300" alt=" appbar_scroll_toolbar_txt"></div><br><div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/appbar_scroll_toolbar_image.gif" width="300" alt=" appbar_scroll_toolbar_image"></div>
+
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="状态栏与导航栏"><a href="#状态栏与导航栏" class="headerlink" title="状态栏与导航栏"></a>状态栏与导航栏</h2><p>用过智能手机的同学对状态栏和导航栏一定不会陌生，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/statusbar_example.png" width="350" alt=" statusbar_example"></div><br><div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/navbar_example.png" width="350" alt=" navbar_example"></div>
+
+<p>状态栏贯穿了整个屏幕的宽度，高度是24dp。<br>导航栏同样贯穿了整个屏幕的宽度，高度是48dp。不过在很多国内定制的系统当中，因为手机已经有了实体按键，就取消了导航栏。</p>
+<p>状态栏和导航栏的背景颜色是可以各自改变的，透明、半透明、不透明。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/statusbar_status.png" width="600" alt=" statusbar_status"></div><br><div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/navbar_status.png" width="350" alt=" navbar_status"></div>
+
+<p>为了配合不同应用的使用场景，状态栏和导航栏的显示也有不同的表现，</p>
+<ul>
+<li><p>沙发模式（Lean back）：就像在瘫坐在沙发上看电影时一样，屏幕尽可能的呈现视频内容，把状态栏和导航栏都藏起来。这个过程中你几乎不会去接触到屏幕，当你碰触屏幕的时候，状态栏和导航栏才会出现。</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/full_screen_lean_back.png" width="500" alt=" full_screen_lean_back"></div>
+</li>
+<li><p>沉浸模式（Immersive）：比如当你在使用阅读软件看书的时候，屏幕只显示书本的内容，把状态栏和导航栏隐藏起来，让你沉浸在阅读的快乐当中。但每次翻页的时候，你还是需要接触屏幕的。虽然翻页的过程中接触了屏幕，状态栏和导航栏也不会出现，除非你在屏幕的边缘做了一个滑动的动作，才能将它们再次唤出。</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/full_screen_immersive.png" width="600" alt=" full_screen_immersive"></div>
+</li>
+<li><p>关灯模式（Light out）：当你不碰触屏幕超过一定的时间，状态栏会自动的隐退；导航栏虽然还在那里，但是那三个操作的按钮却变成了三个小点。这个过程就好像是关闭了照亮屏幕的灯，状态栏和导航栏似乎还在那里，只是没有了灯光，已经看的不真切了。</p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-17T03:11:28.000Z" itemprop="dateUpdated">2017年2月17日 11:11</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://book.anddle.com">
+            <img src="/img/avatar.png" alt="安豆">
+            安豆
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/2_设计原理/8_设计的组件与常用模式/&title=《8 设计的组件与常用模式》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/2_设计原理/8_设计的组件与常用模式/&title=《8 设计的组件与常用模式》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2_设计原理/7_声音与触觉的利用/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">7 声音与触觉的利用</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2_设计原理/9_界面模式/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">9 界面模式</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            <span>本站内容均为原创内容，欢迎转载，但请务必注明出处</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>从设计到实现 &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/2_设计原理/8_设计的组件与常用模式/&title=《8 设计的组件与常用模式》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/2_设计原理/8_设计的组件与常用模式/&title=《8 设计的组件与常用模式》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqklEQVR42u3awU7rQAwFUP7/p8sWCZJc2+O+6ulkhaBN5mQxHq799RVfrx/X/W+u/pp85nVx/f7u4QsPDw9vsPT7W+ePnODz596vGQ8PD2+bd7XE/DN5Sbi/f/Iq8/Xg4eHhfQIvf/D9gqqlAg8PD+//4PWWlR+O/3FhwMPDw7vlVSPUyVLy43XvpeDh4eFt8/Iu0uf8vNLfw8PDwxt31asbbu/YvbhaPDw8vLWNMF96PihQ/VYv5I1WgoeHh/d2Xh7FVmOLvDCMwg48PDy8o7zeINRkZKoX6TYjCTw8PLw13mSj7zWxkuZZ/qIfKh4eHh7eUV4eDVRHnZKlVwcUJhEwHh4e3ilefpytjj3Nx6TygvHQ38PDw8Nb4+UlodfCz8PivGA8lCI8PDy8NV41uu2FCL1oOA+LL4cG8PDw8I7y8hiimnBMAoizDTM8PDy8s7ztRn6vldUrAH88BQ8PD2+Bl8cB1UZX/q28qPTuhoeHh7fNm7T/qw3+JM6Y4/Hw8PDO8noLqm7xyYurHpGjJ+Lh4eGt8XotqHktmpeN+3KFh4eHt8ebRLT5gydNsl7LDQ8PD2+PVx2lmjS6kkN23ip7iE7w8PDwFnjVdn6y9ecjVnkBqI5t4eHh4b2Tl9x00uia48uhMB4eHt4yr3fw7X1yUhIKsQUeHh7eGi/fcJNFVw/c1VdcaK3h4eHhrfHK7aXiEFWy9N71cDc8PDy8o7xX8aoeo6vNqvxAH4014OHh4S3weptvDssj2t4dyjUQDw8P7xCv2pqafCs/uE8iZjw8PLz38PIAonogToLdA7WrN3SFh4eH9xZe7xCcHKwn67n8PR4eHt4H8Hox7jxWKI9b4eHh4S3zJk2vPLCYxBnN1hceHh7eAq/67/08um1u8dXDNB4eHt553jcadLGGkUlTuQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261181710&web_id=1261181710')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+
+</body>
+</html>

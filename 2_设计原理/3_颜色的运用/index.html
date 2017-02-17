@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>3 颜色的运用 | 从设计到实现 | 手把手教你做android应用开发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="颜色的运用Material Design采用的是扁平化的设计，可以看到一大块一大块区域的颜色。这些颜色大多亮丽引人，整个界面上搭配的颜色也不会太多，基本保持在三种颜色以内。
+
+
+“没有错误的颜色的，只有错误的搭配”。颜色是没有对错的，我们要用经验和直觉来搭配它们，所以要先来认识认识颜色。
+颜色理论颜色是有语言的，红色代表这热情奔放，蓝色代表的沉着安静，绿色代表着生机活力。搭配一组颜色，就是表达作品">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3 颜色的运用">
+<meta property="og:url" content="http://book.anddle.com/2_设计原理/3_颜色的运用/index.html">
+<meta property="og:site_name" content="从设计到实现">
+<meta property="og:description" content="颜色的运用Material Design采用的是扁平化的设计，可以看到一大块一大块区域的颜色。这些颜色大多亮丽引人，整个界面上搭配的颜色也不会太多，基本保持在三种颜色以内。
+
+
+“没有错误的颜色的，只有错误的搭配”。颜色是没有对错的，我们要用经验和直觉来搭配它们，所以要先来认识认识颜色。
+颜色理论颜色是有语言的，红色代表这热情奔放，蓝色代表的沉着安静，绿色代表着生机活力。搭配一组颜色，就是表达作品">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/pallete_classic_ui.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/RGB_color.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/color_ring.jpg">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/s_value_adjust.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/color_palette1.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/color_palette2.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/color_palette3.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/color_palette4.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/color_palette_choose1.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/color_palette_choose2.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/color_palette_choose3.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/color_palette_choose4.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/material_palette_tool.png">
+<meta property="og:updated_time" content="2017-02-17T03:11:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3 颜色的运用">
+<meta name="twitter:description" content="颜色的运用Material Design采用的是扁平化的设计，可以看到一大块一大块区域的颜色。这些颜色大多亮丽引人，整个界面上搭配的颜色也不会太多，基本保持在三种颜色以内。
+
+
+“没有错误的颜色的，只有错误的搭配”。颜色是没有对错的，我们要用经验和直觉来搭配它们，所以要先来认识认识颜色。
+颜色理论颜色是有语言的，红色代表这热情奔放，蓝色代表的沉着安静，绿色代表着生机活力。搭配一组颜色，就是表达作品">
+<meta name="twitter:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/pallete_classic_ui.png">
+    
+        <link rel="alternative" href="/atom.xml" title="从设计到实现" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">安豆</h5>
+          <a href="mailto:anddlecn@gmail.com" title="anddlecn@gmail.com" class="mail">anddlecn@gmail.com</a>
+          <span class="mail">QQ群：348702074</span><br/>
+          <span class="mail"></span>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                网站首页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第1章-创意/"  >
+                <i class="icon icon-lg icon-birthday-cake"></i>
+                第1章 创意
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第2章-设计原理/"  >
+                <i class="icon icon-lg icon-eyedropper"></i>
+                第2章 设计原理
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resources/"  >
+                <i class="icon icon-lg icon-download"></i>
+                资源下载
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://anddle.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                安豆主站
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/index.html"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">3 颜色的运用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">3 颜色的运用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-06T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-06
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第2章-设计原理/">第2章-设计原理</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>本节目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#颜色的运用"><span class="post-toc-text">颜色的运用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#颜色理论"><span class="post-toc-text">颜色理论</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#选择颜色"><span class="post-toc-text">选择颜色</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Primary-Color"><span class="post-toc-text">Primary Color</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Primary-Dark-Color"><span class="post-toc-text">Primary Dark Color</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Accent-Color"><span class="post-toc-text">Accent Color</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#常用工具"><span class="post-toc-text">常用工具</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2_设计原理/3_颜色的运用"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">3 颜色的运用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月06日 9:00" datetime="2017-01-06T01:00:00.000Z"  itemprop="datePublished">2017-01-06</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第2章-设计原理/">第2章-设计原理</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="颜色的运用"><a href="#颜色的运用" class="headerlink" title="颜色的运用"></a>颜色的运用</h1><p><code>Material Design</code>采用的是扁平化的设计，可以看到一大块一大块区域的颜色。这些颜色大多亮丽引人，整个界面上搭配的颜色也不会太多，基本保持在三种颜色以内。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/pallete_classic_ui.png" width="300" alt=" pallete_classic_ui"></div>
+
+<p>“没有错误的颜色的，只有错误的搭配”。颜色是没有对错的，我们要用经验和直觉来搭配它们，所以要先来认识认识颜色。</p>
+<h2 id="颜色理论"><a href="#颜色理论" class="headerlink" title="颜色理论"></a>颜色理论</h2><p>颜色是有语言的，红色代表这热情奔放，蓝色代表的沉着安静，绿色代表着生机活力。搭配一组颜色，就是表达作品要传递的含义。</p>
+<p>我们大部分人都知道RGB颜色，它的理论依据是：任何颜色都是通过不同强度的<code>红色R</code>、<code>绿色G</code>、<code>蓝色B</code>组合而成的，改变它们的组合就能得到任何颜色。在计算机领域，这三种颜色分别具有0～255个不同的数值。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/RGB_color.png" width="200" alt=" RGB_color"></div>
+
+<p>对于设计师配色来讲，还会使用另外一个体系的颜色理论-HSB：色调H，饱和度S，亮度B。</p>
+<p>我们人在谈论颜色的时候，总是说这个颜色很红、有点绿、偏蓝。</p>
+<p>当我们说<code>很红</code>的时候，就是给颜色设定了一个基调-红色。这种基调称为色调。色调成圆环形状的分布，依次渐变的呈现出赤橙黄绿青蓝紫各种颜色。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/color_ring.jpg" width="300" alt=" color_ring"></div>
+
+<p>色环具有360度，因此色调的数值就是0～359度。色调数值从0到359变化，也代表着颜色从<code>暖色</code>逐步过渡到<code>冷色</code>。你是不是看到红色就觉得温暖，而看到深蓝色就觉得冷飕飕的呢？</p>
+<p><code>很红</code>的<code>很</code>字，就要通过饱和度和亮度来体现了，</p>
+<ul>
+<li><p>饱和度：可以理解成把一种纯粹的颜色溶解到水里面，如果水很多，颜色就很淡；如果水很少，颜色就很纯。因此它具有0%～100%的数值。</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/s_value_adjust.gif" width="400" alt=" s_value_adjust"></div>
+
+
+</li>
+</ul>
+<ul>
+<li>亮度：我们能看到物体是因为光线照在物体上面的缘故。如果一点光没有，不管什么样的颜色，看起来都是黑的，只有充足的光线才能反映出物体本来的颜色。因此它具有0%～100%的数值。<code>0%</code>说明没有光照，那么就会是黑色。</li>
+</ul>
+<p>如果你的本行并不是设计师或者刚入行不久，在给安卓应用配色的时候一定会犯迷糊，不知如何选择。幸好Google已经考虑到了这点。它从360度的色环当中，为大家选择出了非常适合做界面设计的色调，并通过调整这些色调的饱和度和亮度，得到了一系列可以与主色调搭配和谐的颜色（实际上，这些色调与主色调可能有细微的偏差，比如说3度）。这些颜色放在一起，被形象的叫做调色板。</p>
+<p>例如，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/color_palette1.png" width="500" alt=" color_palette1"></div>
+
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/color_palette2.png" width="500" alt=" color_palette2"></div>
+
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/color_palette3.png" width="500" alt=" color_palette3"></div>
+
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/color_palette4.png" width="500" alt=" color_palette4"></div>
+
+<p>这些颜色都给出了对应的RGB数值，也给出了它们自己的名字，例如500，100，200，……，A700，数值越高，颜色越深。其中带<code>A</code>的，表示这个颜色推荐用来作为<code>Accent Color</code>（<code>Accent color</code>接下来会马上介绍到。）。</p>
+<p>通过数字给颜色编号，这是为了方便设计师与开发者之间的沟通，给这些颜色取的名字。当他们谈论某个颜色的时候，只需要说出颜色的名字，大家脑中就会产生一个直观的印象。如果他们讲RGB值，大家都会觉得很难想象。</p>
+<h2 id="选择颜色"><a href="#选择颜色" class="headerlink" title="选择颜色"></a>选择颜色</h2><p>通常来讲，一个应用界面当中，不要超过三种不同的色调，否则色调的差异就会过多的吸引使用者的注意，把关注点从内容上分散到各个不同的颜色上去了。</p>
+<p>为了简化设计师的工作，Google的<code>Material Design</code>只需要选择<code>Primary Color</code> <code>Primary Dark Color</code> <code>Accent Color</code>三种颜色，就能确定整个应用的整体配色方案。</p>
+<p>当设计师要给一个应用选择颜色的时候，</p>
+<ol>
+<li><p>可以会从色环当中选择一个设计师认为合适的颜色。</p>
+</li>
+<li><p>也可以从Google提供的调色板中选取。这些颜色都是Google千挑万选后的结果，如果大家没有特别的原因，就使用这种表现稳健的颜色吧。</p>
+</li>
+</ol>
+<h3 id="Primary-Color"><a href="#Primary-Color" class="headerlink" title="Primary Color"></a>Primary Color</h3><p><code>Primary Color</code>是一个应用使用最为广泛的颜色，它决定了一个应用整体的基调。界面中很多的元素都会使用到这个颜色。</p>
+<p>比如，主颜色选取Indigo 500。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/color_palette_choose1.png" width="300" alt=" color_palette_choose1"></div>
+
+<h3 id="Primary-Dark-Color"><a href="#Primary-Dark-Color" class="headerlink" title="Primary Dark Color"></a>Primary Dark Color</h3><p>选定主颜色之后，通常还会在主颜色的附近，选择一个暗色作为搭配，例如Indigo 600～900作为深色。这个颜色通常只是体现在状态栏的颜色上。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/color_palette_choose2.png" width="300" alt=" color_palette_choose2"></div>
+
+<p>除了暗色，有时还需要使用与主颜色相配合的亮色，例如Indigo 500作为主色之后，Indigo 50～400，都是亮色可选的对象。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/color_palette_choose3.png" width="300" alt=" color_palette_choose3"></div>
+
+<h3 id="Accent-Color"><a href="#Accent-Color" class="headerlink" title="Accent Color"></a>Accent Color</h3><p><code>Accent Color</code>是与<code>Primary Color</code>完全不同的一个色调，用来吸引用户的注意力，比如用在按钮、进度条等等需要用户关注的、有交互功能的组件上面。如果<code>Primary Color</code>与<code>Accent Color</code>是不同色调，设计师可以自由的选择；如果<code>Primary Color</code>与<code>Accent Color</code>都是同一种色调，那么确定<code>Accent Color</code>的时候，通常使用Google调色板中名字里带<code>A</code>的颜色，例如<code>A100～A700</code>.</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/color_palette_choose4.png" width="300" alt=" color_palette_choose4"></div>
+
+<h2 id="常用工具"><a href="#常用工具" class="headerlink" title="常用工具"></a>常用工具</h2><p>使用Google提供的调色板进行配色的时候，如果能够快速的查看配色完成后的效果就好了。</p>
+<p><a href="https://www.materialpalette.com" target="_blank" rel="external"><code>Material Palette</code></a>为我们提供了这样的方便。当选中期望的<code>Primary Color</code>和<code>Accent Color</code>以后，右边的预览界面就会立刻看到搭配的效果。确认搭配方案之后，还可以下载配色的方案到本地，便于将调色板导入界面设计的软件当中直接使用。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/material_palette_tool.png" width="800" alt=" material_palette_too"></div>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-17T03:11:28.000Z" itemprop="dateUpdated">2017年2月17日 11:11</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://book.anddle.com">
+            <img src="/img/avatar.png" alt="安豆">
+            安豆
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/2_设计原理/3_颜色的运用/&title=《3 颜色的运用》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/2_设计原理/3_颜色的运用/&title=《3 颜色的运用》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2_设计原理/2_界面布局/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">2 界面布局</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2_设计原理/4_文字的使用/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">4 文字的使用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            <span>本站内容均为原创内容，欢迎转载，但请务必注明出处</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>从设计到实现 &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/2_设计原理/3_颜色的运用/&title=《3 颜色的运用》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/2_设计原理/3_颜色的运用/&title=《3 颜色的运用》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aQY7bMBAEwP3/p51rgERy99BeQGTxZBiypOKhzSHn5ycer7/Gv99fXXn1q6t73l//gYGBgfFYxut2JA+4xyQTkTz3zdRgYGAcwLh/uRnp6nN+ZT5xGBgYGCsvPQtZDAwMDIGLgYHxREYegtFNF7bVvl6LY2BgPJCR77r//uevnG9gYGA8ivEqxzfisj0M+M99MDAwtmbkAZcv0dqNtnaheTmVGBgYmzLa4jPZAlspgIfhjoGBsTUjWcz9ThWZfx+db2BgYGzEmJWOnwrZ5FcfiFoMDIyHM2bF58pB44xalLgYGBjbMVYWbUmRmTdeLB1wYmBgbM24D7L8kLJ93bYkLp6OgYGxHWMWcLOIzI8T6kNQDAyMYxhJCOavOCtQkz+AYbcIBgbGdow2fPNyd1Z1vtn+w8DAOIyRb599o5FitgzFwMDYm5G3WayEZt0wUS4xMTAw9mbMmiTqInNUHhfXY2BgbM1IWiiSbf12W60N6Lo5DAMDY1PGbOk2Gyt3LipyDAyMYxj5dn/eoD9ruH/zN4CBgXEAY9ZSv348MIvgeoWLgYHxWMarHLOtt6tonuExMDBOY7QBt94W9uEGCwwMjGMYbcjmzWR5sOZTM1wgYmBgbMGYtUEkW3Wz2M1zFQMDA6MtQVeWm22pXDdbYGBgHMNokW18z45CMTAwTmCsF5ztUUEb30WzBQYGxnaMtrmhfdhs6y2fGgwMjK0ZfwClH7wqTknmJAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261181710&web_id=1261181710')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+
+</body>
+</html>

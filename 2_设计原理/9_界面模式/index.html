@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>9 界面模式 | 从设计到实现 | 手把手教你做android应用开发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="界面模式Material Design的基础组件我们已经大体了解过了，现在我们看看Material Design在结合这些不同组件的过程中，有哪些套路，也就是有哪些常用的界面设计模式。了解了这些模式，可以帮助设计者们做出合乎开发者实现的方案。
+设计的套路有很多，列表-list 分页-tab 网格-Grid 侧边栏  下拉刷新等等。这里只列出几个常见的，更多的方式请参考设计规范，以及其他各种优秀应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="9 界面模式">
+<meta property="og:url" content="http://book.anddle.com/2_设计原理/9_界面模式/index.html">
+<meta property="og:site_name" content="从设计到实现">
+<meta property="og:description" content="界面模式Material Design的基础组件我们已经大体了解过了，现在我们看看Material Design在结合这些不同组件的过程中，有哪些套路，也就是有哪些常用的界面设计模式。了解了这些模式，可以帮助设计者们做出合乎开发者实现的方案。
+设计的套路有很多，列表-list 分页-tab 网格-Grid 侧边栏  下拉刷新等等。这里只列出几个常见的，更多的方式请参考设计规范，以及其他各种优秀应用">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/slider_drawer_example.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/bottom_button_patten.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/tabs_patten.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/navigational-transitions_parent-to-child_patten.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/raised_btn_effect.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/slibing_patten.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/appbar_scroll_toolbar.gif">
+<meta property="og:updated_time" content="2017-02-17T03:11:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="9 界面模式">
+<meta name="twitter:description" content="界面模式Material Design的基础组件我们已经大体了解过了，现在我们看看Material Design在结合这些不同组件的过程中，有哪些套路，也就是有哪些常用的界面设计模式。了解了这些模式，可以帮助设计者们做出合乎开发者实现的方案。
+设计的套路有很多，列表-list 分页-tab 网格-Grid 侧边栏  下拉刷新等等。这里只列出几个常见的，更多的方式请参考设计规范，以及其他各种优秀应用">
+<meta name="twitter:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/slider_drawer_example.png">
+    
+        <link rel="alternative" href="/atom.xml" title="从设计到实现" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">安豆</h5>
+          <a href="mailto:anddlecn@gmail.com" title="anddlecn@gmail.com" class="mail">anddlecn@gmail.com</a>
+          <span class="mail">QQ群：348702074</span><br/>
+          <span class="mail"></span>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                网站首页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第1章-创意/"  >
+                <i class="icon icon-lg icon-birthday-cake"></i>
+                第1章 创意
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第2章-设计原理/"  >
+                <i class="icon icon-lg icon-eyedropper"></i>
+                第2章 设计原理
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resources/"  >
+                <i class="icon icon-lg icon-download"></i>
+                资源下载
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://anddle.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                安豆主站
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/index.html"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">9 界面模式</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">9 界面模式</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-12T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第2章-设计原理/">第2章-设计原理</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>本节目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#界面模式"><span class="post-toc-text">界面模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#侧边栏"><span class="post-toc-text">侧边栏</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#底部导航栏"><span class="post-toc-text">底部导航栏</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分页"><span class="post-toc-text">分页</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#动态变化"><span class="post-toc-text">动态变化</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#过渡动画"><span class="post-toc-text">过渡动画</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#滑动效果"><span class="post-toc-text">滑动效果</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2_设计原理/9_界面模式"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">9 界面模式</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月12日 9:00" datetime="2017-01-12T01:00:00.000Z"  itemprop="datePublished">2017-01-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第2章-设计原理/">第2章-设计原理</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="界面模式"><a href="#界面模式" class="headerlink" title="界面模式"></a>界面模式</h1><p><code>Material Design</code>的基础组件我们已经大体了解过了，现在我们看看<code>Material Design</code>在结合这些不同组件的过程中，有哪些套路，也就是有哪些常用的界面设计模式。了解了这些模式，可以帮助设计者们做出合乎开发者实现的方案。</p>
+<p>设计的套路有很多，<code>列表-list</code> <code>分页-tab</code> <code>网格-Grid</code> <code>侧边栏</code>  <code>下拉刷新</code>等等。这里只列出几个常见的，更多的方式请参考<a href="https://material.google.com/" target="_blank" rel="external">设计规范</a>，以及其他各种优秀应用的精巧设计。</p>
+<p>手机端屏幕大小是有限制的，好的设计会充分利用有限的空间，合理的向用户展示出更多的内容。</p>
+<h2 id="侧边栏"><a href="#侧边栏" class="headerlink" title="侧边栏"></a>侧边栏</h2><p>侧边栏的设计最早是由国外的第三方开发者设计出来的，在用户中很受欢迎。于是后来被很多开发者采用。从安卓5.0开始，Google就推出了官方的实现方式，并作为一个典型的界面设计方案推荐给了大家。</p>
+<p>带侧边栏布局，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/slider_drawer_example.png" width="300" alt=" slider_drawer_example"></div>
+
+<p>更加具体的规范请参考<a href="https://material.google.com/patterns/navigation-drawer.html" target="_blank" rel="external">这里</a>。</p>
+<h2 id="底部导航栏"><a href="#底部导航栏" class="headerlink" title="底部导航栏"></a>底部导航栏</h2><p>通过类似底部导航栏的按钮，让界面切换显示更多的内容。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/bottom_button_patten.gif" width="300" alt=" bottom_button_patten"></div>
+
+<p>这中布局的方式也是苹果iOS的经典布局方式，不知道是Google的原创还是向苹果的致敬。</p>
+<p>更加具体的规范请参考<a href="https://material.google.com/components/bottom-navigation.html" target="_blank" rel="external">这里</a>。</p>
+<h2 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h2><p>与底部导航栏类似，但是是放在界面上方。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/tabs_patten.png" width="300" alt=" tabs_patten"></div>
+
+<p>更加具体的规范请参考<a href="https://material.google.com/components/tabs.html" target="_blank" rel="external">这里</a>。</p>
+<h2 id="动态变化"><a href="#动态变化" class="headerlink" title="动态变化"></a>动态变化</h2><p>我个人认为，界面元素和内容的动态变化，是整个<code>Material Design</code>的精髓。它带给了用户极好的视觉体验，是引导用户注意力的最好方法。</p>
+<p>动态是通过<code>过渡动画</code>和<code>滑动效果</code>来实现的。</p>
+<h3 id="过渡动画"><a href="#过渡动画" class="headerlink" title="过渡动画"></a>过渡动画</h3><p>在前面的章节已经介绍过了动画的内容，这里就不重复了。</p>
+<p>这里就多看几个实际的例子吧。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/navigational-transitions_parent-to-child_patten.gif" width="600" alt=" navigational-transitions_parent-to-child_patten"></div>
+
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/raised_btn_effect.gif" width="300" alt=" raised_btn_effect"></div>
+
+<h3 id="滑动效果"><a href="#滑动效果" class="headerlink" title="滑动效果"></a>滑动效果</h3><p>内容切换的时候，尽量的使用滑动的效果。</p>
+<p>分页的滑动效果，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/slibing_patten.gif" width="300" alt=" slibing_patten"></div>
+
+<p>AppBar的滑动效果，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/appbar_scroll_toolbar.gif" width="300" alt=" appbar_scroll_toolbar"></div>
+
+
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-17T03:11:28.000Z" itemprop="dateUpdated">2017年2月17日 11:11</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://book.anddle.com">
+            <img src="/img/avatar.png" alt="安豆">
+            安豆
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/2_设计原理/9_界面模式/&title=《9 界面模式》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/2_设计原理/9_界面模式/&title=《9 界面模式》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2_设计原理/8_设计的组件与常用模式/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">8 设计的组件与常用模式</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            <span>本站内容均为原创内容，欢迎转载，但请务必注明出处</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>从设计到实现 &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/2_设计原理/9_界面模式/&title=《9 界面模式》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/2_设计原理/9_界面模式/&title=《9 界面模式》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aS27DMAxFUe9/0+4CAhn3kXIBU1ejIglinQxY/q4Ln/vnrN7l3/b8lOuNI0OGjM8y7sezesANzu+lVz/B6hXy/TJkyDiH8RwW0yuS63IGCtkyZMiQ8Zi0cTAJnTJkyJCxi0EuysMrD9wyZMg4mdEpRGshtRa+N9TiMmTI+CAjbeX/59+vzDdkyJDxKcZdOmnYff0+MmTIGM0gZWTa9O8MKVsJogwZMoYyePOLp3RpG44UtDJkyDiZwRv0tQuleB6m0XhAhgwZ4xj9ESP/CdKkMF3FkCFDxmmMNNSS4hMFzXAsIUOGjNmMuAXfTig3J4IyZMgYzUiTMH4VMv4k75KALkOGjBMYPJh2ylGS9hVjqQwZMkYzyBCx33rbW7KiIlaGDBnjGP3wWmvA1cYMQUUuQ4aMEQxSTKbrEbWRJHn68hUZMmQcyUibZZxK2nNxLJUhQ8ZoRm0VjGP44UseMmTIOI2RNveDNn27YceX0mTIkDGb0Tm18SRZ1+CfkSFDxgkMEjTJOlfQGgtbaa3cVoYMGSMYPMzxkrITZDf8B5AhQ8Y4Rm0w0F/eSn8slBrKkCFjKGNvTOuvU8S7bDJkyDiGUSwawwI15cWJpgwZMg5gPLf1eVOMUDup3vKTMmTIkIFHCDz4kvI4aAvKkCFDBn4kL1nTII5GmDJkyBjNqK1Q8FUwPubk4b5Yi8uQIeODjE7pWAuvu64rQ4aMAxh/Ta039XFCWQsAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261181710&web_id=1261181710')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+
+</body>
+</html>

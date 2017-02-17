@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>2 界面布局 | 从设计到实现 | 手把手教你做android应用开发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="界面布局布局涉及到应用界面的整体。布局的层次感和逻辑，可以通过阴影来体现。
+举个例子。在一张纸当中，增加一条折痕，一个区域就分成了关联性很强的两个区域，
+
+
+将一张纸盖在另一张纸之上，就像是搭台阶一样，上层会在下层投下阴影，这两张纸代表了逻辑不同的两个区域，
+
+
+纸张在z轴的位置，被称作Elevation，很形象的比喻了纸片相对于别的照片被提升了起来。
+尺寸的度量张纸片之间的距离产生阴影，那么距离">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2 界面布局">
+<meta property="og:url" content="http://book.anddle.com/2_设计原理/2_界面布局/index.html">
+<meta property="og:site_name" content="从设计到实现">
+<meta property="og:description" content="界面布局布局涉及到应用界面的整体。布局的层次感和逻辑，可以通过阴影来体现。
+举个例子。在一张纸当中，增加一条折痕，一个区域就分成了关联性很强的两个区域，
+
+
+将一张纸盖在另一张纸之上，就像是搭台阶一样，上层会在下层投下阴影，这两张纸代表了逻辑不同的两个区域，
+
+
+纸张在z轴的位置，被称作Elevation，很形象的比喻了纸片相对于别的照片被提升了起来。
+尺寸的度量张纸片之间的距离产生阴影，那么距离">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/material_paper_seams.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/material_paper_step.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/dp_explain1.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/dp_explain2.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/dp_explain3.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/status_bar.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/nav_bar.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/material_content_area.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/material_classic_layout.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/material_classic_appbar.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/material_classic_float_button.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/material_elevation.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/material_elevation_table.png">
+<meta property="og:updated_time" content="2017-02-17T03:11:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2 界面布局">
+<meta name="twitter:description" content="界面布局布局涉及到应用界面的整体。布局的层次感和逻辑，可以通过阴影来体现。
+举个例子。在一张纸当中，增加一条折痕，一个区域就分成了关联性很强的两个区域，
+
+
+将一张纸盖在另一张纸之上，就像是搭台阶一样，上层会在下层投下阴影，这两张纸代表了逻辑不同的两个区域，
+
+
+纸张在z轴的位置，被称作Elevation，很形象的比喻了纸片相对于别的照片被提升了起来。
+尺寸的度量张纸片之间的距离产生阴影，那么距离">
+<meta name="twitter:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/material_paper_seams.png">
+    
+        <link rel="alternative" href="/atom.xml" title="从设计到实现" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">安豆</h5>
+          <a href="mailto:anddlecn@gmail.com" title="anddlecn@gmail.com" class="mail">anddlecn@gmail.com</a>
+          <span class="mail">QQ群：348702074</span><br/>
+          <span class="mail"></span>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                网站首页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第1章-创意/"  >
+                <i class="icon icon-lg icon-birthday-cake"></i>
+                第1章 创意
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第2章-设计原理/"  >
+                <i class="icon icon-lg icon-eyedropper"></i>
+                第2章 设计原理
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resources/"  >
+                <i class="icon icon-lg icon-download"></i>
+                资源下载
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://anddle.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                安豆主站
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/index.html"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">2 界面布局</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">2 界面布局</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-05T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-05
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第2章-设计原理/">第2章-设计原理</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>本节目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#界面布局"><span class="post-toc-text">界面布局</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#尺寸的度量"><span class="post-toc-text">尺寸的度量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dp的引入"><span class="post-toc-text">dp的引入</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dpi的定义"><span class="post-toc-text">dpi的定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dpi的划分"><span class="post-toc-text">dpi的划分</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#dp与px的关系"><span class="post-toc-text">dp与px的关系</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#布局的整体划分"><span class="post-toc-text">布局的整体划分</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#内容元素"><span class="post-toc-text">内容元素</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#AppBar"><span class="post-toc-text">AppBar</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Float-Button"><span class="post-toc-text">Float Button</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#其他"><span class="post-toc-text">其他</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-2_设计原理/2_界面布局"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">2 界面布局</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月05日 9:00" datetime="2017-01-05T01:00:00.000Z"  itemprop="datePublished">2017-01-05</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第2章-设计原理/">第2章-设计原理</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="界面布局"><a href="#界面布局" class="headerlink" title="界面布局"></a>界面布局</h1><p>布局涉及到应用界面的整体。布局的层次感和逻辑，可以通过阴影来体现。</p>
+<p>举个例子。在一张纸当中，增加一条折痕，一个区域就分成了关联性很强的两个区域，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/material_paper_seams.png" width="600" alt=" material_paper_seams"></div>
+
+<p>将一张纸盖在另一张纸之上，就像是搭台阶一样，上层会在下层投下阴影，这两张纸代表了逻辑不同的两个区域，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/material_paper_step.png" width="600" alt=" material_paper_step"></div>
+
+<p>纸张在z轴的位置，被称作<code>Elevation</code>，很形象的比喻了纸片相对于别的照片被<code>提升</code>了起来。</p>
+<h2 id="尺寸的度量"><a href="#尺寸的度量" class="headerlink" title="尺寸的度量"></a>尺寸的度量</h2><p>张纸片之间的距离产生阴影，那么距离用什么来衡量呢？要解答这个问题，我们首先要知道像素-px，物理尺寸-inch，像素密度-dpi和密度无关像素-dip这几个概念和它们之间的关系。</p>
+<p>安卓系统提供了几种度量屏幕的单位：</p>
+<ol>
+<li><code>px</code>：以像素为单位进行设置，屏幕上每一个点，就是一个像素，例如一部安卓手机，屏幕像素是<code>1920 x 1080</code>，就是说屏幕高度有<code>1920</code>个像素点，宽度有<code>1080</code>个像素点，但是在安卓系统中，最好不要使用这个单位来设置尺寸，而是用<code>dp</code>；</li>
+<li><code>sp</code>：用于字体大小的设置，它可以让字体大小根据用户在<code>设置</code>中的设置，进行缩放；</li>
+<li><code>dp</code>：密度无关像素，这是在布局和控件中应该使用的单位；</li>
+</ol>
+<h3 id="dp的引入"><a href="#dp的引入" class="headerlink" title="dp的引入"></a>dp的引入</h3><p>如果用px为单位设定设备区域的大小，通常会有很大的问题。</p>
+<p>假设有两个物理尺寸都为5寸大小的屏幕，它们的屏幕分辨率不同，一个是1080*1920，而另一个却是450*800.</p>
+<p>如果指定一个按钮的大小为200px长，200px宽，那么它们的显示效果就如下图。很明显，两者的差别也太大了，界面就严重变形了。所以，想让一个区域的大小在不同屏幕的上显示的都差不多，就需要考虑像素密度。为了显示同样的长度，在密度大的屏幕上，使用到的像素就要多一些，在密度小的屏幕上，使用到的像素就要少一些。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/dp_explain1.png" width="400" alt=" dp_explain1"></div>
+
+<p>所以为了解决这个问题，安卓引入了dip的概念－device independed pixel－简称dp。</p>
+<h3 id="dpi的定义"><a href="#dpi的定义" class="headerlink" title="dpi的定义"></a>dpi的定义</h3><p>在近一步介绍<code>dp</code>之前，要先讲讲<code>dpi</code>。<code>dpi</code>叫做屏幕像素密度，就是每英寸有多少个像素点。我们用简单的数学原理-<code>勾股定理</code>就能算出刚才两个屏幕的dpi，一个是<code>440dpi</code>，另一个是<code>184dpi</code>。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/dp_explain2.png" width="500" alt=" dp_explain2"></div>
+
+<p>注意，<code>dpi</code>与<code>dip(dp)</code>写法很像，千万不要混淆了，前者和<strong>密度</strong>有关，后者与<strong>像素</strong>有关。</p>
+<h3 id="dpi的划分"><a href="#dpi的划分" class="headerlink" title="dpi的划分"></a>dpi的划分</h3><p>安卓使用<code>dpi</code>为160的数值作为一个基准－－<code>baseline</code>,</p>
+<ol>
+<li>如果一个设备的<code>dpi</code>刚好等于这个基准，那么它就是mdpi设备；</li>
+<li>如果一个设备的<code>dpi</code>是这个基准的1.5倍，那么它就是hdpi设备；</li>
+<li>如果一个设备的<code>dpi</code>是这个基准的2倍，那么它就是xhdpi设备；</li>
+<li>如果一个设备的<code>dpi</code>是这个基准的3倍，那么它就是xxhdpi设备；</li>
+</ol>
+<p>这就是划分不同屏幕密度的依据。</p>
+<table>
+<thead>
+<tr>
+<th>像素密度类型</th>
+<th>像素密度大小</th>
+<th>与Baseline比值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mdpi</td>
+<td>160</td>
+<td>1</td>
+</tr>
+<tr>
+<td>hdpi</td>
+<td>240</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>xhdpi</td>
+<td>320</td>
+<td>2</td>
+</tr>
+<tr>
+<td>xxhpi</td>
+<td>480</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>按照这样的约定划分，</p>
+<ol>
+<li>刚才1080*1920的屏幕应该属于xxhdpi类型；</li>
+<li>450*800的屏幕应该属于mdpi类型；</li>
+</ol>
+<p>现在的安卓手机几乎都在往高清屏幕发展，所以xhdpi和xxhdpi是最为常见的设备类型。</p>
+<h3 id="dp与px的关系"><a href="#dp与px的关系" class="headerlink" title="dp与px的关系"></a>dp与px的关系</h3><p>安卓引入了<code>dp(dip)</code>的概念之后，实际显示的像素就可以通过下面这个公式计算出来 px = dp * dpi / 160。</p>
+<p>相同<code>dp</code>的情况下，密度大的设备，实际像素就占的大，密度小点设备，实际像素就占用小了。因此使用dp这个单位后，按钮在两种不同的屏幕上的实际显示大小，几乎就是一样的了。</p>
+<p>例如刚才两种屏幕。如果我指定按钮的大小为200dp*200dp，那么它们在各自的屏幕上占用的实际像素分别是230px*230px与550px*550px，真实设备上看上去的确差不多。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/dp_explain3.png" width="600" alt=" dp_explain3"></div>
+
+<p>所以，我们以后在设计界面布局的时候，就可以在<code>标准大小（mdpi类型，尺寸为360dp*640dp）</code>的屏幕上，使用<code>dp</code>为单位进行设计就可以了。</p>
+<hr>
+<p>了解了安卓系统使用的尺寸衡量标准以后，我们就可以开始研究布局的逻辑区域划分了。</p>
+<h2 id="布局的整体划分"><a href="#布局的整体划分" class="headerlink" title="布局的整体划分"></a>布局的整体划分</h2><p>安卓系统的界面大致可以分成三个部分：状态栏、内容区域、导航栏。</p>
+<ul>
+<li><p>状态栏显示电池电量、手机信号、通知等信息。</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/status_bar.png" width="300" alt=" status_bar"></div>
+</li>
+<li><p>导航栏显示返回、主界面、最近打开等三个虚拟按钮。</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/nav_bar.png" width="300" alt=" nav_bar"></div>
+
+<p>  不过很多设备通过硬件按钮实现了这三个功能，所以就没有虚拟按键了。</p>
+</li>
+<li><p>内容区域就是给程序使用，显示程序自身内容的地方。它里面的内容也是像纸张一样，一层一层的堆放着的。</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/material_content_area.png" width="300" alt=" material_content_area"></div>
+
+</li>
+</ul>
+<p>正如前面提到的那样，这三个区域也是像纸片一样，是层叠起来的，在z轴上存在空间关系。</p>
+<h2 id="内容元素"><a href="#内容元素" class="headerlink" title="内容元素"></a>内容元素</h2><p>状态栏和导航栏的各个属性都是系统的，无法去进行z轴位置的控制，因此我们不必太过关注。各种不同的应用使用内容区域来显示各自的内容，这才是我们要讲的重点区域。</p>
+<p>虽然这个区域的内容怎么显示都是由各个应用说了算，但是<code>Material Design</code>给出了推荐的设计。</p>
+<p>在内容区域当中，可以通过折痕、阴影等方式将这些区域划分成不同的逻辑块。</p>
+<p>下面是一个典型的<code>Material Design</code>布局（只是一个典型，并不是都这样，具体的布局方式还是要设计师来设计）。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/material_classic_layout.png" width="300" alt=" material_classic_layout"></div>
+
+<h3 id="AppBar"><a href="#AppBar" class="headerlink" title="AppBar"></a>AppBar</h3><p>每个应用都有一个标题栏，叫做AppBar，它不仅可以显示这个应用的名称，也可以把更多的操作-<code>Action</code>放在上面，比如搜索，分享，更多等动作。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/material_classic_appbar.png" width="300" alt=" material_classic_appba"></div>
+
+<p>它的位置处于z轴4dp处。</p>
+<h3 id="Float-Button"><a href="#Float-Button" class="headerlink" title="Float Button"></a>Float Button</h3><p>悬浮按钮是<code>Material Design</code>中一个很重要的特色。它是一个圆形的按钮，悬浮于内容区域的最上面。当我们按下这个按钮的时候，它就会进一步的浮动到更靠上的位置。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/material_classic_float_button.png" width="100" alt=" material_classic_float_button"></div>
+
+<p>当它没有被按下单时候，位于界面布局的z轴上6dp处，当它被按下单时候，z轴位置被调整到12dp处</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>除了上面的提及的几种内容元素意外，安卓系统还提供了很多别的元素，比如<code>Dialog</code> <code>Picker</code> <code>Menu</code> <code>Button</code>等等，它们在z轴上都有自己的位置，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/material_elevation.png" width="900" alt=" material_elevation"></div><br><div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/material_elevation_table.png" width="500" alt=" material_elevation_table"></div>
+
+<p>至于每个元素在<code>Material Design</code>中长什么样，我们会在后面的章节介绍。</p>
+<p>除了前面介绍的这种典型布局，还有很多其他的布局，我们也是放到后面专门的章节来介绍。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-02-17T03:11:28.000Z" itemprop="dateUpdated">2017年2月17日 11:11</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://book.anddle.com">
+            <img src="/img/avatar.png" alt="安豆">
+            安豆
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/2_设计原理/2_界面布局/&title=《2 界面布局》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/2_设计原理/2_界面布局/&title=《2 界面布局》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2_设计原理/1_设计原理/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">1 设计原理</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2_设计原理/3_颜色的运用/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">3 颜色的运用</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            <span>本站内容均为原创内容，欢迎转载，但请务必注明出处</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>从设计到实现 &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/2_设计原理/2_界面布局/&title=《2 界面布局》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/2_设计原理/2_界面布局/&title=《2 界面布局》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aQQ7CMAwFUe5/6bJlQcp8u0WqM1mh0iZ5RTJO4tcLt2PRzr/9vOe8z9WVi5sMGTIeyyCTIJPjPZBn4xckQ4aMDRirrlf38CurgVf9n4+7vC5DhgwZ+B4SHA/QZMiQIaPDIKG2vySWIUOGjNoitpMUpoH4xrW4DBkyHsjgIfL/n28535AhQ8ajGEfYOJIEzVqQ/dKPDBkyRjN4gOPJYrrRhhaoYD4yZMjYh8HLI3jA7TwbgGXIkDGUwUNeOtFaCkiu//gdZMiQMY5RG5hPgu+PkRFR+ihDhoxxjP4hZQ1cC9moWkSGDBnbMPolX6QI47IDThkyZGzJIMPzb9PXQY4WltttMmTIGMeopWLpUpMXW5CefySXMmTIGM2oJYJpD7VSs/RZGTJkTGLwAJcuevnmWrq192XmMmTIGM3olErUFqKksLXzEmXIkDGbcdUA5ICTv9F4C0+GDBmjGSTApRth/eOE9IhUhgwZUxnkyLAWiPu7YfyKDBkydmDUNtHSezqJIAq4MmTIGM1IN+55kUSneCIoxZAhQ8bGDBKIzxe9KbsYoGXIkDGUcYStNvXanXxcGTJkzGakoY1v8adlFpfViciQIWMoo5a6pcliWoQRz0GGDBkbMDoLVPIsSQTT0C9DhgwZtfIInsyly1SUGsqQIUNGKUSmhRS8sOyy/w0ZMmQ8hFFL4GplFrwQjRdeyJAhYzYjDZeEfcdSNk4WZciQMYHxBq16LLpmUb4GAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261181710&web_id=1261181710')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+
+</body>
+</html>
