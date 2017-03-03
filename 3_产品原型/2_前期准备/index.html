@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>2 前期准备 | 从设计到实现 | 手把手教你做android应用开发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="前期准备设计师首先在头脑中、草稿中勾勒出静态效果图，
+
+
+之后就需要收集制作时需要的各种素材、确定界面的配色方案。
+收集素材界面中需要使用各种天气图标：晴天、雨天、大雾、下雪、下雨、多云等等；还有天气信息中的风力、风向等等。
+我们可以使用Sketch工具进行完全的从无到有的自由创作，也可以适用现有的素材，减少设计的工作量。
+这里并不打算讲如何画出一个完美的图形，我想作为一名设计师，这点基本的艺术功">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2 前期准备">
+<meta property="og:url" content="http://book.anddle.com/3_产品原型/2_前期准备/index.html">
+<meta property="og:site_name" content="从设计到实现">
+<meta property="og:description" content="前期准备设计师首先在头脑中、草稿中勾勒出静态效果图，
+
+
+之后就需要收集制作时需要的各种素材、确定界面的配色方案。
+收集素材界面中需要使用各种天气图标：晴天、雨天、大雾、下雪、下雨、多云等等；还有天气信息中的风力、风向等等。
+我们可以使用Sketch工具进行完全的从无到有的自由创作，也可以适用现有的素材，减少设计的工作量。
+这里并不打算讲如何画出一个完美的图形，我想作为一名设计师，这点基本的艺术功">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_app_static_effect_complete.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/cloudy_icon_search_result.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/cloudy_icon_download1.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/cloudy_icon_download2.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/weather_app_color_solution.png">
+<meta property="og:updated_time" content="2017-03-03T01:59:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2 前期准备">
+<meta name="twitter:description" content="前期准备设计师首先在头脑中、草稿中勾勒出静态效果图，
+
+
+之后就需要收集制作时需要的各种素材、确定界面的配色方案。
+收集素材界面中需要使用各种天气图标：晴天、雨天、大雾、下雪、下雨、多云等等；还有天气信息中的风力、风向等等。
+我们可以使用Sketch工具进行完全的从无到有的自由创作，也可以适用现有的素材，减少设计的工作量。
+这里并不打算讲如何画出一个完美的图形，我想作为一名设计师，这点基本的艺术功">
+<meta name="twitter:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_app_static_effect_complete.png">
+    
+        <link rel="alternative" href="/atom.xml" title="从设计到实现" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">安豆</h5>
+          <a href="mailto:anddlecn@gmail.com" title="anddlecn@gmail.com" class="mail">anddlecn@gmail.com</a>
+          <span class="mail">QQ群：348702074</span><br/>
+          <span class="mail"></span>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                网站首页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第1章-创意/"  >
+                <i class="icon icon-lg icon-birthday-cake"></i>
+                第1章 创意
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第2章-设计原理/"  >
+                <i class="icon icon-lg icon-eyedropper"></i>
+                第2章 设计原理
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第3章-产品原型/"  >
+                <i class="icon icon-lg icon-flask"></i>
+                第3章 产品原型
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resources/"  >
+                <i class="icon icon-lg icon-download"></i>
+                资源下载
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://anddle.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                安豆主站
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/index.html"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">2 前期准备</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">2 前期准备</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-14T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-14
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>本节目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前期准备"><span class="post-toc-text">前期准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#收集素材"><span class="post-toc-text">收集素材</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#矢量图"><span class="post-toc-text">矢量图</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#配色方案"><span class="post-toc-text">配色方案</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-3_产品原型/2_前期准备"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">2 前期准备</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月14日 9:00" datetime="2017-01-14T01:00:00.000Z"  itemprop="datePublished">2017-01-14</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><p>设计师首先在头脑中、草稿中勾勒出静态效果图，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_app_static_effect_complete.png" width="250" alt=" sketch_weather_app_static_effect_complete"></div>
+
+<p>之后就需要收集制作时需要的各种素材、确定界面的配色方案。</p>
+<h2 id="收集素材"><a href="#收集素材" class="headerlink" title="收集素材"></a>收集素材</h2><p>界面中需要使用各种天气图标：晴天、雨天、大雾、下雪、下雨、多云等等；还有天气信息中的风力、风向等等。</p>
+<p>我们可以使用<code>Sketch</code>工具进行完全的从无到有的自由创作，也可以适用现有的素材，减少设计的工作量。</p>
+<p>这里并不打算讲如何<code>画出</code>一个完美的图形，我想作为一名设计师，这点基本的艺术功底应该还是有的。因此我决定去之前介绍过的<code>资源池</code>-<a href="http://www.iconfont.cn/" target="_blank" rel="external">iconfont</a>网站寻找合适的图标。</p>
+<ol>
+<li><p>输入各种图标的关键字，就能看到各种图标，例如<code>多云</code>，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/cloudy_icon_search_result.png" width="350" alt=" cloudy_icon_search_result"></div>
+</li>
+<li><p>点击希望的图标，准备下载，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/cloudy_icon_download1.png" width="350" alt=" cloudy_icon_download1"></div>
+</li>
+<li><p>可以选择图标的颜色、尺寸和下载的图标格式。这里我们选择<code>SVG下载</code>，也就是下载矢量图标（矢量图我们将在后一小节相信介绍）。至于颜色和尺寸就都无所谓了，因为后面我们使用的时候都会做出调整的。</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/cloudy_icon_download2.png" width="550" alt=" cloudy_icon_download2"></div>
+
+</li>
+</ol>
+<p>以此方法，我们接着下载完成所有设计中需要使用到的图标，它们包括：风力、风向、湿度、空气质量、运动、紫外线、晴天、雨天、多云、多云间晴、雾、雪。</p>
+<p>如果你的时间很宝贵不想把精力放到挨个下载上，那么我这里为你提供了打包好的所有可用素材，快去<a href="https://pan.baidu.com/s/1mhGk0as" target="_blank" rel="external">下载</a>吧。</p>
+<h2 id="矢量图"><a href="#矢量图" class="headerlink" title="矢量图"></a>矢量图</h2><p><code>矢量图</code>是设计当中经常使用到的图片类型。当设计师放大图片的时候，<code>矢量图</code>会跟着放大，但是图形的线条并不会变的模糊出现锯齿的形状。所以这是设计师的最爱。因此在前面下载矢量图标的时候，我说不用在意图标的尺寸，就是这个道理。</p>
+<p>矢量图通常用在手动制图当中，占用的磁盘空间很小，它其实就是一个对笔划进行描述的文本文件，用文本编辑器打开的话，可以看到他的文本内容，例如，</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="meta">&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">xmlns:xlink</span>=<span class="string">"http://www.w3.org/1999/xlink"</span> <span class="attr">t</span>=<span class="string">"1484009234652"</span> <span class="attr">class</span>=<span class="string">"icon"</span> <span class="attr">style</span>=<span class="string">""</span> <span class="attr">viewBox</span>=<span class="string">"0 0 1204 1024"</span> <span class="attr">version</span>=<span class="string">"1.1"</span> <span class="attr">p-id</span>=<span class="string">"2794"</span> <span class="attr">width</span>=<span class="string">"18.8125"</span> <span class="attr">height</span>=<span class="string">"16"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">defs</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>/&gt;</span><span class="xml"></span></div><div class="line">  <span class="tag">&lt;/<span class="name">defs</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">path</span> <span class="attr">d</span>=<span class="string">"M882.526316 286.796992q-17.323308 17.323308-42.345865 17.323308t-42.345865-17.323308q-18.285714-18.285714-18.285714-42.827068t18.285714-42.827068l42.345865-42.345865q17.323308-17.323308</span></span></div><div class="line">  42.345865-17.323308t42.345865 17.323308q18.285714 17.323308 18.285714 42.345865t-18.285714 43.308271zM250.225564 </div><div class="line">611.12782q-3.849624-16.360902-6.255639-33.684211t-2.406015-35.609023q0-61.593985 </div><div class="line">23.578947-116.451128t64.481203-95.278195 95.278195-64"/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这就是矢量图的描述语言。在安卓应用的设计当中，我们也有机会与矢量图进一步的打交道。</p>
+<p><em>安卓应用的图形资源是支持开发者直接使用矢量图形的，安卓5.0开始的tint功能就经常需要和矢量图配合着使用。</em></p>
+<h2 id="配色方案"><a href="#配色方案" class="headerlink" title="配色方案"></a>配色方案</h2><p><code>天气预报</code>的整体配色，我决定从Google提供的<code>Material Design</code>调色板中进行选择。</p>
+<p><code>天气预报</code>讲的是天空的故事，提到天空，第一感觉就是蓝色，因此我决定将配色方案定调成<code>Indigo 500</code>，金色代表太阳，作为与之配合的<code>Accent Color</code>。</p>
+<p>打开配色方案的工具网站<a href="https://www.materialpalette.com/" target="_blank" rel="external">material palette</a>，选择对应的颜色，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/weather_app_color_solution.png" width="750" alt=" weather_app_color_solution"></div>
+
+<p>我们就得到了下面对应的颜色值，</p>
+<table>
+<thead>
+<tr>
+<th>颜色项目</th>
+<th>颜色名称</th>
+<th>颜色RGB值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary Color</td>
+<td>Indigo 500</td>
+<td>#3F51B5</td>
+</tr>
+<tr>
+<td>Primary Dark Color</td>
+<td>Indigo 700</td>
+<td>#303F9F</td>
+</tr>
+<tr>
+<td>Accent Color</td>
+<td>Amber 500</td>
+<td>#FFC107</td>
+</tr>
+</tbody>
+</table>
+<p>图中的<code>Light Primary Color</code>和<code>Divider Color</code>我们这里暂时用不到。</p>
+<p>图中的<code>Primary Text</code>和<code>Secondary Text</code> 就是我们前面提到的文字颜色。亮色背景下，这里看到的颜色分别是<code>#212121</code>和<code>#757575</code>。准确的讲，它们应该是：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">使用的场景</th>
+<th style="text-align:center">透明度</th>
+<th style="text-align:center">颜色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Primary text</td>
+<td style="text-align:center">87%</td>
+<td style="text-align:center">#000000</td>
+</tr>
+<tr>
+<td style="text-align:center">Secondary text</td>
+<td style="text-align:center">54%</td>
+<td style="text-align:center">#000000</td>
+</tr>
+</tbody>
+</table>
+<p>假如背景是白色，那么这个透明度的黑色在去除了alpha值以后，就分别对应<code>#212121</code>和<code>#757575</code>了。</p>
+<p>图标的颜色应该是：</p>
+<table>
+<thead>
+<tr>
+<th>颜色透明度</th>
+<th>颜色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>54%</td>
+<td>#000000</td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-03T01:59:31.000Z" itemprop="dateUpdated">2017年3月3日 9:59</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://book.anddle.com">
+            <img src="/img/avatar.png" alt="安豆">
+            安豆
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/2_前期准备/&title=《2 前期准备》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/2_前期准备/&title=《2 前期准备》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/3_产品原型/1_原型设计/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">1 原型设计</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/3_产品原型/3_Sketch静态原型设计/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">3 Sketch静态原型设计</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            <span>本站内容均为原创内容，欢迎转载，但请务必注明出处</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>从设计到实现 &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/2_前期准备/&title=《2 前期准备》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/2_前期准备/&title=《2 前期准备》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3awY7CMAxFUf7/pzvSrEZiUu6zC6LOzaqqgORkYRw7jwcex+/4+/w8nj9Jvnv+/uIhQ4aM2zKO07FaymrR6UakvCVVhgwZGzDIxCmjvzVkbTJkyJBBAh9fYi1llCFDhow04PJFxEv55P+GDBkybsggATQtrq1mOX//9rO4DBkybsioFcs+8/z2/oYMGTK+nnE0Bin381k665EhQ8Zsxvn0aSDmv0ZSPV56kyFDxm4MEi7T5abvi9sqQ4aMDRjpM+elJTPeGPgnNZQhQ8Y4Rlr6J0GQH2svSxNlyJAxmpGmdFdlZenGFRuZMmTIGMG4KvmrlfDStHKJlyFDxmhGLTlLm5q11JO3OWXIkDGbQcpe50fQ9CibXrNAB2MZMmSMZtQuW9SOqel344arDBkyhjI6h9VOY7LTOl22MGXIkDGawdO+FFYL3/HWyJAhYxsGqsyVSm9pB5V/5sGjsgwZMsYxatcs+ME1WCLZYhkyZIxmxBcaSsslDYb+7DJkyNiBwcNovwDHw3TwlyBDhowNGFcV0XhSyH8NNT5lyJAxmpGWumqhthbEyQbJkCFjNuMIB29z8oCbvl+2MGXIkDGU0W8A8LhODq5kIzptDBkyZNyX8Y4gSy5qpCljkNXKkCFjKKOW5KVH0E5692JGGTJkyOCXHkrZKDnKvtgyGTJkyADpGkny+omgDBkydmaQQyxPENMAyktsMmTI2JNRawz0q14p7AKSDBky7sf4AUxjYL4UvztcAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261181710&web_id=1261181710')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+
+</body>
+</html>

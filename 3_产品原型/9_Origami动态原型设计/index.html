@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>9 Origami动态原型设计 | 从设计到实现 | 手把手教你做android应用开发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="动态原型设计动态的可交互原型产品，是产品经理和界面设计师向开发人员阐释自己设计的最高效工具。
+
+
+开发者不需要猜测设计师要什么样的效果，照着原型产品做就好了。
+很多创业团队也发现了产品人的这个刚需，做出了诸如Principle、Axure这类著名的原型设计产品。
+Facebook似乎也深谙此道，专门为安卓和iOS系统开发很有针对性的交互原型设计工具-Origami Studio。
+
+
+这是一个免费">
+<meta property="og:type" content="article">
+<meta property="og:title" content="9 Origami动态原型设计">
+<meta property="og:url" content="http://book.anddle.com/3_产品原型/9_Origami动态原型设计/index.html">
+<meta property="og:site_name" content="从设计到实现">
+<meta property="og:description" content="动态原型设计动态的可交互原型产品，是产品经理和界面设计师向开发人员阐释自己设计的最高效工具。
+
+
+开发者不需要猜测设计师要什么样的效果，照着原型产品做就好了。
+很多创业团队也发现了产品人的这个刚需，做出了诸如Principle、Axure这类著名的原型设计产品。
+Facebook似乎也深谙此道，专门为安卓和iOS系统开发很有针对性的交互原型设计工具-Origami Studio。
+
+
+这是一个免费">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_weather_app_complete.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_website.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_launched.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_virtual_screen.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_empty_project.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_layer.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_change_screen.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_change_screen_color.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/orgami_load_complete.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_content_y_scroll_detect.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_content_add_y_scroll_detect.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_content_wraper.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_content_wraper_detect.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_content_wraper_scroll1.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_weather_detail_wraper.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_weather_detail_scroll.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_weather_detail_scroll_result.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_weather_detail_scroll_complete.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_statusbar_adjust.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_location_adjust.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_load_progress_patch.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_progress_patch_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_title_y_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_title_x_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_title_fontsize_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_title_scoll_complete.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_scroll_rage_limit.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_scroll_stay_adjust.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_weather_app_complete.gif">
+<meta property="og:updated_time" content="2017-03-03T01:59:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="9 Origami动态原型设计">
+<meta name="twitter:description" content="动态原型设计动态的可交互原型产品，是产品经理和界面设计师向开发人员阐释自己设计的最高效工具。
+
+
+开发者不需要猜测设计师要什么样的效果，照着原型产品做就好了。
+很多创业团队也发现了产品人的这个刚需，做出了诸如Principle、Axure这类著名的原型设计产品。
+Facebook似乎也深谙此道，专门为安卓和iOS系统开发很有针对性的交互原型设计工具-Origami Studio。
+
+
+这是一个免费">
+<meta name="twitter:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_weather_app_complete.gif">
+    
+        <link rel="alternative" href="/atom.xml" title="从设计到实现" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">安豆</h5>
+          <a href="mailto:anddlecn@gmail.com" title="anddlecn@gmail.com" class="mail">anddlecn@gmail.com</a>
+          <span class="mail">QQ群：348702074</span><br/>
+          <span class="mail"></span>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                网站首页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第1章-创意/"  >
+                <i class="icon icon-lg icon-birthday-cake"></i>
+                第1章 创意
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第2章-设计原理/"  >
+                <i class="icon icon-lg icon-eyedropper"></i>
+                第2章 设计原理
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第3章-产品原型/"  >
+                <i class="icon icon-lg icon-flask"></i>
+                第3章 产品原型
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resources/"  >
+                <i class="icon icon-lg icon-download"></i>
+                资源下载
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://anddle.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                安豆主站
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/index.html"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">9 Origami动态原型设计</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">9 Origami动态原型设计</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-21T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-21
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>本节目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#动态原型设计"><span class="post-toc-text">动态原型设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#界面介绍"><span class="post-toc-text">界面介绍</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建屏幕界面"><span class="post-toc-text">创建屏幕界面</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设置滑动区域"><span class="post-toc-text">设置滑动区域</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#感知交互"><span class="post-toc-text">感知交互</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#标题的变化"><span class="post-toc-text">标题的变化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#"><span class="post-toc-text"></span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#滑动的范围"><span class="post-toc-text">滑动的范围</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#滑动的保持"><span class="post-toc-text">滑动的保持</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#尾巴"><span class="post-toc-text">尾巴</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#回顾总结"><span class="post-toc-text">回顾总结</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-3_产品原型/9_Origami动态原型设计"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">9 Origami动态原型设计</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月21日 9:00" datetime="2017-01-21T01:00:00.000Z"  itemprop="datePublished">2017-01-21</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="动态原型设计"><a href="#动态原型设计" class="headerlink" title="动态原型设计"></a>动态原型设计</h1><p>动态的可交互原型产品，是产品经理和界面设计师向开发人员阐释自己设计的最高效工具。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_weather_app_complete.gif" width="300" alt=" origami_weather_app_complete"></div>
+
+<p>开发者不需要猜测设计师要什么样的效果，照着原型产品做就好了。</p>
+<p>很多创业团队也发现了产品人的这个刚需，做出了诸如<a href="http://principleformac.com/" target="_blank" rel="external"><code>Principle</code></a>、<a href="https://www.axure.com/" target="_blank" rel="external"><code>Axure</code></a>这类著名的原型设计产品。</p>
+<p><code>Facebook</code>似乎也深谙此道，专门为安卓和iOS系统开发很有针对性的交互原型设计工具-<a href="http://origami.design/" target="_blank" rel="external"><code>Origami Studio</code></a>。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_website.png" width="500" alt=" sketch_website"></div>
+
+<p>这是一个免费的工具，而且也能和<code>Sketch</code>互通，所以我选择了它来向大家讲解互动原型的设计。</p>
+<h2 id="界面介绍"><a href="#界面介绍" class="headerlink" title="界面介绍"></a>界面介绍</h2><p>启动<code>Origami Studio</code>后，可以看到类似如下界面，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_launched.png" width="500" alt=" origami_launched"></div>
+
+<ol>
+<li><p>悬浮在外的区域是虚拟手机屏幕。用户可以通过点击、拖动来模拟各种屏幕操作;</p>
+</li>
+<li><p>底部的暗色区域是工作区域。用来设置用户操作屏幕后，界面元素的各种响应方式；</p>
+</li>
+<li><p>右边的亮色区域是界面组件区域。展示了组成界面的各个元素，里面的布局方式，通过虚拟屏幕实时展示了出来；</p>
+</li>
+</ol>
+<p>点击虚拟屏幕右上方的<code>摄像机</code>按钮，可以将屏幕上的内容录制下来，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_virtual_screen.png" width="250" alt=" origami_virtual_screen"></div>
+
+<h2 id="创建屏幕界面"><a href="#创建屏幕界面" class="headerlink" title="创建屏幕界面"></a>创建屏幕界面</h2><p>对于新创建的项目，整个工程都是空的，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_empty_project.png" width="500" alt=" origami_empty_project"></div>
+
+<p>我们可以通过菜单栏的<code>+</code>，为界面添加各种组件，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_layer.png" width="300" alt=" origami_add_layer"></div>
+
+<p>也可以直接将<code>Sketch</code>中的图形，通过<code>复制粘贴</code>的方式，直接添加到组件区域。</p>
+<ol>
+<li><p>通过<code>Phone -&gt; Nexus 5</code>将虚拟设备的屏幕，设置成<code>Nexus 5</code>- 安卓设备；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_change_screen.png" width="300" alt=" origami_change_screen"></div>
+</li>
+<li><p>将组件区域中<code>Color Fill</code>的背景色修改成<code>白色</code>，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_change_screen_color.png" width="300" alt=" origami_change_screen_color"></div>
+
+
+</li>
+</ol>
+<p>然后，打开上一章节中<code>Sketch</code>设计的静态高保真原型，</p>
+<ol>
+<li>选中<code>Weather</code>页面的<code>展开</code>画板，使用<code>cmd + c</code>（复制）；</li>
+<li>切换到<code>Origami Studio</code>，<code>cmd + v</code>（粘贴）；</li>
+</ol>
+<p>整个界面就导入完成了，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/orgami_load_complete.png" width="500" alt=" orgami_load_complete"></div>
+
+<p>所以我之前说，使用<code>Sketch</code>进行界面设计可以事半功倍，它与<code>Origami Studio</code>配合的非常好。</p>
+<h2 id="设置滑动区域"><a href="#设置滑动区域" class="headerlink" title="设置滑动区域"></a>设置滑动区域</h2><p>当用户滑动<code>Content</code>区域的时候，该区域要能够跟随手指，向上滑动。这里就有2个要点，</p>
+<ol>
+<li>滑动<code>Content</code>区域：要能够感知到这个区域被滑动；</li>
+<li><code>Content</code>区域跟随滑动：滑动的位移能够作为输入，实时的影响<code>Content</code>区域的位置；</li>
+</ol>
+<h3 id="感知交互"><a href="#感知交互" class="headerlink" title="感知交互"></a>感知交互</h3><p>组件旁边有个<code>touch</code>按钮，点击后会出现该组件可能会接收到的各种触控方式。在本例中，我们是需要感知<code>Content</code>组件垂直方向上的滑动，所以选择<code>ScrollY</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_content_y_scroll_detect.png" width="300" alt=" origami_content_y_scroll_detect"></div>
+
+<p>此时，<code>工作区域</code>和<code>虚拟屏幕</code>都发生了变化，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_content_add_y_scroll_detect.png" width="600" alt=" origami_content_add_y_scroll_detect"></div>
+
+<p><code>Content</code>区域的位置发生了变化，被“顶”到了整个屏幕的最上面。这是为什么呢？因为<code>Content</code>区域的Y坐标被修改成了<code>0</code>。</p>
+<p>在紫色的<code>Scroll</code>框图中，<code>Content Layer</code>被指定成了<code>Content</code>，说明需要关注<code>Content</code>的滑动。<code>Y</code>坐标的变化将被输出到蓝色框图代表的<code>Content</code>区域，修改它的<code>Y</code>坐标。</p>
+<p>因此，当框图被这样组合之后，我们没有触控<code>Content</code>区域，<code>Content</code>的<code>Y</code>轴就没有滑动，因此输出就为<code>0</code>。<code>0</code>作为<code>Content</code>区域的新位置，就将其<code>顶</code>到了屏幕的最上方。</p>
+<p>因此，我这里可以给出一个小技巧来避免这种错误的<code>置顶</code>效果，</p>
+<ol>
+<li><p>给<code>Content</code>添加一个壳-<code>Group</code>（<code>+ -&gt; group</code>），将<code>Content</code>包裹在里面(通过拖动<code>Content</code>到<code>Group</code>中实现)；</p>
+</li>
+<li><p><code>Group</code>的尺寸从屏幕的顶端开始计算，占据整个屏幕；</p>
+</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_content_wraper.png" width="300" alt=" origami_add_content_wraper"></div>
+
+<p>然后再给<code>Group</code>添加响应，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_content_wraper_detect.png" width="600" alt=" origami_add_content_wraper_detect"></div>
+
+<p>可以看到，现在<code>虚拟屏幕</code>上的界面就没有变形了。在屏幕上进行拖动，<code>Content</code>区域就可以随着<code>Y</code>轴的偏移，而实时的修改自己的<code>Y</code>坐标，达到互动的效果，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_content_wraper_scroll1.gif" width="600" alt=" origami_content_wraper_scroll"></div>
+
+<p><code>Content</code>滑动的过程中，<code>Weather detail</code>，也需要随着向上滑动，并隐藏起来。</p>
+<p>有了上面处理<code>Content</code>的经验，我们就知道需要如何处理<code>Weather detail</code>的滑动了。</p>
+<ol>
+<li><p>给<code>Weather detail</code>添加一个壳-<code>Group</code>，将<code>Weather detail</code>包裹在里面；</p>
+</li>
+<li><p><code>Group</code>的尺寸从屏幕的顶端开始计算，占据整个屏幕；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_weather_detail_wraper.png" width="300" alt=" origami_add_weather_detail_wraper"></div>
+</li>
+<li><p>鼠标按住紫色框图<code>Y</code>字符的位置，拖住不放，连接到<code>组件</code>区域上方的<code>Y</code>坐标处，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_weather_detail_scroll.png" width="600" alt=" origami_add_weather_detail_scroll"></div>
+
+<p> <code>工作区域</code>就会自动添加紫色框图到新<code>Group</code>的连接，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_weather_detail_scroll_result.png" width="600" alt=" origami_add_weather_detail_scroll_result"></div>
+
+</li>
+</ol>
+<p><em>注意：这种拖拽端点到属性值的方法贯穿了使用<code>Origami Studio</code>的各个地方，是非常核心的操作方式。</em></p>
+<p>此时滑动界面的时候，<code>Weather detail</code>也会跟着滑动了，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_weather_detail_scroll_complete.gif" width="300" alt=" origami_weather_detail_scroll_complete"></div>
+
+<p>这时可以看到，状态栏被挡住了。解决的办法很简单，只要在<code>组件区域</code>，把<code>Statusbar</code>拖动到最上面的位置就可以了，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_statusbar_adjust.png" width="200" alt=" origami_statusbar_adjust"></div>
+
+<h2 id="标题的变化"><a href="#标题的变化" class="headerlink" title="标题的变化"></a>标题的变化</h2><p>现在开始加入标题-<code>成都</code>的变化。</p>
+<p>把<code>成都</code>从<code>Weather detail</code>中剥离出来，便于全局的控制，进行如下设置，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_location_adjust.png" width="600" alt=" origami_location_adjust"></div>
+
+<p>在界面滑动的过程中，字体的大小和<code>X Y</code>坐标都要发生变化，说明需要找到内容区域<code>Y</code>轴滑动时的比例，然后让<code>成都</code>元素的对应属性发生变化。</p>
+<p>滑动变化有自己的百分比：（当前值-原始值／变化范围）* 100% = 变化的百分比</p>
+<p>原始值：0  变化范围：-245（245是<code>Weather detail</code>的高度）</p>
+<p><code>成都</code>文字的属性变化范围是：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性起始值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X坐标</td>
+<td>24 -&gt; 16</td>
+</tr>
+<tr>
+<td>Y坐标</td>
+<td>244 -&gt; 38</td>
+</tr>
+<tr>
+<td>字体大小</td>
+<td>34 -&gt; 20</td>
+</tr>
+</tbody>
+</table>
+<p>在<code>Origami Studio</code>中确定变化范围，需要使用<code>Progress patch</code>（到底什么是<code>patch</code>，会在后面介绍）。</p>
+<p>在<code>工作区域</code>双击，弹出<code>patch</code>选择框，找到<code>Progress</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_load_progress_patch.png" width="400" alt=" origami_load_progress_patch"></div>
+
+<p>修改<code>Progress patch</code>的<code>Start value</code>为<code>0</code>，<code>End value</code>为<code>-245</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_progress_patch_settings.png" width="500" alt=" origami_progress_patch_settings"></div>
+
+<p>开始修改<code>成都</code>文字的<code>Y</code>坐标。</p>
+<ol>
+<li>在<code>Progress path</code>之后，添加一个<code>Transition patch</code>；</li>
+<li><code>Start</code>为244，<code>End</code>为38；</li>
+<li>将<code>Transition patch</code>的输出，通过拖拽的方式，连线到<code>成都</code>元素的<code>Y</code>坐标值的位置；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_title_y_settings.png" width="600" alt=" origami_title_y_settings"></div><br>开始修改<code>成都</code>文字的<code>X</code>坐标。<br><br>1. 在<code>Progress path</code>之后，添加一个<code>Transition patch</code>；<br>2. <code>Start</code>为24，<code>End</code>为16；<br>3. 将<code>Transition patch</code>的输出，通过拖拽的方式，连线到<code>成都</code>元素的<code>X</code>坐标值的位置；<br><br><div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_title_x_settings.png" width="600" alt=" origami_title_x_settings"></div>
+
+<p>开始修改<code>成都</code>文字的字体大小。</p>
+<ol>
+<li>在<code>Progress path</code>之后，添加一个<code>Transition patch</code>；</li>
+<li><code>Start</code>为34，<code>End</code>为20；</li>
+<li>将<code>Transition patch</code>的输出，通过拖拽的方式，连线到<code>成都</code>元素字体大小的位置；</li>
+</ol>
+<h2 id=""><a href="#" class="headerlink" title=""></a><div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_title_fontsize_settings.png" width="600" alt=" origami_title_fontsize_settings"></div></h2><p>至此，我们可以看到滑动时，标题变化的雏形了，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_title_scoll_complete.gif" width="300" alt=" origami_title_scoll_complete"></div>
+
+<h2 id="滑动的范围"><a href="#滑动的范围" class="headerlink" title="滑动的范围"></a>滑动的范围</h2><p>上下滑动时，内容是收到了局限的，只能在一定区域内滑动。所以要给目前的设计增加一个滑动限制。</p>
+<ol>
+<li>添加一个叫做<code>Clip patch</code>过滤器；</li>
+<li>将它允许输出的最小值<code>Min</code>设置成<code>-245</code>（也就是<code>Weather detail</code>的高度）；将允许输出的最大值<code>Max</code>设置成<code>0</code>；</li>
+<li>修改框图的连接方式如下，</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_scroll_rage_limit.png" width="500" alt=" origami_scroll_rage_limit"></div>
+
+<h2 id="滑动的保持"><a href="#滑动的保持" class="headerlink" title="滑动的保持"></a>滑动的保持</h2><p>现在滑动<code>虚拟屏幕</code>的时候会发现，当松手之后，原来滑动到的位置会自动还原，但实际上我们希望它能够保持当前的状态。</p>
+<ol>
+<li>将<code>Content</code>所在的<code>Group</code>向下移，放到<code>Weather detail</code>所属的<code>Group</code>的下面；</li>
+<li>修改该<code>Group</code>的大小为<code>1000</code>；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_scroll_stay_adjust.png" width="250" alt=" origami_scroll_stay_adjust"></div>
+
+<hr>
+<p>至此，动画的效果就基本完成了。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_weather_app_complete.gif" width="300" alt=" origami_weather_app_complete"></div>
+
+<h2 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h2><p>这里留下了一个小尾巴：滑动的过程中，状态栏的颜色也是需要变化的，从<code>#3F51B5</code>逐渐变化到<code>#303F9F</code>。</p>
+<p>经过前面的实践，我想大家应该已经知道了实现的要点，那就开始自己尝试着做做吧。</p>
+<p>提示：通过<code>Color to HSL patch</code> <code>Transition patch</code>与<code>HSL Color patch</code>的配合，来修改状态栏背景元素的颜色属性。</p>
+<p>整个工程的源文件，我放到了<a href="https://pan.baidu.com/s/1i5sksux" target="_blank" rel="external">这里</a>，供大家参考。</p>
+<h2 id="回顾总结"><a href="#回顾总结" class="headerlink" title="回顾总结"></a>回顾总结</h2><p>通过具体的案例，我们初步了解了<code>Origami Studio</code>的用法，对实现动画的方式也有了概念。</p>
+<p>一切的动画效果都是通过下面几个步骤来实现的，</p>
+<ol>
+<li>感知触发动画的事件，点击、滑动等等；</li>
+<li>把触发事件后产生的数值，交给一个个串联起来的<code>patch</code>进行处理，获得新的数值；</li>
+<li>利用新的数值来修改某个界面元素的属性，比如文字的大小，文字的位置，文字的透明度等等；</li>
+</ol>
+<p>知道了这样的套路，以后遇到其他动画就可以依葫芦画瓢来操作了。</p>
+<p>至于什么是<code>patch</code>，我相信一步步做到这里，也都可以心领神会了吧。</p>
+<p>另外，处理<code>虚拟屏幕</code>，<code>Origami Studio</code>产生都可交互原型，也能在手机设备上运行，前提是在设备上按照对应的应用<code>Origami live</code>。希望进一步了解的同学，请移步<a href="http://origami.design/" target="_blank" rel="external">这里</a>，有更为详尽的信息提供给你。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-03T01:59:31.000Z" itemprop="dateUpdated">2017年3月3日 9:59</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://book.anddle.com">
+            <img src="/img/avatar.png" alt="安豆">
+            安豆
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/9_Origami动态原型设计/&title=《9 Origami动态原型设计》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/9_Origami动态原型设计/&title=《9 Origami动态原型设计》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/3_产品原型/8_静态原型的Appbar折叠/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">8 静态原型的Appbar折叠</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/3_产品原型/10_资源的创建/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">10 资源的创建</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            <span>本站内容均为原创内容，欢迎转载，但请务必注明出处</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>从设计到实现 &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/9_Origami动态原型设计/&title=《9 Origami动态原型设计》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/9_Origami动态原型设计/&title=《9 Origami动态原型设计》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpklEQVR42u3a0U7DMAwF0P3/T4PEG4KWazvehnT6VG1rkxOk2Nh5POLr4+v6eX/1yc9vk6eS9zw2Ljw8PLzW1K+uq99sTPF+Ie7nc/UsHh4e3h6vGgx6e3KyrMkbkjnj4eHhvQPvjy04Jk2WCQ8PD+//8pJn7xciZ+Dh4eG9Jy8pRtyz7wsK82R6vdaCh4eHF/MmDbBX3T+pv4eHh4dX7KrnV68MUf2kPCs8PDy8BV5edOiVGKqpdq8k8UfwwMPDw1vg3W/K1WGqgSQfK0fi4eHh7fEKiWmrHJBMIgE3AwMeHh7eAi8JCfnw87S7+oZoXDw8PLwF3rx7lixHLwz0irzRKuLh4eG1ePON/uwa50uDh4eH9z68XjCYpMvzOVx+goeHh7fA623HkyHz9x9bGjw8PLy1XTeZRF5u6JVfq8uRlDDw8PDwzvLyRle14XS/3U/eWQhUeHh4eAu8avMpPwKVH0WtbvrVlB0PDw/vLC+faJKVJ2l0Plav5PHtDXh4eHhrvCTZ7aXa1Snmo0S/xMPDw1vgJQludaLV41k9TCGo4OHh4R3lzTfxaqk3SconbTY8PDy85/M+Blfe+qoCqtRfai14eHh4h3i9g1MHhjx65AsPDw/vmby8ZVWddO/ZXngo/N3w8PDwxrz86jX+k2nl231SMsbDw8Pb5iWtr0nzPi8TVxtv0cEvPDw8vAVer5FfBZ8NDL0WHR4eHt4p3qTF1UusT5UzCrUWPDw8vKO8apo7f+rUQlSbdnh4eHhnedVgMDmSlW/l8wMEeHh4eNu85CBUPvW8CJuk7KPQhYeHh/c2vKSFlhxBmBQ1krCBh4eH91re5H7j2yhBx8PDw1vj9ZpeSRKcB5LquNH78fDw8BZ41X/1z5Zxe+WJaiqPh4eHd4j3CZ74ac5lSivDAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261181710&web_id=1261181710')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>3 Sketch静态原型设计 | 从设计到实现 | 手把手教你做android应用开发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="Sketch静态原型设计对于静态原型的设计，我们使用Sketch。
+启动Sketch后，我们将看到类似如下的界面，
+
+
+工具栏它的顶部是工具栏，
+
+
+可以通过菜单栏View -&amp;gt; Customize Toolbar...来自定义工具栏。在弹出的窗口中，将下方的图标拖拽到上方的工具栏中就可以了。
+
+
+导航栏左边是导航栏，用来展示这个项目拥有的page和page中包含的详细内容。
+page是一张">
+<meta property="og:type" content="article">
+<meta property="og:title" content="3 Sketch静态原型设计">
+<meta property="og:url" content="http://book.anddle.com/3_产品原型/3_Sketch静态原型设计/index.html">
+<meta property="og:site_name" content="从设计到实现">
+<meta property="og:description" content="Sketch静态原型设计对于静态原型的设计，我们使用Sketch。
+启动Sketch后，我们将看到类似如下的界面，
+
+
+工具栏它的顶部是工具栏，
+
+
+可以通过菜单栏View -&amp;gt; Customize Toolbar...来自定义工具栏。在弹出的窗口中，将下方的图标拖拽到上方的工具栏中就可以了。
+
+
+导航栏左边是导航栏，用来展示这个项目拥有的page和page中包含的详细内容。
+page是一张">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_ui_layout_empty.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_ui_layout_toolbar.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_customize_tool_bar.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_page_workspace.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_ui_layout.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_layout_property_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_page_rename.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_add_artboard.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_artboard.png">
+<meta property="og:updated_time" content="2017-03-03T01:59:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="3 Sketch静态原型设计">
+<meta name="twitter:description" content="Sketch静态原型设计对于静态原型的设计，我们使用Sketch。
+启动Sketch后，我们将看到类似如下的界面，
+
+
+工具栏它的顶部是工具栏，
+
+
+可以通过菜单栏View -&amp;gt; Customize Toolbar...来自定义工具栏。在弹出的窗口中，将下方的图标拖拽到上方的工具栏中就可以了。
+
+
+导航栏左边是导航栏，用来展示这个项目拥有的page和page中包含的详细内容。
+page是一张">
+<meta name="twitter:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_ui_layout_empty.png">
+    
+        <link rel="alternative" href="/atom.xml" title="从设计到实现" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">安豆</h5>
+          <a href="mailto:anddlecn@gmail.com" title="anddlecn@gmail.com" class="mail">anddlecn@gmail.com</a>
+          <span class="mail">QQ群：348702074</span><br/>
+          <span class="mail"></span>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                网站首页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第1章-创意/"  >
+                <i class="icon icon-lg icon-birthday-cake"></i>
+                第1章 创意
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第2章-设计原理/"  >
+                <i class="icon icon-lg icon-eyedropper"></i>
+                第2章 设计原理
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第3章-产品原型/"  >
+                <i class="icon icon-lg icon-flask"></i>
+                第3章 产品原型
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resources/"  >
+                <i class="icon icon-lg icon-download"></i>
+                资源下载
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://anddle.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                安豆主站
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/index.html"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">3 Sketch静态原型设计</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">3 Sketch静态原型设计</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-15T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>本节目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Sketch静态原型设计"><span class="post-toc-text">Sketch静态原型设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#工具栏"><span class="post-toc-text">工具栏</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#导航栏"><span class="post-toc-text">导航栏</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#工作区域"><span class="post-toc-text">工作区域</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#属性设置区域"><span class="post-toc-text">属性设置区域</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#添加设备画板"><span class="post-toc-text">添加设备画板</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-3_产品原型/3_Sketch静态原型设计"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">3 Sketch静态原型设计</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月15日 9:00" datetime="2017-01-15T01:00:00.000Z"  itemprop="datePublished">2017-01-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Sketch静态原型设计"><a href="#Sketch静态原型设计" class="headerlink" title="Sketch静态原型设计"></a>Sketch静态原型设计</h1><p>对于静态原型的设计，我们使用<code>Sketch</code>。</p>
+<p>启动<code>Sketch</code>后，我们将看到类似如下的界面，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_ui_layout_empty.png" width="600" alt=" sketch_ui_layout_empty"></div>
+
+<h2 id="工具栏"><a href="#工具栏" class="headerlink" title="工具栏"></a>工具栏</h2><p>它的顶部是<code>工具栏</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_ui_layout_toolbar.png" width="600" alt=" sketch_ui_layout_toolbar"></div>
+
+<p>可以通过菜单栏<code>View -&gt; Customize Toolbar...</code>来自定义工具栏。<br>在弹出的窗口中，将下方的图标拖拽到上方的<code>工具栏</code>中就可以了。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_customize_tool_bar.png" width="600" alt=" sketch_customize_tool_bar"></div>
+
+<h2 id="导航栏"><a href="#导航栏" class="headerlink" title="导航栏"></a>导航栏</h2><p>左边是<code>导航栏</code>，用来展示这个项目拥有的<code>page</code>和<code>page</code>中包含的详细内容。</p>
+<p><code>page</code>是一张张单独页面，</p>
+<ul>
+<li>每个页面上可以放多个手机屏幕的画板：展开、折叠、图标等等；</li>
+<li>每个<code>page</code>中的画板都进一步的在导航栏的下半区域展示出来：展开、折叠、图标等等；</li>
+<li>多个<code>page</code>被归类到了<code>pages</code>的下面：Weather、 Symbols等等；</li>
+</ul>
+<p>我们设计的程序界面，就是某个<code>page</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_page_workspace.gif" width="700" alt=" sketch_page_workspace"></div>
+
+<h2 id="工作区域"><a href="#工作区域" class="headerlink" title="工作区域"></a>工作区域</h2><p><code>工作区域</code>显示的是<code>page</code>的详细内容。我们设计的程序界面具体样子，就是通过<code>工作区域</code>展现出来的。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_ui_layout.png" width="700" alt=" sketch_ui_layout"></div>
+
+<h2 id="属性设置区域"><a href="#属性设置区域" class="headerlink" title="属性设置区域"></a>属性设置区域</h2><p><code>属性设置区域</code>用来设定某个选定图形的属性，例如它的大小、透明度、文字内容、字体颜色等等。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_layout_property_settings.png" width="650" alt=" sketch_layout_property_settings"></div>
+
+<h1 id="添加设备画板"><a href="#添加设备画板" class="headerlink" title="添加设备画板"></a>添加设备画板</h1><p>在新建的 <code>Sketch</code>项目中，双击<code>导航栏</code>的<code>page1</code>，把页面的名字改成一个有意义的名字-<code>Weathear</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_page_rename.gif" width="500" alt=" sketch_page_rename"></div>
+
+<p>通过<code>工具栏</code>的<code>Insert -&gt; Artboard</code>，调出画板，选择<code>Material Design</code>下的<code>Mobile Portrait</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_add_artboard.gif" width="700" alt=" sketch_add_artboard"></div>
+
+<p>通过右侧的<code>属性设置区域</code>，可以看到这个画板的大小为360px*640px，正好是一个mdpi的安卓设备屏幕尺寸。所以我们在这样的尺寸上做设计，能够很容易的顾及到其他像素密度的设备。</p>
+<p>可以看到<code>Sketch</code>为多种界面提供了默认的尺寸，iphone的，安卓设备的，网页的，MacOS应用的，可以说是应有尽有。这也说明<code>Sketch</code>就是为了这些产品而设计出来的。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_artboard.png" width="300" alt=" sketch_artboard"></div>
+
+<p><em>除了使用菜单栏调出画板，你也可以使用快捷方式：<code>A</code>。这也是操作<code>Sketch</code>必须记住的快捷方式之一。</em></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-03T01:59:31.000Z" itemprop="dateUpdated">2017年3月3日 9:59</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://book.anddle.com">
+            <img src="/img/avatar.png" alt="安豆">
+            安豆
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/3_Sketch静态原型设计/&title=《3 Sketch静态原型设计》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/3_Sketch静态原型设计/&title=《3 Sketch静态原型设计》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/3_产品原型/2_前期准备/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">2 前期准备</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/3_产品原型/4_静态原型的状态栏/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">4 静态原型的状态栏</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            <span>本站内容均为原创内容，欢迎转载，但请务必注明出处</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>从设计到实现 &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/3_Sketch静态原型设计/&title=《3 Sketch静态原型设计》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/3_Sketch静态原型设计/&title=《3 Sketch静态原型设计》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuklEQVR42u3ay24jMQwEwPz/T2fPi11PuknJSYDyyfBjrJoAEtPkx0f8+Awerz756jrPrzx/6/ADDw8P7+jSk0Uk7z7/4r/vPn8yWTMeHh7ebd6rHXW/fT9v6+118jXj4eHh/WTe5jjJfxcPDw/v9/I20UOeFSTrwcPDw/teXhJGPBfB7dKT5Sbh77GsBQ8PDy/m5V2kn/P8Sn8PDw8P79BAwIFtN75ledgRrRMPDw/vAq9tbu3bXW1jrB0swMPDw7vNa//Jb8PWtkDft82ivxseHh7egpcfDC2+HSmYxR91JIGHh4d3jZcsbnaDZoMFs7QWDw8P7zavfZ5v9O2IQDtM8MVtwsPDw7vAy7+WxwTtFfLXZ5ExHh4e3lleGxMkhXWycc9eqaMKPDw8vAu8TWHdRr3t7r05VPDw8PBu8GatqbaF345n7YPdeil4eHh4JS/Z3PMj5FQQnN8gPDw8vHfy2q12VuzuG1rPZfTwb4iHh4c34uXjVm2jqy2d26GuYRiBh4eHd4iXb7htqJq0r3JSXcrj4eHhvZ3XFsd50ZyPGqzCYjw8PLxrvPYYOLuJzwYOok/i4eHhXeMlI1BJKZyEF0WUsPiV/5TUeHh4eId4OWx2DGzaV23YUY8R4OHh4Y14eaGcB691ZBBj6igEDw8P7wJvdqF2OrQ9Nk6V+Hh4eHg3eLNRqtlwwGwMq73df30LDw8P7wJv1uZvN+v2OImWOIPh4eHhrXmf5aM9Hto+/qxh9kVJjYeHh3eUN9t2Z4NQyTGTL31/kODh4eFteMlhkMevs3J80xKrU2o8PDy8Q7w2IEhux2Zkqi3WX14NDw8P71t5bamdBxab4apigAAPDw/v7bxN834/eDoMcPHw8PCu8fISOR8UmAUK7ZGzGiDAw8PDG/HyBlgSK+SbeMtrby4eHh7eBd4fZY2ccdMeZHMAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261181710&web_id=1261181710')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+
+</body>
+</html>

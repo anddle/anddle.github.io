@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>5 静态原型的Appbar | 从设计到实现 | 手把手教你做android应用开发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="静态原型的Appbar我们设计的Appbar包括了两个部分，一个是toolbar，另一个就是flexible space-显示当日天气的详细信息，
+
+
+Toolbar参数确定添加Toolbar很简单，首先找到Material Design中对Appbar的描述可以知道，
+
+这是一个高度为56dp的矩形区域；
+当Appbar收缩时，应用的名字会显示出来，
+ 
+
+ 注意：这里显示的是中文-Dense类">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5 静态原型的Appbar">
+<meta property="og:url" content="http://book.anddle.com/3_产品原型/5_静态原型的Appbar/index.html">
+<meta property="og:site_name" content="从设计到实现">
+<meta property="og:description" content="静态原型的Appbar我们设计的Appbar包括了两个部分，一个是toolbar，另一个就是flexible space-显示当日天气的详细信息，
+
+
+Toolbar参数确定添加Toolbar很简单，首先找到Material Design中对Appbar的描述可以知道，
+
+这是一个高度为56dp的矩形区域；
+当Appbar收缩时，应用的名字会显示出来，
+ 
+
+ 注意：这里显示的是中文-Dense类">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_appbar_layout.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/3_3_table_toolbar_parameter.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_toolbar_with_title.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_create_toolbar_area.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_toolbar_adjust_area.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_toolbar_bg_color.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_location_text_font_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_combine_toolbar.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_title_alien_center.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_title_alien_margin.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_toolbar_hide_title.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_appbar_complete.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detial_margins.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_bg_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_content_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detial_margins_settings.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_icon_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_icon_color.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_icon_remove_bg_color.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_icon_center.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_temp_1_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_temp_2_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_temp_group.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_temp_center.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_location_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_appbar_complete.png">
+<meta property="og:updated_time" content="2017-03-03T01:59:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="5 静态原型的Appbar">
+<meta name="twitter:description" content="静态原型的Appbar我们设计的Appbar包括了两个部分，一个是toolbar，另一个就是flexible space-显示当日天气的详细信息，
+
+
+Toolbar参数确定添加Toolbar很简单，首先找到Material Design中对Appbar的描述可以知道，
+
+这是一个高度为56dp的矩形区域；
+当Appbar收缩时，应用的名字会显示出来，
+ 
+
+ 注意：这里显示的是中文-Dense类">
+<meta name="twitter:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_appbar_layout.png">
+    
+        <link rel="alternative" href="/atom.xml" title="从设计到实现" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">安豆</h5>
+          <a href="mailto:anddlecn@gmail.com" title="anddlecn@gmail.com" class="mail">anddlecn@gmail.com</a>
+          <span class="mail">QQ群：348702074</span><br/>
+          <span class="mail"></span>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                网站首页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第1章-创意/"  >
+                <i class="icon icon-lg icon-birthday-cake"></i>
+                第1章 创意
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第2章-设计原理/"  >
+                <i class="icon icon-lg icon-eyedropper"></i>
+                第2章 设计原理
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第3章-产品原型/"  >
+                <i class="icon icon-lg icon-flask"></i>
+                第3章 产品原型
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resources/"  >
+                <i class="icon icon-lg icon-download"></i>
+                资源下载
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://anddle.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                安豆主站
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/index.html"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">5 静态原型的Appbar</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">5 静态原型的Appbar</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-17T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-17
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>本节目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#静态原型的Appbar"><span class="post-toc-text">静态原型的Appbar</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Toolbar参数确定"><span class="post-toc-text">Toolbar参数确定</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加Toolbar"><span class="post-toc-text">添加Toolbar</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#天气详情区域参数设定"><span class="post-toc-text">天气详情区域参数设定</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加天气详情"><span class="post-toc-text">添加天气详情</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加天气图标"><span class="post-toc-text">添加天气图标</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加温度信息"><span class="post-toc-text">添加温度信息</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加位置"><span class="post-toc-text">添加位置</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-3_产品原型/5_静态原型的Appbar"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">5 静态原型的Appbar</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月17日 9:00" datetime="2017-01-17T01:00:00.000Z"  itemprop="datePublished">2017-01-17</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="静态原型的Appbar"><a href="#静态原型的Appbar" class="headerlink" title="静态原型的Appbar"></a>静态原型的Appbar</h1><p>我们设计的<code>Appbar</code>包括了两个部分，一个是<code>toolbar</code>，另一个就是<code>flexible space</code>-显示当日天气的详细信息，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_appbar_layout.png" width="400" alt=" sketch_appbar_layout"></div>
+
+<h2 id="Toolbar参数确定"><a href="#Toolbar参数确定" class="headerlink" title="Toolbar参数确定"></a>Toolbar参数确定</h2><p>添加<code>Toolbar</code>很简单，首先找到<code>Material Design</code>中对<code>Appbar</code>的描述可以知道，</p>
+<ol>
+<li>这是一个高度为<code>56dp</code>的矩形区域；</li>
+<li><p>当<code>Appbar</code>收缩时，应用的名字会显示出来，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/3_3_table_toolbar_parameter.png" width="300" alt=" 3_3_table_toolbar_paramete"></div>
+
+<p> <em>注意：这里显示的是中文-<code>Dense</code>类型的文字，所以文字的大小比英文要大1sp。</em></p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_toolbar_with_title.png" width="300" alt=" sketch_toolbar_with_title"></div>
+
+</li>
+</ol>
+<h2 id="添加Toolbar"><a href="#添加Toolbar" class="headerlink" title="添加Toolbar"></a>添加Toolbar</h2><p>先添加区域，</p>
+<ol>
+<li>选择<code>Insert -&gt; Shape -&gt; Rectangle</code>(或者快捷按键R)；</li>
+<li><p>在期望的位置，拖动出一个56px*360px的矩形框；拖动的过程中，矩形尺寸会动态的显示出来；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_create_toolbar_area.gif" width="600" alt=" sketch_create_toolbar_area"></div>
+
+<p> 此时画板上已经多出了一个叫做<code>Rectangle</code>的形状。</p>
+</li>
+<li><p>假如尺寸有偏差也没有关系，可以通过修改<code>属性区域</code>的高宽数值，进行精确的修改</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_toolbar_adjust_area.png" width="600" alt=" sketch_toolbar_adjust_area"></div>
+</li>
+<li><p>修改背景颜色为<code>Primary Color</code>：#3F51B5，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_toolbar_bg_color.png" width="600" alt=" sketch_toolbar_bg_color"></div>
+
+</li>
+</ol>
+<p>接下来添加应用名称：这里要显示的并不是应用的真实名称，而是天气预报的位置，</p>
+<ol>
+<li>选择<code>Insert -&gt; Text</code>(或者快捷按键T)；</li>
+<li>在<code>Toolbar</code>的大致位置进行点击，写下位置名称-<code>成都</code>；此时画板上多出了<code>Text</code>组件；</li>
+<li><p>修改新组件的属性为，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_location_text_font_settings.png" width="600" alt=" sketch_location_text_font_settings"></div>
+</li>
+<li><p>选中<code>Rectangle</code>和<code>成都</code>组件，使用cmd + G，将其组合成<code>Toolbar</code></p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_combine_toolbar.gif" width="600" alt=" sketch_combine_toolbar"></div>
+
+</li>
+</ol>
+<p>再来进行标题位置的设置，</p>
+<ol>
+<li><p>选择<code>Toolbar</code>下的所有组件，点击<code>垂直对齐</code>的按钮，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_title_alien_center.png" width="700" alt=" sketch_title_alien_center"></div>
+</li>
+<li><p>标题的左边距是16dp，选中<code>成都</code>，同时按下<code>alt</code>按键，可以看到<code>成都</code>上下左右的边距大小，使用方向键调整左边距的大小即可，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_title_alien_margin.gif" width="500" alt=" sketch_title_alien_margin"></div>
+
+</li>
+</ol>
+<p>因为此时并不需要显示位置信息，所以要点击<code>成都</code>组件旁边的<code>眼睛</code>按钮，把内容隐藏起来。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_toolbar_hide_title.png" width="200" alt=" sketch_toolbar_hide_title"></div>
+
+<p><em>使用<code>alt</code>查看组件的边距是一个常用的技巧，查看的同时，如果移动鼠标到不同的区域，就能看到组件相对于不同区域的边距数值，这让我们在排版的时候非常的方便。</em></p>
+<p>至此，<code>Toolbar</code>的设置就完成了。</p>
+<h2 id="天气详情区域参数设定"><a href="#天气详情区域参数设定" class="headerlink" title="天气详情区域参数设定"></a>天气详情区域参数设定</h2><p>天气详情区域由三个部分组成，</p>
+<ol>
+<li>天气图标；</li>
+<li>当前温度，当日温度范围；</li>
+<li>位置信息；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_appbar_complete.png" width="300" alt=" sketch_appbar_complete"></div>
+
+<p>整体设计上讲，天气详情区域、Toolbar和状态栏都是整体的蓝色，占据整个屏幕空间的一半。因此这里将天气详情区域的高度，设计成<code>245dp</code>，它内部的元素都布局在360dp*245dp的区域范围内。</p>
+<p>图标和温度的设计是比较自由的，只要设计师觉得美观就好了。我将它们放在两个150dp*100dp的矩形当中，让它们的左、右、上边距都成为<code>24dp</code>。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detial_margins.png" width="300" alt=" sketch_weather_detial_margins"></div>
+
+<p>当前温度，采用<code>Display 3</code>的类型，</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目</th>
+<th style="text-align:center">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">字体</td>
+<td style="text-align:center">Noto</td>
+</tr>
+<tr>
+<td style="text-align:center">字形</td>
+<td style="text-align:center">Regular</td>
+</tr>
+<tr>
+<td style="text-align:center">大小</td>
+<td style="text-align:center">56sp</td>
+</tr>
+<tr>
+<td style="text-align:center">颜色</td>
+<td style="text-align:center">#FFFFFF</td>
+</tr>
+<tr>
+<td style="text-align:center">透明度</td>
+<td style="text-align:center">70%</td>
+</tr>
+</tbody>
+</table>
+<p>当日温度范围，采用<code>Headline</code>的类型，</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目</th>
+<th style="text-align:center">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">字体</td>
+<td style="text-align:center">Noto</td>
+</tr>
+<tr>
+<td style="text-align:center">字形</td>
+<td style="text-align:center">Regular</td>
+</tr>
+<tr>
+<td style="text-align:center">大小</td>
+<td style="text-align:center">24sp</td>
+</tr>
+<tr>
+<td style="text-align:center">颜色</td>
+<td style="text-align:center">#FFFFFF</td>
+</tr>
+<tr>
+<td style="text-align:center">透明度</td>
+<td style="text-align:center">100%</td>
+</tr>
+</tbody>
+</table>
+<p>位置信息，采用<code>Display 1</code>的类型，</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目</th>
+<th style="text-align:center">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">字体</td>
+<td style="text-align:center">Noto</td>
+</tr>
+<tr>
+<td style="text-align:center">字形</td>
+<td style="text-align:center">Regular</td>
+</tr>
+<tr>
+<td style="text-align:center">大小</td>
+<td style="text-align:center">34sp</td>
+</tr>
+<tr>
+<td style="text-align:center">颜色</td>
+<td style="text-align:center">#FFFFFF</td>
+</tr>
+<tr>
+<td style="text-align:center">透明度</td>
+<td style="text-align:center">100%</td>
+</tr>
+<tr>
+<td style="text-align:center">左边距</td>
+<td style="text-align:center">24dp</td>
+</tr>
+<tr>
+<td style="text-align:center">下边距</td>
+<td style="text-align:center">24dp</td>
+</tr>
+</tbody>
+</table>
+<p><em>注意：<code>Noto</code>字体和<code>Roboto</code>字体对于<code>English-like</code>是兼容的，所以当表示数字、英文字母的时候，两者都可以使用。</em></p>
+<h2 id="添加天气详情"><a href="#添加天气详情" class="headerlink" title="添加天气详情"></a>添加天气详情</h2><p>根据之前的规划，划出360px*245px的矩形区域，背景色修改成<code>Primary Color</code>：#3F51B5。默认情况下创建的矩形会有<code>border</code>，我们将它移出，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_bg_settings.png" width="600" alt=" sketch_weather_detail_bg_settings"></div>
+
+<ol>
+<li>创建两个150dp*100dp的矩形，准备用它们分别装入天气图标和温度信息;</li>
+<li>将新创建的矩形和<code>bg</code>进行组合；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_content_settings.png" width="600" alt=" sketch_weather_detail_content_settings"></div>
+
+<p>调整两者顶部和左右的边距为<code>24dp</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detial_margins_settings.gif" width="500" alt=" sketch_weather_detial_margins_settings"></div>
+
+<h3 id="添加天气图标"><a href="#添加天气图标" class="headerlink" title="添加天气图标"></a>添加天气图标</h3><p>引入天气图标，</p>
+<ol>
+<li><p>打开之前准备好的资源文件夹，把晴间多云的图标-<code>阴晴</code>拖入<code>工作区域</code>，尺寸设置成120dp*100dp；</p>
+</li>
+<li><p>将刚引入的<code>阴晴</code>与之前的<code>weather icon bg</code>组合成一个新的组件-<code>Weather icon</code>，并将<code>阴晴</code>水平居中放置，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_icon_settings.png" width="600" alt=" sketch_weather_detail_icon_settings"></div>
+</li>
+<li><p>展开<code>阴晴</code>，修改其颜色成<code>Accent Color</code>：#FFC107，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_icon_color.png" width="600" alt=" sketch_weather_detail_icon_color"></div>
+</li>
+<li><p>移除<code>weather icon bg</code>的背景颜色，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_icon_remove_bg_color.png" width="600" alt=" sketch_weather_detail_icon_remove_bg_color"></div>
+
+</li>
+</ol>
+<p><em>在对图标进行居中设置的时候，需要选中<code>阴晴</code>和<code>weather icon bg</code>，使用<code>水平居中对齐</code>功能。<code>weather icon bg</code>在这里充当了被对齐的参照物，在使用<code>Sketch</code>设计的时候，经常需要添加一个这样的辅助设计元素。</em></p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_icon_center.png" width="600" alt=" sketch_weather_detail_icon_center"></div>
+
+<h3 id="添加温度信息"><a href="#添加温度信息" class="headerlink" title="添加温度信息"></a>添加温度信息</h3><p>使用快捷按键T，在相应的位置，添加两个文字输入区域，写上对应的内容，并设置好对应的字体属性。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_temp_1_settings.png" width="600" alt=" sketch_weather_detail_temp_1_settings"></div>
+
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_temp_2_settings.png" width="600" alt=" sketch_weather_detail_temp_2_settings"></div>
+
+<p>对组件结构进行调整，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_temp_group.png" width="250" alt=" sketch_weather_detail_temp_group"></div>
+
+<p>对文字进行水平居中的排列，并移除背景的颜色，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_temp_center.png" width="600" alt=" sketch_weather_detail_temp_center"></div>
+
+<h3 id="添加位置"><a href="#添加位置" class="headerlink" title="添加位置"></a>添加位置</h3><p>在适当的位置，添加一个Text组件，写入<code>成都</code>，做好设置，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_location_settings.png" width="600" alt=" sketch_weather_detail_location_settings"></div>
+
+<p>注意，它的左边距和下边距都是<code>24dp</code>。</p>
+<p>至此，整个Appbar的内容就添加完毕了。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_appbar_complete.png" width="300" alt=" sketch_appbar_complete"></div>
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-03T01:59:31.000Z" itemprop="dateUpdated">2017年3月3日 9:59</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://book.anddle.com">
+            <img src="/img/avatar.png" alt="安豆">
+            安豆
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/5_静态原型的Appbar/&title=《5 静态原型的Appbar》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/5_静态原型的Appbar/&title=《5 静态原型的Appbar》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/3_产品原型/4_静态原型的状态栏/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">4 静态原型的状态栏</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/3_产品原型/6_静态原型的天气详情/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">6 静态原型的天气详情</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            <span>本站内容均为原创内容，欢迎转载，但请务必注明出处</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>从设计到实现 &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/5_静态原型的Appbar/&title=《5 静态原型的Appbar》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/5_静态原型的Appbar/&title=《5 静态原型的Appbar》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACK0lEQVR42u3aS27kMAwFwL7/pZ11MIjnkVQCmC6tgobbVjkAW/x8PvG6flj/XvPTt+7vnF8/WhgYGI9lXLcreUByZfL5/XPvXyIGBsYbGMnmJuEyAfSei4GBgTHZRPIJBgYGxm8H3AT2gN8NDAyMhzCSZDI/8OXpa37cPJaLY2BgPJCRV93//u9f6W9gYGA8inEVVxIuJ4e/q7UwMDB2M3ob6hXO7u82SZgxMDDexpgMQySNzGoTtNAWxcDAWM3IC2f5RnsjFweCMgYGxjrGqeZl9Vu9g2b0i4GBgbGUcV/wylPQ6sFxTsXAwHgDY5JGnn0FBxqcGBgYSxlJoa2XcPbeaLV1+q0Ti4GBsZRRvWnyyOrIabU6WB62wMDAeDhjPuyVJLGnWguF/wMGBsYiRpLKng3HvdZpfhjFwMDYyqgW66sDGXlqOkqDMTAwljKq5a1qo7EaaqvXfEtiMTAwXsCopqO9UJtknTkMAwPjDYxmvhuPaPSGOXppLQYGxm7GPDhWGwPzJLmZymJgYKxgJFtMCnPVOlhe7PtPZwMDA2M1o1egzw+RvRfx6UVrDAyMRYze+Ok1WEkgTg6a0dkWAwNjBaMX03qNgXwrh7eOgYGxgpGHyLNpau/6ctUQAwNjEaM61lAd9qpiykU3DAwMjPExrvpJ9TVhYGBgTIbA8kw6PyweCLgYGBgPZOTF+mr6Wg2gzYQZAwNjNaM6kFFNUPOQPT9cYmBgrGN8AZ7/LLrvT+FqAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261181710&web_id=1261181710')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+
+</body>
+</html>

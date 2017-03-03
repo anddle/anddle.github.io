@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>10 资源的创建 | 从设计到实现 | 手把手教你做android应用开发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="资源的创建界面原型已经设计完成了。不过离最后交付给开发人员开发还差一步：产品中使用的图片还没有准备好呢？
+设计师除了产品原型还要交付哪些资源呢？开发者最关心的资源就是应用中会使用到的各种图标资源和配色方案。
+在天气预报应用当中，我们已经确定好了界面的主要颜色，
+
+
+
+颜色项目
+颜色名称
+颜色RGB值
+
+
+
+
+Primary Color
+Indigo 500
+#3F51B5
+
+
+Primary Da">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10 资源的创建">
+<meta property="og:url" content="http://book.anddle.com/3_产品原型/10_资源的创建/index.html">
+<meta property="og:site_name" content="从设计到实现">
+<meta property="og:description" content="资源的创建界面原型已经设计完成了。不过离最后交付给开发人员开发还差一步：产品中使用的图片还没有准备好呢？
+设计师除了产品原型还要交付哪些资源呢？开发者最关心的资源就是应用中会使用到的各种图标资源和配色方案。
+在天气预报应用当中，我们已经确定好了界面的主要颜色，
+
+
+
+颜色项目
+颜色名称
+颜色RGB值
+
+
+
+
+Primary Color
+Indigo 500
+#3F51B5
+
+
+Primary Da">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/create_system_icon.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/create_weather_icon_small.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/create_weather_icon_large.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/weather_app_icon.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_slice_system_icon.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_slice_system_icon_settings1.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_slice_system_icon_settings2.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_slice_system_icon_settings3.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_slice_system_icon_export.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/asset_studio_create_system_icon.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/asset_studio_download_result.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/asset_studio_create_app_icon.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/asset_studio_create_app_icon_download_result.png">
+<meta property="og:updated_time" content="2017-03-03T01:59:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="10 资源的创建">
+<meta name="twitter:description" content="资源的创建界面原型已经设计完成了。不过离最后交付给开发人员开发还差一步：产品中使用的图片还没有准备好呢？
+设计师除了产品原型还要交付哪些资源呢？开发者最关心的资源就是应用中会使用到的各种图标资源和配色方案。
+在天气预报应用当中，我们已经确定好了界面的主要颜色，
+
+
+
+颜色项目
+颜色名称
+颜色RGB值
+
+
+
+
+Primary Color
+Indigo 500
+#3F51B5
+
+
+Primary Da">
+<meta name="twitter:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/create_system_icon.png">
+    
+        <link rel="alternative" href="/atom.xml" title="从设计到实现" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">安豆</h5>
+          <a href="mailto:anddlecn@gmail.com" title="anddlecn@gmail.com" class="mail">anddlecn@gmail.com</a>
+          <span class="mail">QQ群：348702074</span><br/>
+          <span class="mail"></span>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                网站首页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第1章-创意/"  >
+                <i class="icon icon-lg icon-birthday-cake"></i>
+                第1章 创意
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第2章-设计原理/"  >
+                <i class="icon icon-lg icon-eyedropper"></i>
+                第2章 设计原理
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第3章-产品原型/"  >
+                <i class="icon icon-lg icon-flask"></i>
+                第3章 产品原型
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resources/"  >
+                <i class="icon icon-lg icon-download"></i>
+                资源下载
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://anddle.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                安豆主站
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/index.html"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">10 资源的创建</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">10 资源的创建</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-22T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>本节目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#资源的创建"><span class="post-toc-text">资源的创建</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#图标的尺寸"><span class="post-toc-text">图标的尺寸</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#系统图标"><span class="post-toc-text">系统图标</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Sketch导出"><span class="post-toc-text">Sketch导出</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第三方工具导出"><span class="post-toc-text">第三方工具导出</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#天气图标"><span class="post-toc-text">天气图标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#应用图标"><span class="post-toc-text">应用图标</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-3_产品原型/10_资源的创建"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">10 资源的创建</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月22日 9:00" datetime="2017-01-22T01:00:00.000Z"  itemprop="datePublished">2017-01-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="资源的创建"><a href="#资源的创建" class="headerlink" title="资源的创建"></a>资源的创建</h1><p>界面原型已经设计完成了。不过离最后交付给开发人员开发还差一步：产品中使用的图片还没有准备好呢？</p>
+<p>设计师除了产品原型还要交付哪些资源呢？开发者最关心的资源就是应用中会使用到的各种图标资源和配色方案。</p>
+<p>在<code>天气预报</code>应用当中，我们已经确定好了界面的主要颜色，</p>
+<table>
+<thead>
+<tr>
+<th>颜色项目</th>
+<th>颜色名称</th>
+<th>颜色RGB值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary Color</td>
+<td>Indigo 500</td>
+<td>#3F51B5</td>
+</tr>
+<tr>
+<td>Primary Dark Color</td>
+<td>Indigo 700</td>
+<td>#303F9F</td>
+</tr>
+<tr>
+<td>Accent Color</td>
+<td>Amber 500</td>
+<td>#FFC107</td>
+</tr>
+</tbody>
+</table>
+<p>现在就剩下各种图标了。这些图标包括了，</p>
+<ol>
+<li><p>系统图标：显示<code>更多信息</code>时使用到的，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/create_system_icon.png" width="300" alt=" create_system_icon"></div>
+</li>
+<li><p>天气图标：包括使用到的<code>小图标</code>，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/create_weather_icon_small.png" width="300" alt=" create_weather_icon_small"></div>
+
+<p> 使用到的<code>大图标</code>，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/create_weather_icon_large.png" width="300" alt=" create_weather_icon_large"></div>
+</li>
+<li><p>应用图标：应用的主图标，放在启动界面使用的图标，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/weather_app_icon.png" width="200" alt=" weather_app_icon"></div>
+
+</li>
+</ol>
+<h2 id="图标的尺寸"><a href="#图标的尺寸" class="headerlink" title="图标的尺寸"></a>图标的尺寸</h2><p>不同使用场景的图标，尺寸是不同，前面的章节中我们已经讲述了<code>系统图标</code> <code>应用图标</code>的标准尺寸。</p>
+<p>根据屏幕像素密度的不同，需要设计对应大小的图标。这样一来，就能够确保在特定类型的密度屏幕上，图标能够显示的清晰。</p>
+<table>
+<thead>
+<tr>
+<th>像素密度类型</th>
+<th>像素密度大小</th>
+<th>与Baseline比值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mdpi</td>
+<td>160</td>
+<td>1</td>
+</tr>
+<tr>
+<td>hdpi</td>
+<td>240</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>xhdpi</td>
+<td>320</td>
+<td>2</td>
+</tr>
+<tr>
+<td>xxhpi</td>
+<td>480</td>
+<td>3</td>
+</tr>
+<tr>
+<td>xxxhpi</td>
+<td>640</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p><em>安卓使用<code>dpi</code>为160的数值作为一个基准－－<code>baseline</code>。</em></p>
+<p>为了达到最优秀的显示效果，我们最理想的情况下是为每个不同的屏幕类型设计对应的图标。不过实际情况中却并不一定需要对应每个尺寸，因为</p>
+<ol>
+<li><p>如果涉及的图标很多，各种类型的图标都做全部的配套设计一定会增加应用的体积；</p>
+</li>
+<li><p>假如缺少某个屏幕类型（例如mdpi）的图标a时，系统会去寻找a对应的高分辨率图标A，把A转化成合适的尺寸（a与A都是同一个图标的不同尺寸版本，a尺寸小，A尺寸大）。这里唯一的代价是：在使用图标时，系统需要自动做额外的尺寸转化；</p>
+</li>
+</ol>
+<h2 id="系统图标"><a href="#系统图标" class="headerlink" title="系统图标"></a>系统图标</h2><p>系统图标的大小是24dp*24dp，对于<code>mdpi</code>的屏幕，我们就需要截取24px*24px大小的图标。</p>
+<h3 id="Sketch导出"><a href="#Sketch导出" class="headerlink" title="Sketch导出"></a>Sketch导出</h3><p>如果使用<code>Sketch</code>开发出了静态原型，那么从里面<code>抓取</code>系统图标就非常的方便了，</p>
+<ol>
+<li><p>点击<code>工具栏</code>上的<code>insert -&gt; S</code>（或者按快捷键S），</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_slice_system_icon.png" width="200" alt=" sketch_slice_system_icon"></div>
+</li>
+<li><p>用<code>小刀</code>在要截取图标的位置切片，并将切出的片子，重新命名成<code>ic_wind_level</code>,</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_slice_system_icon_settings1.png" width="600" alt=" sketch_slice_system_icon_settings1"></div>
+
+<p> 可以看到右上方的<code>尺寸栏</code>显示的是24/*24的大小，<code>设置区域</code>下方的截取效果图也呈现了出来。</p>
+</li>
+</ol>
+<p>接下来就是导出图片了，</p>
+<ol>
+<li><p>选中<code>ic_wind_level</code>，点击<code>Export</code>旁的按钮，以此添加<code>1x 2x 3x 1.5x 4x</code>，给要导出的图片设置导出后的放大倍率。<code>1x</code>表示<code>1:1</code>导出，<code>2x</code>表示放大2倍导出，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_slice_system_icon_settings2.png" width="250" alt=" sketch_slice_system_icon_settings2"></div>
+
+<p> 导出的格式都设置成<code>PNG</code>格式的图片。这种图片是安卓系统标准支持的图片格式，能够携带透明的信息。</p>
+</li>
+<li><p>不要勾选背景颜色，让整个图片除了图案以外，都呈透明的状态；选择<code>Export ic_wind_level</code>，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_slice_system_icon_settings3.png" width="250" alt=" sketch_slice_system_icon_settings3"></div>
+
+</li>
+</ol>
+<p>导出结果如下，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_slice_system_icon_export.png" width="250" alt=" sketch_slice_system_icon_export"></div>
+
+<table>
+<thead>
+<tr>
+<th>像素密度类型</th>
+<th>与Baseline比值</th>
+<th>实际像素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mdpi</td>
+<td>1</td>
+<td>24px</td>
+</tr>
+<tr>
+<td>hdpi</td>
+<td>1.5</td>
+<td>36px</td>
+</tr>
+<tr>
+<td>xhdpi</td>
+<td>2</td>
+<td>48px</td>
+</tr>
+<tr>
+<td>xxhpi</td>
+<td>3</td>
+<td>72px</td>
+</tr>
+<tr>
+<td>xxxhpi</td>
+<td>4</td>
+<td>96px</td>
+</tr>
+</tbody>
+</table>
+<p>其他图标的导出和产生这个图标的方式类似。</p>
+<h3 id="第三方工具导出"><a href="#第三方工具导出" class="headerlink" title="第三方工具导出"></a>第三方工具导出</h3><p>如果不使用<code>Sketch</code>也可以通过其他工具生成图标。例如<a href="http://romannurik.github.io/AndroidAssetStudio/" target="_blank" rel="external"><code>Android Studio Asset</code></a>的<code>Generic icons</code>功能。</p>
+<ol>
+<li>通过<code>IMAGE</code>方式，将事先准备好的<code>风力.svg</code>矢量图，加载到工具当中；</li>
+<li><code>Size</code>选择<code>20dp</code>，<code>Padding</code>选择<code>2dp</code>，这样最后的图标就是<code>24pd*24dp</code>的了；</li>
+<li><code>Color</code>选择成黑色，透明度为<code>54%</code>；</li>
+<li>点击<code>DOWNLOAD .ZIP</code>;</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/asset_studio_create_system_icon.png" width="400" alt=" asset_studio_create_system_icon"></div>
+
+<p>下载解压后，得到了对应的图标资源，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/asset_studio_download_result.png" width="500" alt=" asset_studio_download_result"></div>
+
+<p>其他图标的产生和产生这个图标的方式类似。</p>
+<h2 id="天气图标"><a href="#天气图标" class="headerlink" title="天气图标"></a>天气图标</h2><p><code>天气图标</code>的导出与系统图标的导出几乎完全一样，只是尺寸和颜色稍有不同。</p>
+<p>在导出的时候要注意<code>天气图标</code>有两种不同的大小，一种使用到<code>Weather details</code>上面，显示大的天气图标；另一种使用到<code>forcast</code>当中，显示小的天气图标。</p>
+<table>
+<thead>
+<tr>
+<th>图标类型</th>
+<th>宽度</th>
+<th>高度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>大图标</td>
+<td>120dp</td>
+<td>100dp</td>
+</tr>
+<tr>
+<td>小图标</td>
+<td>30dp</td>
+<td>30dp</td>
+</tr>
+</tbody>
+</table>
+<p>两种图标都可以通过<code>Sketch</code>切图得到，也可以通过<code>Android Asset Studio</code>来生成。</p>
+<h2 id="应用图标"><a href="#应用图标" class="headerlink" title="应用图标"></a>应用图标</h2><p>应用图标也可以通过<code>Sketch</code>创建，不过我这里就简化了这方面的设计，直接使用<a href="http://romannurik.github.io/AndroidAssetStudio" target="_blank" rel="external">Android Asset Studio</a>的<code>Launcher icons</code>，创建应用图标，</p>
+<ol>
+<li>通过<code>IMAGE</code>方式，将事先准备好的<code>应用启动图标.svg</code>矢量图，加载到工具当中；</li>
+<li><code>Padding</code>选择<code>45%</code>，调整到合适的比例就行；</li>
+<li><code>Color</code>选择成白色，透明度为<code>100%</code>；</li>
+<li><code>Shape</code>选择成<code>SQUARE</code>正方形；</li>
+<li><code>Background</code>选择成<code>Primary Color</code>-<code>#3F51B5</code></li>
+<li>点击<code>DOWNLOAD .ZIP</code>;</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/asset_studio_create_app_icon.png" width="500" alt=" asset_studio_create_app_icon"></div>
+
+
+<p>下载解压后，得到了对应的图标资源，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/asset_studio_create_app_icon_download_result.png" width="350" alt=" asset_studio_create_app_icon_download_result"></div>
+
+<hr>
+<p>至此，图片资源的导出就完成了。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-03T01:59:31.000Z" itemprop="dateUpdated">2017年3月3日 9:59</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://book.anddle.com">
+            <img src="/img/avatar.png" alt="安豆">
+            安豆
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/10_资源的创建/&title=《10 资源的创建》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/10_资源的创建/&title=《10 资源的创建》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/3_产品原型/9_Origami动态原型设计/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">9 Origami动态原型设计</h4>
+      </a>
+    </div>
+  
+
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            <span>本站内容均为原创内容，欢迎转载，但请务必注明出处</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>从设计到实现 &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/10_资源的创建/&title=《10 资源的创建》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/10_资源的创建/&title=《10 资源的创建》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKUlEQVR42u3ay07DMBAF0P7/TweJFUjg3muniNrHq4o2iU8Wg+fxeMTr+lztb9qrri/r8YqFgYHxtoxruFYY4/u3sCd3wMDAOIDRhsLxTcd/T6j53jAwMDCSz8kmxtT8KgwMDIw24ObbGh8KMTAwMBJGEjrnNpq/jvy5GBgYpzHaxsBffn5hfwMDA+NNGFe5VgpkecOy3hUGBsbWjHZIok1H51LcNnnGwMA4gdEmkOuFueSJyaDYk4wcAwNjC8bK8MRcCtqW26LAjYGBsTVjMjbf1OZcoUaXYWBgbMTIE9SVQtv60AYGBgZGm1iuFNeSMl/enMDAwNibkTcIVxhtCzMHY2BgnMNINrqSfLZDG/XBEQMD4zBGvukWn7+IdnQDAwNjb0byyOTWbQsz33TxLAwMjE0ZeYsxH7+YG9pYSaQxMDBOYLTjEXk4bn+TFOB++BYDA+MAxvqoRHttW1CbbAxgYGBswWgLXuOtzD1ypYUZVQExMDDenDGXss6V79tDZPE6MDAwDmC0wS4/6rWDX3ko//WEi4GBsR0jT0Tbkv364EU+5IGBgbE34ypX2yqYK/TnKfG3/xsYGBibMuYC3OvKauOD6Q3BGgMD420Z7UhW23OIRrsWmp0YGBjnMNogOzfsNTeoEb0CDAwMjDiZzBuW+Z2j4I6BgYERHOnunXxo81MMDIwTGPkxrq3YtZueLN5hYGBszbghgYwfcG8yfEMLEwMD478zPgABivoIz49iPwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261181710&web_id=1261181710')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+
+</body>
+</html>

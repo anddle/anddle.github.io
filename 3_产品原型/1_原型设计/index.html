@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>1 原型设计 | 从设计到实现 | 手把手教你做android应用开发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="原型设计通过前面几个章节，我们已经掌握了安卓系统Material Design设计的大致原则。接下来，我们开始尝试将这些原则和方式运用到实际的项目当中。
+效果图与交互原型产品原型的设计又可以分成两个阶段，
+
+高保真效果图：这是产品的静态效果图，图纸上的设计效果与最后实际产品基本上是一模一样。产品中使用到的各种图标都可以从高保真效果图中截取出来使用（这里其实指的是使用sketch进行界面原型设计，它">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1 原型设计">
+<meta property="og:url" content="http://book.anddle.com/3_产品原型/1_原型设计/index.html">
+<meta property="og:site_name" content="从设计到实现">
+<meta property="og:description" content="原型设计通过前面几个章节，我们已经掌握了安卓系统Material Design设计的大致原则。接下来，我们开始尝试将这些原则和方式运用到实际的项目当中。
+效果图与交互原型产品原型的设计又可以分成两个阶段，
+
+高保真效果图：这是产品的静态效果图，图纸上的设计效果与最后实际产品基本上是一模一样。产品中使用到的各种图标都可以从高保真效果图中截取出来使用（这里其实指的是使用sketch进行界面原型设计，它">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_app_static_effect_complete.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_weather_app_complete.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/appbar_scroll_toolbar_txt.gif">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_website.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/origami_website.png">
+<meta property="og:updated_time" content="2017-03-03T01:59:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1 原型设计">
+<meta name="twitter:description" content="原型设计通过前面几个章节，我们已经掌握了安卓系统Material Design设计的大致原则。接下来，我们开始尝试将这些原则和方式运用到实际的项目当中。
+效果图与交互原型产品原型的设计又可以分成两个阶段，
+
+高保真效果图：这是产品的静态效果图，图纸上的设计效果与最后实际产品基本上是一模一样。产品中使用到的各种图标都可以从高保真效果图中截取出来使用（这里其实指的是使用sketch进行界面原型设计，它">
+<meta name="twitter:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_app_static_effect_complete.png">
+    
+        <link rel="alternative" href="/atom.xml" title="从设计到实现" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">安豆</h5>
+          <a href="mailto:anddlecn@gmail.com" title="anddlecn@gmail.com" class="mail">anddlecn@gmail.com</a>
+          <span class="mail">QQ群：348702074</span><br/>
+          <span class="mail"></span>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                网站首页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第1章-创意/"  >
+                <i class="icon icon-lg icon-birthday-cake"></i>
+                第1章 创意
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第2章-设计原理/"  >
+                <i class="icon icon-lg icon-eyedropper"></i>
+                第2章 设计原理
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第3章-产品原型/"  >
+                <i class="icon icon-lg icon-flask"></i>
+                第3章 产品原型
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resources/"  >
+                <i class="icon icon-lg icon-download"></i>
+                资源下载
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://anddle.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                安豆主站
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/index.html"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">1 原型设计</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">1 原型设计</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-13T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>本节目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#原型设计"><span class="post-toc-text">原型设计</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#效果图与交互原型"><span class="post-toc-text">效果图与交互原型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设计工具"><span class="post-toc-text">设计工具</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-3_产品原型/1_原型设计"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">1 原型设计</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月13日 9:00" datetime="2017-01-13T01:00:00.000Z"  itemprop="datePublished">2017-01-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="原型设计"><a href="#原型设计" class="headerlink" title="原型设计"></a>原型设计</h1><p>通过前面几个章节，我们已经掌握了安卓系统<code>Material Design</code>设计的大致原则。接下来，我们开始尝试将这些原则和方式运用到实际的项目当中。</p>
+<h2 id="效果图与交互原型"><a href="#效果图与交互原型" class="headerlink" title="效果图与交互原型"></a>效果图与交互原型</h2><p>产品原型的设计又可以分成两个阶段，</p>
+<ol>
+<li><p>高保真效果图：这是产品的静态效果图，图纸上的设计效果与最后实际产品基本上是一模一样。产品中使用到的各种图标都可以从高保真效果图中截取出来使用（这里其实指的是使用<code>sketch</code>进行界面原型设计，它可以从效果图中提取图标素材）。</p>
+</li>
+<li><p>可以交互的原型产品：为了向产品的规划者（PM-产品经理）确认设计的正确性，同时向后继的开发人员展示正确的设计意图，设计师需要创建出一种能具有交互功能的原型产品。这种原型产品就像是一个已经开发完成了的最终产品，可以进行点击操作，具有互动性。</p>
+<p> 当然这毕竟只是一个“虚假”的产品，只是具备了展示的功能。</p>
+</li>
+</ol>
+<p>接着创意阶段的工作，需要我们将<code>天气应用</code>框线图的规划，变成一个像模像样的产品原型。设计师需要根据功能点，结合<code>Material Design</code>的设计里面，创造出一个让用户在视觉和交互上满意的产品。这种创造需要结合设计师的个人能力和经验。</p>
+<p>我们的<code>天气应用</code>很简单，它简化了很多的功能，按照原型设计的两个阶段，可以将他们设计成下面这个样子，</p>
+<ul>
+<li><p>高保真效果图：</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_app_static_effect_complete.png" width="250" alt=" sketch_weather_app_static_effect_complete"></div>
+</li>
+<li><p>可以交互的原型产品：</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_weather_app_complete.gif" width="300" alt=" origami_weather_app_complete"></div>
+
+</li>
+</ul>
+<p>假如设计师设计的产品交互方式，很容易被开发者理解，那么动态交互原型也是可以不用设计的。不过，为了更加全面的展示设计的具体过程，我们这里会首先设计一套<code>天气应用</code>的高保真效果图。然后在此基础上，设计一套可以互动的产品原型。</p>
+<p>这里我们的交互设计，参考了<code>Material Design</code>中<code>Appbar</code>可以上下滑动的效果，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/appbar_scroll_toolbar_txt.gif" width="300" alt=" appbar_scroll_toolbar_txt"></div>
+
+<h2 id="设计工具"><a href="#设计工具" class="headerlink" title="设计工具"></a>设计工具</h2><p>设计高保真的效果图时，我们选择采用了MacOS上才能使用的<code>Sketch</code>。这是一款付费软件，大家可以在它的<a href="https://www.sketchapp.com/" target="_blank" rel="external">官网</a>看到详细的信息。官网也提供了功能完善的<code>试用版</code>，作为初次的学习，大家可以通过它来练练手，实际的感受一下。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_website.png" width="500" alt=" sketch_website"></div>
+
+<p><code>Sketch</code>绝对是当今甚至未来几年应用程序界面设计行业中的主角，越来越多的设计师使用它来进行原型设计。</p>
+<p>它的优点有，</p>
+<ul>
+<li>体积小，运行时占用的资源少，性能高；</li>
+<li>可以从设计的效果图中，直接导出开发时需要使用的图片；</li>
+<li>导出的图片可以针对不同屏幕解析度的设备；</li>
+<li>内置了安卓系统、iOS系统常用的公共组件（例如状态栏、常用控件、屏幕标准尺寸），可以拿来就用，不必全部重新设计；</li>
+</ul>
+<hr>
+<p>设计可交互原型时，使用了<code>FaceBook</code>推出的<a href="http://origami.design/" target="_blank" rel="external"><code>Origami Studio</code></a>，它可以把我们的静态效果图，转化成一个可以交互的原型。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_website.png" width="500" alt=" origami_website"></div>
+
+<p>使用它有两个原因，</p>
+<ol>
+<li>这是一个免费的工具，有着强大的动画交互功能；</li>
+<li><code>Sketch</code>制作的原型文件，可以直接导入到<code>Origami Studio</code>当中，减少设计的工作量；</li>
+</ol>
+<p><code>Sketch</code>与<code>Origami Studio</code>一前一后互相配合，奠定了一个产品的牢固基石。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-03T01:59:31.000Z" itemprop="dateUpdated">2017年3月3日 9:59</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://book.anddle.com">
+            <img src="/img/avatar.png" alt="安豆">
+            安豆
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/1_原型设计/&title=《1 原型设计》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/1_原型设计/&title=《1 原型设计》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2_设计原理/9_界面模式/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">9 界面模式</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/3_产品原型/2_前期准备/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">2 前期准备</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            <span>本站内容均为原创内容，欢迎转载，但请务必注明出处</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>从设计到实现 &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/1_原型设计/&title=《1 原型设计》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/1_原型设计/&title=《1 原型设计》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMUlEQVR42u3ay26DMBAF0Pz/T1Opq1Yp+M6YVMI+XkWEBB8WI8/j9YrX8b3er/xc13cmv3q/fvPCwMB4LOO4XGebu75+fWf1pVzvDQMDYx9G9cEJI381yefBczEwMDA+vJUbAj0GBgZGMbDm/58kvRgYGBh5ElstruWb/tdcHAMD44GMmWLZpz9/sL+BgYHxEMYxsZJw2Qu15Z1gYGAszbh+zPwQRq9hcPY/gx1iYGBsw6imkcl2q9ebrxUDA2MDRvVzwu69iLwx8MfREAMDYzlGnqbmhbBr0swYx+lOMDAwtmFUi/LVEY2k3JYH99OAi4GBsQ2j1xjojXzNXMHAwNiB0TtZ9Y6S996PgYGxD2OmJZA0MvMwOpPQYmBgrM2YKaLND17MJM+D/gYGBsZCjGrKWj0a5vFwpo2KgYGxA6MXIj83Dpu8yl/7wcDAWJoxM2w6OG+2hjnyF3H6LQYGxqKMmXJYr/R/V+Mz6m9gYGAswZhJI/OHJfdHG83bAxgYGAsxkpZkLxDnCW0SfAf/g4GBsQGjOgDRC9bJsTLHDCZHMDAwFmLk262W8vPhsLsGPjAwMNZjHMWVwwbjEXE9P0qbMTAwlmZUxyDyK/n91TJcE4CBgfFwRm8kotdizAcpbii3YWBgLMeYKaIlW8xLbL3KPwYGBkYv4Oa/TVLZARsDAwMjflhy6Jw5CGJgYOzM6DUgq2G3mjAXjpIYGBhLM3qNgWpb8WituxJgDAyMxzK+APeJf63nW4CiAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261181710&web_id=1261181710')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>7 静态原型的更多天气信息 | 从设计到实现 | 手把手教你做android应用开发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="静态原型的更多天气信息天气的更多信息，是通过列表的形式展现的。
+
+
+参数设计
+
+列表项的高度在Material Design中，被定义成了48dp；并且整个list的顶部还有8dp的边距。
+列表项由3部分组成，
+
+图标：
+
+
+
+
+项目
+数值
+
+
+
+
+大小
+24dp
+
+
+左边距
+16dp
+
+
+位置
+垂直居中
+
+
+颜色
+#000000
+
+
+透明度
+54%
+
+
+
+
+项目名称：
+
+
+
+
+项目
+数值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="7 静态原型的更多天气信息">
+<meta property="og:url" content="http://book.anddle.com/3_产品原型/7_静态原型的更多天气信息/index.html">
+<meta property="og:site_name" content="从设计到实现">
+<meta property="og:description" content="静态原型的更多天气信息天气的更多信息，是通过列表的形式展现的。
+
+
+参数设计
+
+列表项的高度在Material Design中，被定义成了48dp；并且整个list的顶部还有8dp的边距。
+列表项由3部分组成，
+
+图标：
+
+
+
+
+项目
+数值
+
+
+
+
+大小
+24dp
+
+
+左边距
+16dp
+
+
+位置
+垂直居中
+
+
+颜色
+#000000
+
+
+透明度
+54%
+
+
+
+
+项目名称：
+
+
+
+
+项目
+数值">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_all_group_complete.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_spec.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sletch_list_row_bound_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_area.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sletch_list_row_icon_bound_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_icon_size_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_icon_color_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_icon_center_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_icon_bg_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_key_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_value_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_group.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_complete.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_all.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_all_group.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_all_group_complete.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_extend_hight.png">
+<meta property="og:updated_time" content="2017-03-03T01:59:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="7 静态原型的更多天气信息">
+<meta name="twitter:description" content="静态原型的更多天气信息天气的更多信息，是通过列表的形式展现的。
+
+
+参数设计
+
+列表项的高度在Material Design中，被定义成了48dp；并且整个list的顶部还有8dp的边距。
+列表项由3部分组成，
+
+图标：
+
+
+
+
+项目
+数值
+
+
+
+
+大小
+24dp
+
+
+左边距
+16dp
+
+
+位置
+垂直居中
+
+
+颜色
+#000000
+
+
+透明度
+54%
+
+
+
+
+项目名称：
+
+
+
+
+项目
+数值">
+<meta name="twitter:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_all_group_complete.png">
+    
+        <link rel="alternative" href="/atom.xml" title="从设计到实现" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">安豆</h5>
+          <a href="mailto:anddlecn@gmail.com" title="anddlecn@gmail.com" class="mail">anddlecn@gmail.com</a>
+          <span class="mail">QQ群：348702074</span><br/>
+          <span class="mail"></span>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                网站首页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第1章-创意/"  >
+                <i class="icon icon-lg icon-birthday-cake"></i>
+                第1章 创意
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第2章-设计原理/"  >
+                <i class="icon icon-lg icon-eyedropper"></i>
+                第2章 设计原理
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第3章-产品原型/"  >
+                <i class="icon icon-lg icon-flask"></i>
+                第3章 产品原型
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resources/"  >
+                <i class="icon icon-lg icon-download"></i>
+                资源下载
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://anddle.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                安豆主站
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/index.html"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">7 静态原型的更多天气信息</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">7 静态原型的更多天气信息</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-19T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-19
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>本节目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#静态原型的更多天气信息"><span class="post-toc-text">静态原型的更多天气信息</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#参数设计"><span class="post-toc-text">参数设计</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加列表项区域"><span class="post-toc-text">添加列表项区域</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加图标"><span class="post-toc-text">添加图标</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加项目名称"><span class="post-toc-text">添加项目名称</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加项目取值"><span class="post-toc-text">添加项目取值</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#列表项组合"><span class="post-toc-text">列表项组合</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加多个列表项"><span class="post-toc-text">添加多个列表项</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-3_产品原型/7_静态原型的更多天气信息"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">7 静态原型的更多天气信息</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月19日 9:00" datetime="2017-01-19T01:00:00.000Z"  itemprop="datePublished">2017-01-19</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="静态原型的更多天气信息"><a href="#静态原型的更多天气信息" class="headerlink" title="静态原型的更多天气信息"></a>静态原型的更多天气信息</h1><p>天气的更多信息，是通过列表的形式展现的。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_all_group_complete.png" width="300" alt=" sketch_list_all_group_complete"></div>
+
+<h2 id="参数设计"><a href="#参数设计" class="headerlink" title="参数设计"></a>参数设计</h2><div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_spec.png" width="400" alt=" sketch_list_spec"></div>
+
+<p>列表项的高度在<code>Material Design</code>中，被定义成了<code>48dp</code>；并且整个<code>list</code>的顶部还有<code>8dp</code>的边距。</p>
+<p>列表项由3部分组成，</p>
+<ul>
+<li>图标：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目</th>
+<th style="text-align:center">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">大小</td>
+<td style="text-align:center">24dp</td>
+</tr>
+<tr>
+<td style="text-align:center">左边距</td>
+<td style="text-align:center">16dp</td>
+</tr>
+<tr>
+<td style="text-align:center">位置</td>
+<td style="text-align:center">垂直居中</td>
+</tr>
+<tr>
+<td style="text-align:center">颜色</td>
+<td style="text-align:center">#000000</td>
+</tr>
+<tr>
+<td style="text-align:center">透明度</td>
+<td style="text-align:center">54%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>项目名称：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目</th>
+<th style="text-align:center">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">字体</td>
+<td style="text-align:center">Noto</td>
+</tr>
+<tr>
+<td style="text-align:center">字形</td>
+<td style="text-align:center">Regular</td>
+</tr>
+<tr>
+<td style="text-align:center">大小</td>
+<td style="text-align:center">16sp</td>
+</tr>
+<tr>
+<td style="text-align:center">颜色</td>
+<td style="text-align:center">#000000</td>
+</tr>
+<tr>
+<td style="text-align:center">透明度</td>
+<td style="text-align:center">87%</td>
+</tr>
+<tr>
+<td style="text-align:center">左边距</td>
+<td style="text-align:center">72dp</td>
+</tr>
+<tr>
+<td style="text-align:center">位置</td>
+<td style="text-align:center">垂直居中</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>项目取值（参考）：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目</th>
+<th style="text-align:center">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">字体</td>
+<td style="text-align:center">Noto</td>
+</tr>
+<tr>
+<td style="text-align:center">字形</td>
+<td style="text-align:center">Regular</td>
+</tr>
+<tr>
+<td style="text-align:center">大小</td>
+<td style="text-align:center">14sp</td>
+</tr>
+<tr>
+<td style="text-align:center">颜色</td>
+<td style="text-align:center">#000000</td>
+</tr>
+<tr>
+<td style="text-align:center">透明度</td>
+<td style="text-align:center">54%</td>
+</tr>
+<tr>
+<td style="text-align:center">右边距</td>
+<td style="text-align:center">16dp</td>
+</tr>
+<tr>
+<td style="text-align:center">位置</td>
+<td style="text-align:center">垂直居中</td>
+</tr>
+</tbody>
+</table>
+<p><em>注意：以上的数据都在<code>Material Design</code>的文档<a href="https://material.io/guidelines/components/lists.html" target="_blank" rel="external">List</a>当中有明确的定义。</em></p>
+<h2 id="添加列表项区域"><a href="#添加列表项区域" class="headerlink" title="添加列表项区域"></a>添加列表项区域</h2><p>创建一个360dp*48dp的矩形区域-<code>row bound</code>，作为第一条数据项使用的空间，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sletch_list_row_bound_settings.png" width="600" alt=" sletch_list_row_bound_settings"></div>
+
+<p><em>注意：<code>list</code>的顶部<code>8dp</code>边距，这里还没有加上。因为我准备在添加完成所有的列表项后，再做整体的移动。</em></p>
+<h2 id="添加图标"><a href="#添加图标" class="headerlink" title="添加图标"></a>添加图标</h2><p>系统图标的尺寸是<code>24dp</code>的正方形，但是最外一圈还要有<code>2dp</code>的边距，所以真正的图标内容是局限在一个20dp*20dp的区域内的。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_area.png" width="200" alt=" system_icon_area"></div>
+
+<p>首先，</p>
+<ol>
+<li>创建一个24dp*24dp的矩形-<code>icon bound</code>；</li>
+<li>放到距<code>row bound</code>左边距<code>16dp</code>的位置；</li>
+<li>让它垂直居中；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sletch_list_row_icon_bound_settings.png" width="600" alt=" sletch_list_row_icon_bound_settings"></div>
+
+<p>然后，</p>
+<ol>
+<li><p>从事先准备好的资源文件中，找到<code>风力.svg</code>，拖入到<code>Sketch</code>的<code>工作区域</code>；调整图片大小为<code>20dp*20dp</code>;</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_icon_size_settings.png" width="600" alt=" sketch_list_row_icon_size_settings"></div>
+</li>
+<li><p>颜色设置成<code>#000000</code>，透明度<code>54%</code>；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_icon_color_settings.png" width="600" alt=" sketch_list_row_icon_color_settings"></div>
+</li>
+<li><p>将其放置于<code>icon bound</code>的中心位置；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_icon_center_settings.png" width="600" alt=" sketch_list_row_icon_center_settings"></div>
+</li>
+<li><p>删除<code>icon bound</code>的背景色和边线；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_icon_bg_settings.png" width="100" alt=" sketch_list_row_icon_bg_settings"></div>
+
+</li>
+</ol>
+<h2 id="添加项目名称"><a href="#添加项目名称" class="headerlink" title="添加项目名称"></a>添加项目名称</h2><p>在<code>row bound</code>的区域内，</p>
+<ol>
+<li>添加<code>风力</code>文字；</li>
+<li>设置左边距为<code>72dp</code>；</li>
+<li>字体为<code>Noto</code>，大小为<code>16sp</code>，字形是<code>Regular</code>；</li>
+<li>字体颜色设置成<code>#000000</code>，透明度为<code>87%</code>；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_key_settings.png" width="600" alt=" sketch_list_row_key_settings"></div>
+
+<h2 id="添加项目取值"><a href="#添加项目取值" class="headerlink" title="添加项目取值"></a>添加项目取值</h2><p>在<code>row bound</code>的区域内，</p>
+<ol>
+<li>添加<code>3级</code>文字；</li>
+<li>设置右边距为<code>16dp</code>；</li>
+<li>字体为<code>Noto</code>，大小为<code>14sp</code>，字形是<code>Regular</code>；</li>
+<li>字体颜色设置成<code>#000000</code>，透明度为<code>54%</code>；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_value_settings.png" width="600" alt=" sketch_list_row_value_settings"></div>
+
+<h2 id="列表项组合"><a href="#列表项组合" class="headerlink" title="列表项组合"></a>列表项组合</h2><p>将<code>风力</code>文字、<code>风力</code>图标、<code>3级</code>、<code>row bound</code>、<code>icon bound</code>组合成一个新的组件<code>风力</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_group.png" width="200" alt=" sketch_list_row_group"></div>
+
+<p>最后把<code>row bound</code>的背景色和边线移除掉，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_complete.png" width="300" alt=" sketch_list_row_complete"></div>
+
+<h2 id="添加多个列表项"><a href="#添加多个列表项" class="headerlink" title="添加多个列表项"></a>添加多个列表项</h2><p>复制粘贴第一个列表项，把剩余的项目以此添加到画板当中，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_all.png" width="500" alt=" sketch_list_all"></div>
+
+<p>之后将它们组合成一个组件-<code>More info</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_all_group.png" width="300" alt=" sketch_list_all_group"></div>
+
+<p>最后再整体把<code>More info</code>向下移动<code>8dp</code>，使之符合<code>List</code>的设计规范，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_all_group_complete.png" width="300" alt=" sketch_list_all_group_complete"></div>
+
+<p>这里有个技巧：在制作列表的时候，会发现数据已经超出了手机屏幕的高度，这时候，可以把<code>Mobile Portrait</code>的高度扩展到足以容纳的尺寸，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_extend_hight.png" width="600" alt=" sketch_list_extend_hight"></div>
+
+<hr>
+<p>至此，整个主要界面的设计就完成了。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-03T01:59:31.000Z" itemprop="dateUpdated">2017年3月3日 9:59</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://book.anddle.com">
+            <img src="/img/avatar.png" alt="安豆">
+            安豆
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/7_静态原型的更多天气信息/&title=《7 静态原型的更多天气信息》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/7_静态原型的更多天气信息/&title=《7 静态原型的更多天气信息》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/3_产品原型/6_静态原型的天气详情/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">6 静态原型的天气详情</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/3_产品原型/8_静态原型的Appbar折叠/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">8 静态原型的Appbar折叠</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            <span>本站内容均为原创内容，欢迎转载，但请务必注明出处</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>从设计到实现 &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/7_静态原型的更多天气信息/&title=《7 静态原型的更多天气信息》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/7_静态原型的更多天气信息/&title=《7 静态原型的更多天气信息》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuUlEQVR42u3aQW7DMAwEwP7/0ynQU4s2zpIU3RzGp8AxbI0DSMxSHx/x8fg6fp/5fv4RHM/ueX3Ns2+PHXh4eHitoV8P6Nmtr4eYfE5eaPVV4uHh4d3DSx7Qm4evh1u9Ph8zHh4e3jvwqoVyzr4+n79uPDw8vHfj5eXv5NtJUY6Hh4d3Jy8pcPOYtRol9HiHsxY8PDy8mFdtgL3D58X+Hh4eHt6gq95rjCVRRe8O5RHi4eHhLfCuy+U7t2FtNMPw8PDwNni9YDQPGs6GCEmc8eNKPDw8vDVe9Q9/Xl4nbbZ86OWgGQ8PD2+Zl8cHk+FW09fJeTw8PLw9XnXazYeelOP5605e8R8LAx4eHt5RXrXb3iuIR9uhBq01PDw8vA1eFIbGIW++kOQFffX3ebEzAg8PD+8orzet5+wcPIk28PDw8LZ5vSk4n5rzbQe97Vb5C8LDw8M7y8uj0l4TK2+zVaPe6BXg4eHhLfCaW5oGj8ybW72Ao/C+8fDw8Iq8XnE8aWjlg+vFDXh4eHh38vLC987G2GhjAR4eHt4ar7pLqxocNNtU42gYDw8Pb4OXD7da7ObRQx4TV9tpeHh4eHu8aiM/jyfm1GM7I/Dw8PCO8k7dKN8+NYmJq9EGHh4e3gYvKVt7U3w1OMhDinzRwsPDw9vj9UrkXntsUnBXn4KHh4e3was2sapLQu/6HriQUuPh4eGNecmmq2rLqrcxq7CaJXfDw8PDO8p7FI9qaNuLNibtt8LvhoeHh9fi9abdU//058X0ZLnCw8PDm/DySTnfqpUsBnlQO9lqgIeHh7fHyyf9anDQu/5w1oKHh4f3r7xkKMnSkj83b6q92G6Fh4eHdzsvL2SrBXoyhvy5eHh4ePfweg2tZHlIpvjJcnIsa8HDw8Ob/rsvT9DVbQd5GJE8pdnZw8PDw6vxPgFW3GnOnRembwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261181710&web_id=1261181710')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+
+</body>
+</html>

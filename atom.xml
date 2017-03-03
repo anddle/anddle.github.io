@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://book.anddle.com/"/>
-  <updated>2017-02-17T03:11:28.000Z</updated>
+  <updated>2017-03-03T01:59:31.000Z</updated>
   <id>http://book.anddle.com/</id>
   
   <author>
@@ -14,6 +14,1338 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>10 资源的创建</title>
+    <link href="http://book.anddle.com/3_%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/10_%E8%B5%84%E6%BA%90%E7%9A%84%E5%88%9B%E5%BB%BA/"/>
+    <id>http://book.anddle.com/3_产品原型/10_资源的创建/</id>
+    <published>2017-01-22T01:00:00.000Z</published>
+    <updated>2017-03-03T01:59:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="资源的创建"><a href="#资源的创建" class="headerlink" title="资源的创建"></a>资源的创建</h1><p>界面原型已经设计完成了。不过离最后交付给开发人员开发还差一步：产品中使用的图片还没有准备好呢？</p>
+<p>设计师除了产品原型还要交付哪些资源呢？开发者最关心的资源就是应用中会使用到的各种图标资源和配色方案。</p>
+<p>在<code>天气预报</code>应用当中，我们已经确定好了界面的主要颜色，</p>
+<table>
+<thead>
+<tr>
+<th>颜色项目</th>
+<th>颜色名称</th>
+<th>颜色RGB值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary Color</td>
+<td>Indigo 500</td>
+<td>#3F51B5</td>
+</tr>
+<tr>
+<td>Primary Dark Color</td>
+<td>Indigo 700</td>
+<td>#303F9F</td>
+</tr>
+<tr>
+<td>Accent Color</td>
+<td>Amber 500</td>
+<td>#FFC107</td>
+</tr>
+</tbody>
+</table>
+<p>现在就剩下各种图标了。这些图标包括了，</p>
+<ol>
+<li><p>系统图标：显示<code>更多信息</code>时使用到的，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/create_system_icon.png" width="300" alt=" create_system_icon"></div>
+</li>
+<li><p>天气图标：包括使用到的<code>小图标</code>，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/create_weather_icon_small.png" width="300" alt=" create_weather_icon_small"></div>
+
+<p> 使用到的<code>大图标</code>，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/create_weather_icon_large.png" width="300" alt=" create_weather_icon_large"></div>
+</li>
+<li><p>应用图标：应用的主图标，放在启动界面使用的图标，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/weather_app_icon.png" width="200" alt=" weather_app_icon"></div>
+
+</li>
+</ol>
+<h2 id="图标的尺寸"><a href="#图标的尺寸" class="headerlink" title="图标的尺寸"></a>图标的尺寸</h2><p>不同使用场景的图标，尺寸是不同，前面的章节中我们已经讲述了<code>系统图标</code> <code>应用图标</code>的标准尺寸。</p>
+<p>根据屏幕像素密度的不同，需要设计对应大小的图标。这样一来，就能够确保在特定类型的密度屏幕上，图标能够显示的清晰。</p>
+<table>
+<thead>
+<tr>
+<th>像素密度类型</th>
+<th>像素密度大小</th>
+<th>与Baseline比值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mdpi</td>
+<td>160</td>
+<td>1</td>
+</tr>
+<tr>
+<td>hdpi</td>
+<td>240</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>xhdpi</td>
+<td>320</td>
+<td>2</td>
+</tr>
+<tr>
+<td>xxhpi</td>
+<td>480</td>
+<td>3</td>
+</tr>
+<tr>
+<td>xxxhpi</td>
+<td>640</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p><em>安卓使用<code>dpi</code>为160的数值作为一个基准－－<code>baseline</code>。</em></p>
+<p>为了达到最优秀的显示效果，我们最理想的情况下是为每个不同的屏幕类型设计对应的图标。不过实际情况中却并不一定需要对应每个尺寸，因为</p>
+<ol>
+<li><p>如果涉及的图标很多，各种类型的图标都做全部的配套设计一定会增加应用的体积；</p>
+</li>
+<li><p>假如缺少某个屏幕类型（例如mdpi）的图标a时，系统会去寻找a对应的高分辨率图标A，把A转化成合适的尺寸（a与A都是同一个图标的不同尺寸版本，a尺寸小，A尺寸大）。这里唯一的代价是：在使用图标时，系统需要自动做额外的尺寸转化；</p>
+</li>
+</ol>
+<h2 id="系统图标"><a href="#系统图标" class="headerlink" title="系统图标"></a>系统图标</h2><p>系统图标的大小是24dp*24dp，对于<code>mdpi</code>的屏幕，我们就需要截取24px*24px大小的图标。</p>
+<h3 id="Sketch导出"><a href="#Sketch导出" class="headerlink" title="Sketch导出"></a>Sketch导出</h3><p>如果使用<code>Sketch</code>开发出了静态原型，那么从里面<code>抓取</code>系统图标就非常的方便了，</p>
+<ol>
+<li><p>点击<code>工具栏</code>上的<code>insert -&gt; S</code>（或者按快捷键S），</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_slice_system_icon.png" width="200" alt=" sketch_slice_system_icon"></div>
+</li>
+<li><p>用<code>小刀</code>在要截取图标的位置切片，并将切出的片子，重新命名成<code>ic_wind_level</code>,</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_slice_system_icon_settings1.png" width="600" alt=" sketch_slice_system_icon_settings1"></div>
+
+<p> 可以看到右上方的<code>尺寸栏</code>显示的是24/*24的大小，<code>设置区域</code>下方的截取效果图也呈现了出来。</p>
+</li>
+</ol>
+<p>接下来就是导出图片了，</p>
+<ol>
+<li><p>选中<code>ic_wind_level</code>，点击<code>Export</code>旁的按钮，以此添加<code>1x 2x 3x 1.5x 4x</code>，给要导出的图片设置导出后的放大倍率。<code>1x</code>表示<code>1:1</code>导出，<code>2x</code>表示放大2倍导出，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_slice_system_icon_settings2.png" width="250" alt=" sketch_slice_system_icon_settings2"></div>
+
+<p> 导出的格式都设置成<code>PNG</code>格式的图片。这种图片是安卓系统标准支持的图片格式，能够携带透明的信息。</p>
+</li>
+<li><p>不要勾选背景颜色，让整个图片除了图案以外，都呈透明的状态；选择<code>Export ic_wind_level</code>，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_slice_system_icon_settings3.png" width="250" alt=" sketch_slice_system_icon_settings3"></div>
+
+</li>
+</ol>
+<p>导出结果如下，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_slice_system_icon_export.png" width="250" alt=" sketch_slice_system_icon_export"></div>
+
+<table>
+<thead>
+<tr>
+<th>像素密度类型</th>
+<th>与Baseline比值</th>
+<th>实际像素</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mdpi</td>
+<td>1</td>
+<td>24px</td>
+</tr>
+<tr>
+<td>hdpi</td>
+<td>1.5</td>
+<td>36px</td>
+</tr>
+<tr>
+<td>xhdpi</td>
+<td>2</td>
+<td>48px</td>
+</tr>
+<tr>
+<td>xxhpi</td>
+<td>3</td>
+<td>72px</td>
+</tr>
+<tr>
+<td>xxxhpi</td>
+<td>4</td>
+<td>96px</td>
+</tr>
+</tbody>
+</table>
+<p>其他图标的导出和产生这个图标的方式类似。</p>
+<h3 id="第三方工具导出"><a href="#第三方工具导出" class="headerlink" title="第三方工具导出"></a>第三方工具导出</h3><p>如果不使用<code>Sketch</code>也可以通过其他工具生成图标。例如<a href="http://romannurik.github.io/AndroidAssetStudio/" target="_blank" rel="external"><code>Android Studio Asset</code></a>的<code>Generic icons</code>功能。</p>
+<ol>
+<li>通过<code>IMAGE</code>方式，将事先准备好的<code>风力.svg</code>矢量图，加载到工具当中；</li>
+<li><code>Size</code>选择<code>20dp</code>，<code>Padding</code>选择<code>2dp</code>，这样最后的图标就是<code>24pd*24dp</code>的了；</li>
+<li><code>Color</code>选择成黑色，透明度为<code>54%</code>；</li>
+<li>点击<code>DOWNLOAD .ZIP</code>;</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/asset_studio_create_system_icon.png" width="400" alt=" asset_studio_create_system_icon"></div>
+
+<p>下载解压后，得到了对应的图标资源，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/asset_studio_download_result.png" width="500" alt=" asset_studio_download_result"></div>
+
+<p>其他图标的产生和产生这个图标的方式类似。</p>
+<h2 id="天气图标"><a href="#天气图标" class="headerlink" title="天气图标"></a>天气图标</h2><p><code>天气图标</code>的导出与系统图标的导出几乎完全一样，只是尺寸和颜色稍有不同。</p>
+<p>在导出的时候要注意<code>天气图标</code>有两种不同的大小，一种使用到<code>Weather details</code>上面，显示大的天气图标；另一种使用到<code>forcast</code>当中，显示小的天气图标。</p>
+<table>
+<thead>
+<tr>
+<th>图标类型</th>
+<th>宽度</th>
+<th>高度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>大图标</td>
+<td>120dp</td>
+<td>100dp</td>
+</tr>
+<tr>
+<td>小图标</td>
+<td>30dp</td>
+<td>30dp</td>
+</tr>
+</tbody>
+</table>
+<p>两种图标都可以通过<code>Sketch</code>切图得到，也可以通过<code>Android Asset Studio</code>来生成。</p>
+<h2 id="应用图标"><a href="#应用图标" class="headerlink" title="应用图标"></a>应用图标</h2><p>应用图标也可以通过<code>Sketch</code>创建，不过我这里就简化了这方面的设计，直接使用<a href="http://romannurik.github.io/AndroidAssetStudio" target="_blank" rel="external">Android Asset Studio</a>的<code>Launcher icons</code>，创建应用图标，</p>
+<ol>
+<li>通过<code>IMAGE</code>方式，将事先准备好的<code>应用启动图标.svg</code>矢量图，加载到工具当中；</li>
+<li><code>Padding</code>选择<code>45%</code>，调整到合适的比例就行；</li>
+<li><code>Color</code>选择成白色，透明度为<code>100%</code>；</li>
+<li><code>Shape</code>选择成<code>SQUARE</code>正方形；</li>
+<li><code>Background</code>选择成<code>Primary Color</code>-<code>#3F51B5</code></li>
+<li>点击<code>DOWNLOAD .ZIP</code>;</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/asset_studio_create_app_icon.png" width="500" alt=" asset_studio_create_app_icon"></div>
+
+
+<p>下载解压后，得到了对应的图标资源，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/asset_studio_create_app_icon_download_result.png" width="350" alt=" asset_studio_create_app_icon_download_result"></div>
+
+<hr>
+<p>至此，图片资源的导出就完成了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;资源的创建&quot;&gt;&lt;a href=&quot;#资源的创建&quot; class=&quot;headerlink&quot; title=&quot;资源的创建&quot;&gt;&lt;/a&gt;资源的创建&lt;/h1&gt;&lt;p&gt;界面原型已经设计完成了。不过离最后交付给开发人员开发还差一步：产品中使用的图片还没有准备好呢？&lt;/p&gt;
+&lt;p&gt;设计师
+    
+    </summary>
+    
+      <category term="第3章-产品原型" scheme="http://book.anddle.com/categories/%E7%AC%AC3%E7%AB%A0-%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>9 Origami动态原型设计</title>
+    <link href="http://book.anddle.com/3_%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/9_Origami%E5%8A%A8%E6%80%81%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/"/>
+    <id>http://book.anddle.com/3_产品原型/9_Origami动态原型设计/</id>
+    <published>2017-01-21T01:00:00.000Z</published>
+    <updated>2017-03-03T01:59:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="动态原型设计"><a href="#动态原型设计" class="headerlink" title="动态原型设计"></a>动态原型设计</h1><p>动态的可交互原型产品，是产品经理和界面设计师向开发人员阐释自己设计的最高效工具。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_weather_app_complete.gif" width="300" alt=" origami_weather_app_complete"></div>
+
+<p>开发者不需要猜测设计师要什么样的效果，照着原型产品做就好了。</p>
+<p>很多创业团队也发现了产品人的这个刚需，做出了诸如<a href="http://principleformac.com/" target="_blank" rel="external"><code>Principle</code></a>、<a href="https://www.axure.com/" target="_blank" rel="external"><code>Axure</code></a>这类著名的原型设计产品。</p>
+<p><code>Facebook</code>似乎也深谙此道，专门为安卓和iOS系统开发很有针对性的交互原型设计工具-<a href="http://origami.design/" target="_blank" rel="external"><code>Origami Studio</code></a>。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_website.png" width="500" alt=" sketch_website"></div>
+
+<p>这是一个免费的工具，而且也能和<code>Sketch</code>互通，所以我选择了它来向大家讲解互动原型的设计。</p>
+<h2 id="界面介绍"><a href="#界面介绍" class="headerlink" title="界面介绍"></a>界面介绍</h2><p>启动<code>Origami Studio</code>后，可以看到类似如下界面，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_launched.png" width="500" alt=" origami_launched"></div>
+
+<ol>
+<li><p>悬浮在外的区域是虚拟手机屏幕。用户可以通过点击、拖动来模拟各种屏幕操作;</p>
+</li>
+<li><p>底部的暗色区域是工作区域。用来设置用户操作屏幕后，界面元素的各种响应方式；</p>
+</li>
+<li><p>右边的亮色区域是界面组件区域。展示了组成界面的各个元素，里面的布局方式，通过虚拟屏幕实时展示了出来；</p>
+</li>
+</ol>
+<p>点击虚拟屏幕右上方的<code>摄像机</code>按钮，可以将屏幕上的内容录制下来，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_virtual_screen.png" width="250" alt=" origami_virtual_screen"></div>
+
+<h2 id="创建屏幕界面"><a href="#创建屏幕界面" class="headerlink" title="创建屏幕界面"></a>创建屏幕界面</h2><p>对于新创建的项目，整个工程都是空的，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_empty_project.png" width="500" alt=" origami_empty_project"></div>
+
+<p>我们可以通过菜单栏的<code>+</code>，为界面添加各种组件，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_layer.png" width="300" alt=" origami_add_layer"></div>
+
+<p>也可以直接将<code>Sketch</code>中的图形，通过<code>复制粘贴</code>的方式，直接添加到组件区域。</p>
+<ol>
+<li><p>通过<code>Phone -&gt; Nexus 5</code>将虚拟设备的屏幕，设置成<code>Nexus 5</code>- 安卓设备；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_change_screen.png" width="300" alt=" origami_change_screen"></div>
+</li>
+<li><p>将组件区域中<code>Color Fill</code>的背景色修改成<code>白色</code>，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_change_screen_color.png" width="300" alt=" origami_change_screen_color"></div>
+
+
+</li>
+</ol>
+<p>然后，打开上一章节中<code>Sketch</code>设计的静态高保真原型，</p>
+<ol>
+<li>选中<code>Weather</code>页面的<code>展开</code>画板，使用<code>cmd + c</code>（复制）；</li>
+<li>切换到<code>Origami Studio</code>，<code>cmd + v</code>（粘贴）；</li>
+</ol>
+<p>整个界面就导入完成了，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/orgami_load_complete.png" width="500" alt=" orgami_load_complete"></div>
+
+<p>所以我之前说，使用<code>Sketch</code>进行界面设计可以事半功倍，它与<code>Origami Studio</code>配合的非常好。</p>
+<h2 id="设置滑动区域"><a href="#设置滑动区域" class="headerlink" title="设置滑动区域"></a>设置滑动区域</h2><p>当用户滑动<code>Content</code>区域的时候，该区域要能够跟随手指，向上滑动。这里就有2个要点，</p>
+<ol>
+<li>滑动<code>Content</code>区域：要能够感知到这个区域被滑动；</li>
+<li><code>Content</code>区域跟随滑动：滑动的位移能够作为输入，实时的影响<code>Content</code>区域的位置；</li>
+</ol>
+<h3 id="感知交互"><a href="#感知交互" class="headerlink" title="感知交互"></a>感知交互</h3><p>组件旁边有个<code>touch</code>按钮，点击后会出现该组件可能会接收到的各种触控方式。在本例中，我们是需要感知<code>Content</code>组件垂直方向上的滑动，所以选择<code>ScrollY</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_content_y_scroll_detect.png" width="300" alt=" origami_content_y_scroll_detect"></div>
+
+<p>此时，<code>工作区域</code>和<code>虚拟屏幕</code>都发生了变化，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_content_add_y_scroll_detect.png" width="600" alt=" origami_content_add_y_scroll_detect"></div>
+
+<p><code>Content</code>区域的位置发生了变化，被“顶”到了整个屏幕的最上面。这是为什么呢？因为<code>Content</code>区域的Y坐标被修改成了<code>0</code>。</p>
+<p>在紫色的<code>Scroll</code>框图中，<code>Content Layer</code>被指定成了<code>Content</code>，说明需要关注<code>Content</code>的滑动。<code>Y</code>坐标的变化将被输出到蓝色框图代表的<code>Content</code>区域，修改它的<code>Y</code>坐标。</p>
+<p>因此，当框图被这样组合之后，我们没有触控<code>Content</code>区域，<code>Content</code>的<code>Y</code>轴就没有滑动，因此输出就为<code>0</code>。<code>0</code>作为<code>Content</code>区域的新位置，就将其<code>顶</code>到了屏幕的最上方。</p>
+<p>因此，我这里可以给出一个小技巧来避免这种错误的<code>置顶</code>效果，</p>
+<ol>
+<li><p>给<code>Content</code>添加一个壳-<code>Group</code>（<code>+ -&gt; group</code>），将<code>Content</code>包裹在里面(通过拖动<code>Content</code>到<code>Group</code>中实现)；</p>
+</li>
+<li><p><code>Group</code>的尺寸从屏幕的顶端开始计算，占据整个屏幕；</p>
+</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_content_wraper.png" width="300" alt=" origami_add_content_wraper"></div>
+
+<p>然后再给<code>Group</code>添加响应，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_content_wraper_detect.png" width="600" alt=" origami_add_content_wraper_detect"></div>
+
+<p>可以看到，现在<code>虚拟屏幕</code>上的界面就没有变形了。在屏幕上进行拖动，<code>Content</code>区域就可以随着<code>Y</code>轴的偏移，而实时的修改自己的<code>Y</code>坐标，达到互动的效果，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_content_wraper_scroll1.gif" width="600" alt=" origami_content_wraper_scroll"></div>
+
+<p><code>Content</code>滑动的过程中，<code>Weather detail</code>，也需要随着向上滑动，并隐藏起来。</p>
+<p>有了上面处理<code>Content</code>的经验，我们就知道需要如何处理<code>Weather detail</code>的滑动了。</p>
+<ol>
+<li><p>给<code>Weather detail</code>添加一个壳-<code>Group</code>，将<code>Weather detail</code>包裹在里面；</p>
+</li>
+<li><p><code>Group</code>的尺寸从屏幕的顶端开始计算，占据整个屏幕；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_weather_detail_wraper.png" width="300" alt=" origami_add_weather_detail_wraper"></div>
+</li>
+<li><p>鼠标按住紫色框图<code>Y</code>字符的位置，拖住不放，连接到<code>组件</code>区域上方的<code>Y</code>坐标处，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_weather_detail_scroll.png" width="600" alt=" origami_add_weather_detail_scroll"></div>
+
+<p> <code>工作区域</code>就会自动添加紫色框图到新<code>Group</code>的连接，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_add_weather_detail_scroll_result.png" width="600" alt=" origami_add_weather_detail_scroll_result"></div>
+
+</li>
+</ol>
+<p><em>注意：这种拖拽端点到属性值的方法贯穿了使用<code>Origami Studio</code>的各个地方，是非常核心的操作方式。</em></p>
+<p>此时滑动界面的时候，<code>Weather detail</code>也会跟着滑动了，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_weather_detail_scroll_complete.gif" width="300" alt=" origami_weather_detail_scroll_complete"></div>
+
+<p>这时可以看到，状态栏被挡住了。解决的办法很简单，只要在<code>组件区域</code>，把<code>Statusbar</code>拖动到最上面的位置就可以了，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_statusbar_adjust.png" width="200" alt=" origami_statusbar_adjust"></div>
+
+<h2 id="标题的变化"><a href="#标题的变化" class="headerlink" title="标题的变化"></a>标题的变化</h2><p>现在开始加入标题-<code>成都</code>的变化。</p>
+<p>把<code>成都</code>从<code>Weather detail</code>中剥离出来，便于全局的控制，进行如下设置，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_location_adjust.png" width="600" alt=" origami_location_adjust"></div>
+
+<p>在界面滑动的过程中，字体的大小和<code>X Y</code>坐标都要发生变化，说明需要找到内容区域<code>Y</code>轴滑动时的比例，然后让<code>成都</code>元素的对应属性发生变化。</p>
+<p>滑动变化有自己的百分比：（当前值-原始值／变化范围）* 100% = 变化的百分比</p>
+<p>原始值：0  变化范围：-245（245是<code>Weather detail</code>的高度）</p>
+<p><code>成都</code>文字的属性变化范围是：</p>
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>属性起始值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X坐标</td>
+<td>24 -&gt; 16</td>
+</tr>
+<tr>
+<td>Y坐标</td>
+<td>244 -&gt; 38</td>
+</tr>
+<tr>
+<td>字体大小</td>
+<td>34 -&gt; 20</td>
+</tr>
+</tbody>
+</table>
+<p>在<code>Origami Studio</code>中确定变化范围，需要使用<code>Progress patch</code>（到底什么是<code>patch</code>，会在后面介绍）。</p>
+<p>在<code>工作区域</code>双击，弹出<code>patch</code>选择框，找到<code>Progress</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_load_progress_patch.png" width="400" alt=" origami_load_progress_patch"></div>
+
+<p>修改<code>Progress patch</code>的<code>Start value</code>为<code>0</code>，<code>End value</code>为<code>-245</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_progress_patch_settings.png" width="500" alt=" origami_progress_patch_settings"></div>
+
+<p>开始修改<code>成都</code>文字的<code>Y</code>坐标。</p>
+<ol>
+<li>在<code>Progress path</code>之后，添加一个<code>Transition patch</code>；</li>
+<li><code>Start</code>为244，<code>End</code>为38；</li>
+<li>将<code>Transition patch</code>的输出，通过拖拽的方式，连线到<code>成都</code>元素的<code>Y</code>坐标值的位置；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_title_y_settings.png" width="600" alt=" origami_title_y_settings"></div><br>开始修改<code>成都</code>文字的<code>X</code>坐标。<br><br>1. 在<code>Progress path</code>之后，添加一个<code>Transition patch</code>；<br>2. <code>Start</code>为24，<code>End</code>为16；<br>3. 将<code>Transition patch</code>的输出，通过拖拽的方式，连线到<code>成都</code>元素的<code>X</code>坐标值的位置；<br><br><div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_title_x_settings.png" width="600" alt=" origami_title_x_settings"></div>
+
+<p>开始修改<code>成都</code>文字的字体大小。</p>
+<ol>
+<li>在<code>Progress path</code>之后，添加一个<code>Transition patch</code>；</li>
+<li><code>Start</code>为34，<code>End</code>为20；</li>
+<li>将<code>Transition patch</code>的输出，通过拖拽的方式，连线到<code>成都</code>元素字体大小的位置；</li>
+</ol>
+<h2 id=""><a href="#" class="headerlink" title=""></a><div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_title_fontsize_settings.png" width="600" alt=" origami_title_fontsize_settings"></div></h2><p>至此，我们可以看到滑动时，标题变化的雏形了，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_title_scoll_complete.gif" width="300" alt=" origami_title_scoll_complete"></div>
+
+<h2 id="滑动的范围"><a href="#滑动的范围" class="headerlink" title="滑动的范围"></a>滑动的范围</h2><p>上下滑动时，内容是收到了局限的，只能在一定区域内滑动。所以要给目前的设计增加一个滑动限制。</p>
+<ol>
+<li>添加一个叫做<code>Clip patch</code>过滤器；</li>
+<li>将它允许输出的最小值<code>Min</code>设置成<code>-245</code>（也就是<code>Weather detail</code>的高度）；将允许输出的最大值<code>Max</code>设置成<code>0</code>；</li>
+<li>修改框图的连接方式如下，</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_scroll_rage_limit.png" width="500" alt=" origami_scroll_rage_limit"></div>
+
+<h2 id="滑动的保持"><a href="#滑动的保持" class="headerlink" title="滑动的保持"></a>滑动的保持</h2><p>现在滑动<code>虚拟屏幕</code>的时候会发现，当松手之后，原来滑动到的位置会自动还原，但实际上我们希望它能够保持当前的状态。</p>
+<ol>
+<li>将<code>Content</code>所在的<code>Group</code>向下移，放到<code>Weather detail</code>所属的<code>Group</code>的下面；</li>
+<li>修改该<code>Group</code>的大小为<code>1000</code>；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_scroll_stay_adjust.png" width="250" alt=" origami_scroll_stay_adjust"></div>
+
+<hr>
+<p>至此，动画的效果就基本完成了。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_weather_app_complete.gif" width="300" alt=" origami_weather_app_complete"></div>
+
+<h2 id="尾巴"><a href="#尾巴" class="headerlink" title="尾巴"></a>尾巴</h2><p>这里留下了一个小尾巴：滑动的过程中，状态栏的颜色也是需要变化的，从<code>#3F51B5</code>逐渐变化到<code>#303F9F</code>。</p>
+<p>经过前面的实践，我想大家应该已经知道了实现的要点，那就开始自己尝试着做做吧。</p>
+<p>提示：通过<code>Color to HSL patch</code> <code>Transition patch</code>与<code>HSL Color patch</code>的配合，来修改状态栏背景元素的颜色属性。</p>
+<p>整个工程的源文件，我放到了<a href="https://pan.baidu.com/s/1i5sksux" target="_blank" rel="external">这里</a>，供大家参考。</p>
+<h2 id="回顾总结"><a href="#回顾总结" class="headerlink" title="回顾总结"></a>回顾总结</h2><p>通过具体的案例，我们初步了解了<code>Origami Studio</code>的用法，对实现动画的方式也有了概念。</p>
+<p>一切的动画效果都是通过下面几个步骤来实现的，</p>
+<ol>
+<li>感知触发动画的事件，点击、滑动等等；</li>
+<li>把触发事件后产生的数值，交给一个个串联起来的<code>patch</code>进行处理，获得新的数值；</li>
+<li>利用新的数值来修改某个界面元素的属性，比如文字的大小，文字的位置，文字的透明度等等；</li>
+</ol>
+<p>知道了这样的套路，以后遇到其他动画就可以依葫芦画瓢来操作了。</p>
+<p>至于什么是<code>patch</code>，我相信一步步做到这里，也都可以心领神会了吧。</p>
+<p>另外，处理<code>虚拟屏幕</code>，<code>Origami Studio</code>产生都可交互原型，也能在手机设备上运行，前提是在设备上按照对应的应用<code>Origami live</code>。希望进一步了解的同学，请移步<a href="http://origami.design/" target="_blank" rel="external">这里</a>，有更为详尽的信息提供给你。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;动态原型设计&quot;&gt;&lt;a href=&quot;#动态原型设计&quot; class=&quot;headerlink&quot; title=&quot;动态原型设计&quot;&gt;&lt;/a&gt;动态原型设计&lt;/h1&gt;&lt;p&gt;动态的可交互原型产品，是产品经理和界面设计师向开发人员阐释自己设计的最高效工具。&lt;/p&gt;
+&lt;div alig
+    
+    </summary>
+    
+      <category term="第3章-产品原型" scheme="http://book.anddle.com/categories/%E7%AC%AC3%E7%AB%A0-%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>8 静态原型的Appbar折叠</title>
+    <link href="http://book.anddle.com/3_%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/8_%E9%9D%99%E6%80%81%E5%8E%9F%E5%9E%8B%E7%9A%84Appbar%E6%8A%98%E5%8F%A0/"/>
+    <id>http://book.anddle.com/3_产品原型/8_静态原型的Appbar折叠/</id>
+    <published>2017-01-20T01:00:00.000Z</published>
+    <updated>2017-03-03T01:59:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="静态原型的hexAppbar折叠"><a href="#静态原型的hexAppbar折叠" class="headerlink" title="静态原型的hexAppbar折叠"></a>静态原型的hexAppbar折叠</h1><p>接下来，我们开始设计Appbar被滑动收缩以后的界面效果。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_app_fold_complete.png" width="300" alt=" sketch_weather_app_fold_complete"></div>
+
+<p>可以看到，这个效果图绝大部分和展开时的效果图时一样的。</p>
+<p>所以我们可以将整个画板修改一个名字为-<code>展开</code>，并复制出一个新的画板命名为<code>折叠</code>，修改一下其中的元素就好了。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_fold_unfold_1.png" width="500" alt=" sketch_fold_unfold_1"></div>
+
+<h2 id="使用Symbol"><a href="#使用Symbol" class="headerlink" title="使用Symbol"></a>使用Symbol</h2><p>这样做完全没有问题，但是可能会给以后内容的修改留下一个隐患：假如我要把<code>风力</code>从<code>3级</code>修改为<code>5级</code>，除了要修改<code>展开</code>画板，还要修改<code>折叠</code>画板，要修改两个地方。</p>
+<p>不过假如我将<code>More info</code>和<code>Forcast</code>做成了<code>Symbol</code>，那么只需要修改一处，两个画板中的内容就都可以变化了。</p>
+<p>将<code>More info</code> <code>Forcast</code>和<code>gap</code>，组合成一个组件<code>Content</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_content_group.png" width="250" alt=" sketch_content_group"></div>
+
+<p>然后，使用转换Symbol的功能，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_content_create_symbol.png" width="200" alt=" sketch_content_create_symbol"></div>
+
+<p>之后，在<code>Symbols</code>页面，就能看到<code>Content</code>的内容了，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_symbol_page_content.png" width="500" alt=" sketch_symbol_page_content"></div>
+
+<p>之后，只要修改这个<code>Symbol</code>中的任何内容，都可以同步的反应到使用了它的界面之上。</p>
+<h2 id="创建折叠界面"><a href="#创建折叠界面" class="headerlink" title="创建折叠界面"></a>创建折叠界面</h2><p>在<code>Weather</code>页面，复制<code>展开</code>，改名为<code>折叠</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_fold_artboard.png" width="500" alt=" sketch_fold_artboard"></div>
+
+<p>修改<code>Appbar</code>中的内容，</p>
+<ol>
+<li><p>移除<code>Weather detail</code>，将<code>Content</code>的位置上挪，并调整画板的高度至合适位置，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_fold_content_adjust.png" width="600" alt=" sketch_fold_content_adjust"></div>
+</li>
+<li><p>显示<code>Toolbar</code>中的位置-<code>成都</code>，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_fold_toolbar_location.png" width="400" alt=" sketch_fold_toolbar_location"></div>
+</li>
+<li><p>修改状态栏的背景颜色为<code>Primary Dark Color</code>：#303F9F，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_fold_statusbar_color.png" width="600" alt=" sketch_fold_statusbar_color"></div>
+
+
+</li>
+</ol>
+<hr>
+<p>至此，使用<code>Sketch</code>进行界面设计的工作就全部完成了。</p>
+<p>文中使用到的完整的<code>Sketch</code>项目工程文件，可以在<a href="https://pan.baidu.com/s/1miBaZvM" target="_blank" rel="external">这里</a>下载到。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;静态原型的hexAppbar折叠&quot;&gt;&lt;a href=&quot;#静态原型的hexAppbar折叠&quot; class=&quot;headerlink&quot; title=&quot;静态原型的hexAppbar折叠&quot;&gt;&lt;/a&gt;静态原型的hexAppbar折叠&lt;/h1&gt;&lt;p&gt;接下来，我们开始设计Appb
+    
+    </summary>
+    
+      <category term="第3章-产品原型" scheme="http://book.anddle.com/categories/%E7%AC%AC3%E7%AB%A0-%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>7 静态原型的更多天气信息</title>
+    <link href="http://book.anddle.com/3_%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/7_%E9%9D%99%E6%80%81%E5%8E%9F%E5%9E%8B%E7%9A%84%E6%9B%B4%E5%A4%9A%E5%A4%A9%E6%B0%94%E4%BF%A1%E6%81%AF/"/>
+    <id>http://book.anddle.com/3_产品原型/7_静态原型的更多天气信息/</id>
+    <published>2017-01-19T01:00:00.000Z</published>
+    <updated>2017-03-03T01:59:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="静态原型的更多天气信息"><a href="#静态原型的更多天气信息" class="headerlink" title="静态原型的更多天气信息"></a>静态原型的更多天气信息</h1><p>天气的更多信息，是通过列表的形式展现的。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_all_group_complete.png" width="300" alt=" sketch_list_all_group_complete"></div>
+
+<h2 id="参数设计"><a href="#参数设计" class="headerlink" title="参数设计"></a>参数设计</h2><div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_spec.png" width="400" alt=" sketch_list_spec"></div>
+
+<p>列表项的高度在<code>Material Design</code>中，被定义成了<code>48dp</code>；并且整个<code>list</code>的顶部还有<code>8dp</code>的边距。</p>
+<p>列表项由3部分组成，</p>
+<ul>
+<li>图标：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目</th>
+<th style="text-align:center">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">大小</td>
+<td style="text-align:center">24dp</td>
+</tr>
+<tr>
+<td style="text-align:center">左边距</td>
+<td style="text-align:center">16dp</td>
+</tr>
+<tr>
+<td style="text-align:center">位置</td>
+<td style="text-align:center">垂直居中</td>
+</tr>
+<tr>
+<td style="text-align:center">颜色</td>
+<td style="text-align:center">#000000</td>
+</tr>
+<tr>
+<td style="text-align:center">透明度</td>
+<td style="text-align:center">54%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>项目名称：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目</th>
+<th style="text-align:center">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">字体</td>
+<td style="text-align:center">Noto</td>
+</tr>
+<tr>
+<td style="text-align:center">字形</td>
+<td style="text-align:center">Regular</td>
+</tr>
+<tr>
+<td style="text-align:center">大小</td>
+<td style="text-align:center">16sp</td>
+</tr>
+<tr>
+<td style="text-align:center">颜色</td>
+<td style="text-align:center">#000000</td>
+</tr>
+<tr>
+<td style="text-align:center">透明度</td>
+<td style="text-align:center">87%</td>
+</tr>
+<tr>
+<td style="text-align:center">左边距</td>
+<td style="text-align:center">72dp</td>
+</tr>
+<tr>
+<td style="text-align:center">位置</td>
+<td style="text-align:center">垂直居中</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>项目取值（参考）：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目</th>
+<th style="text-align:center">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">字体</td>
+<td style="text-align:center">Noto</td>
+</tr>
+<tr>
+<td style="text-align:center">字形</td>
+<td style="text-align:center">Regular</td>
+</tr>
+<tr>
+<td style="text-align:center">大小</td>
+<td style="text-align:center">14sp</td>
+</tr>
+<tr>
+<td style="text-align:center">颜色</td>
+<td style="text-align:center">#000000</td>
+</tr>
+<tr>
+<td style="text-align:center">透明度</td>
+<td style="text-align:center">54%</td>
+</tr>
+<tr>
+<td style="text-align:center">右边距</td>
+<td style="text-align:center">16dp</td>
+</tr>
+<tr>
+<td style="text-align:center">位置</td>
+<td style="text-align:center">垂直居中</td>
+</tr>
+</tbody>
+</table>
+<p><em>注意：以上的数据都在<code>Material Design</code>的文档<a href="https://material.io/guidelines/components/lists.html" target="_blank" rel="external">List</a>当中有明确的定义。</em></p>
+<h2 id="添加列表项区域"><a href="#添加列表项区域" class="headerlink" title="添加列表项区域"></a>添加列表项区域</h2><p>创建一个360dp*48dp的矩形区域-<code>row bound</code>，作为第一条数据项使用的空间，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sletch_list_row_bound_settings.png" width="600" alt=" sletch_list_row_bound_settings"></div>
+
+<p><em>注意：<code>list</code>的顶部<code>8dp</code>边距，这里还没有加上。因为我准备在添加完成所有的列表项后，再做整体的移动。</em></p>
+<h2 id="添加图标"><a href="#添加图标" class="headerlink" title="添加图标"></a>添加图标</h2><p>系统图标的尺寸是<code>24dp</code>的正方形，但是最外一圈还要有<code>2dp</code>的边距，所以真正的图标内容是局限在一个20dp*20dp的区域内的。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/system_icon_area.png" width="200" alt=" system_icon_area"></div>
+
+<p>首先，</p>
+<ol>
+<li>创建一个24dp*24dp的矩形-<code>icon bound</code>；</li>
+<li>放到距<code>row bound</code>左边距<code>16dp</code>的位置；</li>
+<li>让它垂直居中；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sletch_list_row_icon_bound_settings.png" width="600" alt=" sletch_list_row_icon_bound_settings"></div>
+
+<p>然后，</p>
+<ol>
+<li><p>从事先准备好的资源文件中，找到<code>风力.svg</code>，拖入到<code>Sketch</code>的<code>工作区域</code>；调整图片大小为<code>20dp*20dp</code>;</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_icon_size_settings.png" width="600" alt=" sketch_list_row_icon_size_settings"></div>
+</li>
+<li><p>颜色设置成<code>#000000</code>，透明度<code>54%</code>；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_icon_color_settings.png" width="600" alt=" sketch_list_row_icon_color_settings"></div>
+</li>
+<li><p>将其放置于<code>icon bound</code>的中心位置；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_icon_center_settings.png" width="600" alt=" sketch_list_row_icon_center_settings"></div>
+</li>
+<li><p>删除<code>icon bound</code>的背景色和边线；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_icon_bg_settings.png" width="100" alt=" sketch_list_row_icon_bg_settings"></div>
+
+</li>
+</ol>
+<h2 id="添加项目名称"><a href="#添加项目名称" class="headerlink" title="添加项目名称"></a>添加项目名称</h2><p>在<code>row bound</code>的区域内，</p>
+<ol>
+<li>添加<code>风力</code>文字；</li>
+<li>设置左边距为<code>72dp</code>；</li>
+<li>字体为<code>Noto</code>，大小为<code>16sp</code>，字形是<code>Regular</code>；</li>
+<li>字体颜色设置成<code>#000000</code>，透明度为<code>87%</code>；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_key_settings.png" width="600" alt=" sketch_list_row_key_settings"></div>
+
+<h2 id="添加项目取值"><a href="#添加项目取值" class="headerlink" title="添加项目取值"></a>添加项目取值</h2><p>在<code>row bound</code>的区域内，</p>
+<ol>
+<li>添加<code>3级</code>文字；</li>
+<li>设置右边距为<code>16dp</code>；</li>
+<li>字体为<code>Noto</code>，大小为<code>14sp</code>，字形是<code>Regular</code>；</li>
+<li>字体颜色设置成<code>#000000</code>，透明度为<code>54%</code>；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_value_settings.png" width="600" alt=" sketch_list_row_value_settings"></div>
+
+<h2 id="列表项组合"><a href="#列表项组合" class="headerlink" title="列表项组合"></a>列表项组合</h2><p>将<code>风力</code>文字、<code>风力</code>图标、<code>3级</code>、<code>row bound</code>、<code>icon bound</code>组合成一个新的组件<code>风力</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_group.png" width="200" alt=" sketch_list_row_group"></div>
+
+<p>最后把<code>row bound</code>的背景色和边线移除掉，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_row_complete.png" width="300" alt=" sketch_list_row_complete"></div>
+
+<h2 id="添加多个列表项"><a href="#添加多个列表项" class="headerlink" title="添加多个列表项"></a>添加多个列表项</h2><p>复制粘贴第一个列表项，把剩余的项目以此添加到画板当中，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_all.png" width="500" alt=" sketch_list_all"></div>
+
+<p>之后将它们组合成一个组件-<code>More info</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_all_group.png" width="300" alt=" sketch_list_all_group"></div>
+
+<p>最后再整体把<code>More info</code>向下移动<code>8dp</code>，使之符合<code>List</code>的设计规范，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_all_group_complete.png" width="300" alt=" sketch_list_all_group_complete"></div>
+
+<p>这里有个技巧：在制作列表的时候，会发现数据已经超出了手机屏幕的高度，这时候，可以把<code>Mobile Portrait</code>的高度扩展到足以容纳的尺寸，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_list_extend_hight.png" width="600" alt=" sketch_list_extend_hight"></div>
+
+<hr>
+<p>至此，整个主要界面的设计就完成了。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;静态原型的更多天气信息&quot;&gt;&lt;a href=&quot;#静态原型的更多天气信息&quot; class=&quot;headerlink&quot; title=&quot;静态原型的更多天气信息&quot;&gt;&lt;/a&gt;静态原型的更多天气信息&lt;/h1&gt;&lt;p&gt;天气的更多信息，是通过列表的形式展现的。&lt;/p&gt;
+&lt;div alig
+    
+    </summary>
+    
+      <category term="第3章-产品原型" scheme="http://book.anddle.com/categories/%E7%AC%AC3%E7%AB%A0-%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>6 静态原型的天气详情</title>
+    <link href="http://book.anddle.com/3_%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/6_%E9%9D%99%E6%80%81%E5%8E%9F%E5%9E%8B%E7%9A%84%E5%A4%A9%E6%B0%94%E8%AF%A6%E6%83%85/"/>
+    <id>http://book.anddle.com/3_产品原型/6_静态原型的天气详情/</id>
+    <published>2017-01-18T01:00:00.000Z</published>
+    <updated>2017-03-03T01:59:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="静态原型的天气预报"><a href="#静态原型的天气预报" class="headerlink" title="静态原型的天气预报"></a>静态原型的天气预报</h1><p>未来5天的天气预报，可以看成由5个类似的天气模块构成，只要完成一个，其他几个就可以通过复制+修改内容实现改变。</p>
+<p>首先来明确一下各个组件的尺寸和参数，</p>
+<ol>
+<li>整个区域的大小，我设定成360dp*100dp；</li>
+<li>左右边距设置成<code>16dp</code>；</li>
+<li>这样一来，每日的天气模块就是（360-16-16）/ 5 = 65.6dp，我将它们设定成<code>65dp</code>宽；</li>
+<li>天气的图标的大小设定成30dp的正方形区域（注意，这些图标不算是系统图标，所以它的尺寸不需要参考设计成24dp的系统图标）；</li>
+<li><p>日期的文字，参考<code>Body 2</code>的文字类型：</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/3_3_table_date_font.png" width="150" alt=" 3_3_table_date_font"></div>
+</li>
+<li><p>温度范围的文字，参考<code>Caption</code>的文字类型：</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/3_3_table_temp_font.png" width="150" alt=" 3_3_table_temp_font"></div>
+
+</li>
+</ol>
+<h2 id="创建预报区域"><a href="#创建预报区域" class="headerlink" title="创建预报区域"></a>创建预报区域</h2><p>接下来，我们开始创建预报区域。划定一个360dp*100dp的区域，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_area_settings.png" width="600" alt=" sketch_forcast_area_settings"></div>
+
+<h2 id="添加一个预报模块"><a href="#添加一个预报模块" class="headerlink" title="添加一个预报模块"></a>添加一个预报模块</h2><p>添加一个65dp*100dp的背景限制区域-<code>bound</code>，以后每个预报模块的内容都要放到这个区域当中。这也是一个很有用的技巧。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_bound.png" width="600" alt=" sketch_forcast_item_bound"></div>
+
+<p>从事先准备好的资源文件夹中，添加<code>雪</code>，并使用<code>Primary Color</code>-<code>#3F51B5</code>给它上色，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_icon_color.png" width="600" alt=" sketch_forcast_item_icon_color"></div>
+
+<p>将预测温度和温度范围添加进去，并用<code>Body 2</code>和<code>Caption</code>分别设定它们的属性，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_date_settings.png" width="600" alt=" sketch_forcast_item_date_settings"></div>
+
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_temp_settings.png" width="600" alt=" sketch_forcast_item_temp_settings"></div>
+
+<p>将<code>雪``bound``明天``18℃～21℃</code>组合起来，形成-<code>明天</code>；并调整它们的位置，使之居中，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_group.png" width="250" alt=" sketch_forcast_item_group"></div>
+
+<h2 id="添加第二个预报模块"><a href="#添加第二个预报模块" class="headerlink" title="添加第二个预报模块"></a>添加第二个预报模块</h2><p>复制<code>明天</code>组件，产生第二个预报模块，修改第二个模块的名称和内容为<code>星期六</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_2.png" width="400" alt=" sketch_forcast_item_2"></div>
+
+<p>修改<code>雪</code>的图标成<code>晴</code>。</p>
+<ol>
+<li>将资源<code>晴</code>从文件中拖到<code>工作区域</code>；</li>
+<li>参考之前的方式调整图标的大小、位置和颜色；</li>
+<li>将原来的图标<code>雪</code>，删除；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_2_icon_settings.png" width="600" alt=" sketch_forcast_item_2_icon_settings"></div>
+
+<h2 id="添加三个预报模块"><a href="#添加三个预报模块" class="headerlink" title="添加三个预报模块"></a>添加三个预报模块</h2><p>之后，重复之前的动作，完成<code>星期日</code> <code>星期一</code> <code>星期二</code>的内容创建，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_5.png" width="500" alt=" sketch_forcast_item_5"></div>
+
+<h2 id="位置排列"><a href="#位置排列" class="headerlink" title="位置排列"></a>位置排列</h2><p>将<code>明天</code> <code>星期六</code> <code>星期日</code> <code>星期一</code> <code>星期二</code>与<code>forcast_bg</code>组合到一起，形成<code>Forcast</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_group.png" width="250" alt=" sketch_forcast_group"></div>
+
+<p>因为要给左右两端留下<code>16dp</code>的内容，<code>明天</code> <code>星期六</code> <code>星期日</code> <code>星期一</code> <code>星期二</code>没有办法水平瓜分<code>forcast_bg</code>占据的空间。所以这里我就使用了一个小把戏：把<code>forcast_bg</code>的宽度缩短<code>32dp</code>，变成<code>328dp</code>，并将它水平居中，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_bg_adjust_center.png" width="600" alt=" sketch_forcast_bg_adjust_center"></div>
+
+<p>再调整<code>明天</code>和<code>星期二</code>的水平位置，使之刚好位于<code>forcast_bg</code>区域之内，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_bg_adjust_center2.png" width="600" alt=" sketch_forcast_bg_adjust_center"></div>
+
+
+<p>再选中<code>明天</code> <code>星期六</code> <code>星期日</code> <code>星期一</code> <code>星期二</code>与<code>forcast_bg</code>，使用<code>水平分配空间</code>的功能，让预报模块平均占用空间，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_bg_adjust_center3.png" width="600" alt=" sketch_forcast_bg_adjust_center"></div>
+
+<p>最后，出去背景颜色，预报区域就全部完成了，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_complete.png" width="300" alt=" sketch_forcast_complete"></div>
+
+<h1 id="添加隔断"><a href="#添加隔断" class="headerlink" title="添加隔断"></a>添加隔断</h1><p>为了界面分层，逻辑清楚，我在预报区域的下面，设计了一个360dp*10dp的隔离带，颜色为：#BDBDBD，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_gap_settings.png" width="600" alt=" sketch_gap_settings"></div>
+
+
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;静态原型的天气预报&quot;&gt;&lt;a href=&quot;#静态原型的天气预报&quot; class=&quot;headerlink&quot; title=&quot;静态原型的天气预报&quot;&gt;&lt;/a&gt;静态原型的天气预报&lt;/h1&gt;&lt;p&gt;未来5天的天气预报，可以看成由5个类似的天气模块构成，只要完成一个，其他几个就可以通
+    
+    </summary>
+    
+      <category term="第3章-产品原型" scheme="http://book.anddle.com/categories/%E7%AC%AC3%E7%AB%A0-%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>5 静态原型的Appbar</title>
+    <link href="http://book.anddle.com/3_%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/5_%E9%9D%99%E6%80%81%E5%8E%9F%E5%9E%8B%E7%9A%84Appbar/"/>
+    <id>http://book.anddle.com/3_产品原型/5_静态原型的Appbar/</id>
+    <published>2017-01-17T01:00:00.000Z</published>
+    <updated>2017-03-03T01:59:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="静态原型的Appbar"><a href="#静态原型的Appbar" class="headerlink" title="静态原型的Appbar"></a>静态原型的Appbar</h1><p>我们设计的<code>Appbar</code>包括了两个部分，一个是<code>toolbar</code>，另一个就是<code>flexible space</code>-显示当日天气的详细信息，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_appbar_layout.png" width="400" alt=" sketch_appbar_layout"></div>
+
+<h2 id="Toolbar参数确定"><a href="#Toolbar参数确定" class="headerlink" title="Toolbar参数确定"></a>Toolbar参数确定</h2><p>添加<code>Toolbar</code>很简单，首先找到<code>Material Design</code>中对<code>Appbar</code>的描述可以知道，</p>
+<ol>
+<li>这是一个高度为<code>56dp</code>的矩形区域；</li>
+<li><p>当<code>Appbar</code>收缩时，应用的名字会显示出来，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/3_3_table_toolbar_parameter.png" width="300" alt=" 3_3_table_toolbar_paramete"></div>
+
+<p> <em>注意：这里显示的是中文-<code>Dense</code>类型的文字，所以文字的大小比英文要大1sp。</em></p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_toolbar_with_title.png" width="300" alt=" sketch_toolbar_with_title"></div>
+
+</li>
+</ol>
+<h2 id="添加Toolbar"><a href="#添加Toolbar" class="headerlink" title="添加Toolbar"></a>添加Toolbar</h2><p>先添加区域，</p>
+<ol>
+<li>选择<code>Insert -&gt; Shape -&gt; Rectangle</code>(或者快捷按键R)；</li>
+<li><p>在期望的位置，拖动出一个56px*360px的矩形框；拖动的过程中，矩形尺寸会动态的显示出来；</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_create_toolbar_area.gif" width="600" alt=" sketch_create_toolbar_area"></div>
+
+<p> 此时画板上已经多出了一个叫做<code>Rectangle</code>的形状。</p>
+</li>
+<li><p>假如尺寸有偏差也没有关系，可以通过修改<code>属性区域</code>的高宽数值，进行精确的修改</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_toolbar_adjust_area.png" width="600" alt=" sketch_toolbar_adjust_area"></div>
+</li>
+<li><p>修改背景颜色为<code>Primary Color</code>：#3F51B5，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_toolbar_bg_color.png" width="600" alt=" sketch_toolbar_bg_color"></div>
+
+</li>
+</ol>
+<p>接下来添加应用名称：这里要显示的并不是应用的真实名称，而是天气预报的位置，</p>
+<ol>
+<li>选择<code>Insert -&gt; Text</code>(或者快捷按键T)；</li>
+<li>在<code>Toolbar</code>的大致位置进行点击，写下位置名称-<code>成都</code>；此时画板上多出了<code>Text</code>组件；</li>
+<li><p>修改新组件的属性为，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_location_text_font_settings.png" width="600" alt=" sketch_location_text_font_settings"></div>
+</li>
+<li><p>选中<code>Rectangle</code>和<code>成都</code>组件，使用cmd + G，将其组合成<code>Toolbar</code></p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_combine_toolbar.gif" width="600" alt=" sketch_combine_toolbar"></div>
+
+</li>
+</ol>
+<p>再来进行标题位置的设置，</p>
+<ol>
+<li><p>选择<code>Toolbar</code>下的所有组件，点击<code>垂直对齐</code>的按钮，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_title_alien_center.png" width="700" alt=" sketch_title_alien_center"></div>
+</li>
+<li><p>标题的左边距是16dp，选中<code>成都</code>，同时按下<code>alt</code>按键，可以看到<code>成都</code>上下左右的边距大小，使用方向键调整左边距的大小即可，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_title_alien_margin.gif" width="500" alt=" sketch_title_alien_margin"></div>
+
+</li>
+</ol>
+<p>因为此时并不需要显示位置信息，所以要点击<code>成都</code>组件旁边的<code>眼睛</code>按钮，把内容隐藏起来。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_toolbar_hide_title.png" width="200" alt=" sketch_toolbar_hide_title"></div>
+
+<p><em>使用<code>alt</code>查看组件的边距是一个常用的技巧，查看的同时，如果移动鼠标到不同的区域，就能看到组件相对于不同区域的边距数值，这让我们在排版的时候非常的方便。</em></p>
+<p>至此，<code>Toolbar</code>的设置就完成了。</p>
+<h2 id="天气详情区域参数设定"><a href="#天气详情区域参数设定" class="headerlink" title="天气详情区域参数设定"></a>天气详情区域参数设定</h2><p>天气详情区域由三个部分组成，</p>
+<ol>
+<li>天气图标；</li>
+<li>当前温度，当日温度范围；</li>
+<li>位置信息；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_appbar_complete.png" width="300" alt=" sketch_appbar_complete"></div>
+
+<p>整体设计上讲，天气详情区域、Toolbar和状态栏都是整体的蓝色，占据整个屏幕空间的一半。因此这里将天气详情区域的高度，设计成<code>245dp</code>，它内部的元素都布局在360dp*245dp的区域范围内。</p>
+<p>图标和温度的设计是比较自由的，只要设计师觉得美观就好了。我将它们放在两个150dp*100dp的矩形当中，让它们的左、右、上边距都成为<code>24dp</code>。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detial_margins.png" width="300" alt=" sketch_weather_detial_margins"></div>
+
+<p>当前温度，采用<code>Display 3</code>的类型，</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目</th>
+<th style="text-align:center">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">字体</td>
+<td style="text-align:center">Noto</td>
+</tr>
+<tr>
+<td style="text-align:center">字形</td>
+<td style="text-align:center">Regular</td>
+</tr>
+<tr>
+<td style="text-align:center">大小</td>
+<td style="text-align:center">56sp</td>
+</tr>
+<tr>
+<td style="text-align:center">颜色</td>
+<td style="text-align:center">#FFFFFF</td>
+</tr>
+<tr>
+<td style="text-align:center">透明度</td>
+<td style="text-align:center">70%</td>
+</tr>
+</tbody>
+</table>
+<p>当日温度范围，采用<code>Headline</code>的类型，</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目</th>
+<th style="text-align:center">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">字体</td>
+<td style="text-align:center">Noto</td>
+</tr>
+<tr>
+<td style="text-align:center">字形</td>
+<td style="text-align:center">Regular</td>
+</tr>
+<tr>
+<td style="text-align:center">大小</td>
+<td style="text-align:center">24sp</td>
+</tr>
+<tr>
+<td style="text-align:center">颜色</td>
+<td style="text-align:center">#FFFFFF</td>
+</tr>
+<tr>
+<td style="text-align:center">透明度</td>
+<td style="text-align:center">100%</td>
+</tr>
+</tbody>
+</table>
+<p>位置信息，采用<code>Display 1</code>的类型，</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目</th>
+<th style="text-align:center">数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">字体</td>
+<td style="text-align:center">Noto</td>
+</tr>
+<tr>
+<td style="text-align:center">字形</td>
+<td style="text-align:center">Regular</td>
+</tr>
+<tr>
+<td style="text-align:center">大小</td>
+<td style="text-align:center">34sp</td>
+</tr>
+<tr>
+<td style="text-align:center">颜色</td>
+<td style="text-align:center">#FFFFFF</td>
+</tr>
+<tr>
+<td style="text-align:center">透明度</td>
+<td style="text-align:center">100%</td>
+</tr>
+<tr>
+<td style="text-align:center">左边距</td>
+<td style="text-align:center">24dp</td>
+</tr>
+<tr>
+<td style="text-align:center">下边距</td>
+<td style="text-align:center">24dp</td>
+</tr>
+</tbody>
+</table>
+<p><em>注意：<code>Noto</code>字体和<code>Roboto</code>字体对于<code>English-like</code>是兼容的，所以当表示数字、英文字母的时候，两者都可以使用。</em></p>
+<h2 id="添加天气详情"><a href="#添加天气详情" class="headerlink" title="添加天气详情"></a>添加天气详情</h2><p>根据之前的规划，划出360px*245px的矩形区域，背景色修改成<code>Primary Color</code>：#3F51B5。默认情况下创建的矩形会有<code>border</code>，我们将它移出，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_bg_settings.png" width="600" alt=" sketch_weather_detail_bg_settings"></div>
+
+<ol>
+<li>创建两个150dp*100dp的矩形，准备用它们分别装入天气图标和温度信息;</li>
+<li>将新创建的矩形和<code>bg</code>进行组合；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_content_settings.png" width="600" alt=" sketch_weather_detail_content_settings"></div>
+
+<p>调整两者顶部和左右的边距为<code>24dp</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detial_margins_settings.gif" width="500" alt=" sketch_weather_detial_margins_settings"></div>
+
+<h3 id="添加天气图标"><a href="#添加天气图标" class="headerlink" title="添加天气图标"></a>添加天气图标</h3><p>引入天气图标，</p>
+<ol>
+<li><p>打开之前准备好的资源文件夹，把晴间多云的图标-<code>阴晴</code>拖入<code>工作区域</code>，尺寸设置成120dp*100dp；</p>
+</li>
+<li><p>将刚引入的<code>阴晴</code>与之前的<code>weather icon bg</code>组合成一个新的组件-<code>Weather icon</code>，并将<code>阴晴</code>水平居中放置，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_icon_settings.png" width="600" alt=" sketch_weather_detail_icon_settings"></div>
+</li>
+<li><p>展开<code>阴晴</code>，修改其颜色成<code>Accent Color</code>：#FFC107，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_icon_color.png" width="600" alt=" sketch_weather_detail_icon_color"></div>
+</li>
+<li><p>移除<code>weather icon bg</code>的背景颜色，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_icon_remove_bg_color.png" width="600" alt=" sketch_weather_detail_icon_remove_bg_color"></div>
+
+</li>
+</ol>
+<p><em>在对图标进行居中设置的时候，需要选中<code>阴晴</code>和<code>weather icon bg</code>，使用<code>水平居中对齐</code>功能。<code>weather icon bg</code>在这里充当了被对齐的参照物，在使用<code>Sketch</code>设计的时候，经常需要添加一个这样的辅助设计元素。</em></p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_icon_center.png" width="600" alt=" sketch_weather_detail_icon_center"></div>
+
+<h3 id="添加温度信息"><a href="#添加温度信息" class="headerlink" title="添加温度信息"></a>添加温度信息</h3><p>使用快捷按键T，在相应的位置，添加两个文字输入区域，写上对应的内容，并设置好对应的字体属性。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_temp_1_settings.png" width="600" alt=" sketch_weather_detail_temp_1_settings"></div>
+
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_temp_2_settings.png" width="600" alt=" sketch_weather_detail_temp_2_settings"></div>
+
+<p>对组件结构进行调整，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_temp_group.png" width="250" alt=" sketch_weather_detail_temp_group"></div>
+
+<p>对文字进行水平居中的排列，并移除背景的颜色，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_temp_center.png" width="600" alt=" sketch_weather_detail_temp_center"></div>
+
+<h3 id="添加位置"><a href="#添加位置" class="headerlink" title="添加位置"></a>添加位置</h3><p>在适当的位置，添加一个Text组件，写入<code>成都</code>，做好设置，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_detail_location_settings.png" width="600" alt=" sketch_weather_detail_location_settings"></div>
+
+<p>注意，它的左边距和下边距都是<code>24dp</code>。</p>
+<p>至此，整个Appbar的内容就添加完毕了。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_appbar_complete.png" width="300" alt=" sketch_appbar_complete"></div>
+
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;静态原型的Appbar&quot;&gt;&lt;a href=&quot;#静态原型的Appbar&quot; class=&quot;headerlink&quot; title=&quot;静态原型的Appbar&quot;&gt;&lt;/a&gt;静态原型的Appbar&lt;/h1&gt;&lt;p&gt;我们设计的&lt;code&gt;Appbar&lt;/code&gt;包括了两个部分，一个
+    
+    </summary>
+    
+      <category term="第3章-产品原型" scheme="http://book.anddle.com/categories/%E7%AC%AC3%E7%AB%A0-%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>4 静态原型的状态栏</title>
+    <link href="http://book.anddle.com/3_%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/4_%E9%9D%99%E6%80%81%E5%8E%9F%E5%9E%8B%E7%9A%84%E7%8A%B6%E6%80%81%E6%A0%8F/"/>
+    <id>http://book.anddle.com/3_产品原型/4_静态原型的状态栏/</id>
+    <published>2017-01-16T01:00:00.000Z</published>
+    <updated>2017-03-03T01:59:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="静态原型的状态栏"><a href="#静态原型的状态栏" class="headerlink" title="静态原型的状态栏"></a>静态原型的状态栏</h1><h2 id="状态栏Symbol"><a href="#状态栏Symbol" class="headerlink" title="状态栏Symbol"></a>状态栏Symbol</h2><p>状态栏似乎很复杂，有wifi信号、手机信号、时间、电量等信息，幸好<code>Sketch</code>原生就自带的现成组件，你可以直接拿过来就用了。当然，你也可以自己一个一个去画，不过既然有了现成的轮子，又何必重复劳动呢。</p>
+<p><code>菜单栏</code>中选择<code>File -&gt; New From Template</code>，在弹出的菜单中选择<code>Material Design</code>。此时会创建一个新的工程文件。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_new_material_design.png" width="300" alt=" sketch_new_material_design"></div>
+
+<p>与之前空的工程文件不同的是，这里面已经有了两个现成的<code>page</code>，里面的内容就是<code>Material Design</code>会使用到的各种现成的组件。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_status_bar_symbol.png" width="700" alt=" sketch_status_bar_symbol"></div>
+
+<p>选择<code>Material Design Symbol -&gt; Material/Android/Status bar 360dp black</code>，这就是一个现成的可用的状态栏。这样的组件叫做<code>symbol</code>，它是有多个图形组合后形成的一个通用符号。<code>Symbol</code>可以被不同的<code>page</code>、项目共享使用。</p>
+<p>以后只要看到这个图案，就知道这是一个<code>symbol</code>了，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_symbol.png" width="30" alt=" sketch_symbo"></div>
+
+<p><em>我们也可以创建自己的<code>symbol</code>，不过这个地方还不会用到。随着设计开发的深入，在这个章节的后半部分，我们会进行详细的介绍。</em></p>
+<h2 id="使用状态栏Symbol"><a href="#使用状态栏Symbol" class="headerlink" title="使用状态栏Symbol"></a>使用状态栏Symbol</h2><p>使用<code>鼠标右键 + Copy</code>（或者cmd + c）之后，将它粘贴（<code>鼠标右键 + Paste Over</code>或者cmd + v）到我们之前的<code>weather page</code>之中，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_paste_symbol.png" width="600" alt=" sketch_paste_symbol"></div>
+
+<p>如果状态栏粘贴之后，并没有对齐画板的边缘，手动将它移动，对齐就可以了。</p>
+<p>此时可以看到，</p>
+<ol>
+<li><p><code>Pages</code>下面自动多出了一个叫做<code>symbols</code>的页面，它里面放的就是我们刚引进的<code>symbol</code>。</p>
+</li>
+<li><p>这时的statusbar还是一个独立的部分，并没有隶属于<code>Mobile Portrait</code>画板之下，两者还是平级的关系。</p>
+</li>
+</ol>
+<h2 id="调整状态栏Symbol"><a href="#调整状态栏Symbol" class="headerlink" title="调整状态栏Symbol"></a>调整状态栏Symbol</h2><p>接下来我们就开始调整statusbar与<code>Mobile Portrait</code>之间的隶属关系。</p>
+<ol>
+<li>将状态栏展开，选中里面的内容；</li>
+<li>将各个组件拖入到<code>Mobile Portrait</code>之下；</li>
+<li>删除没有内容的状态栏symbol；</li>
+<li>将刚拖入的组件使用<code>工具栏</code>上的<code>Group</code>功能组合起来，并将组合后的组件更名为<code>Statusbar</code>；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_modify_statusbar_parent.gif" width="700" alt=" sketch_modify_statusbar_parent"></div>
+
+<p>选中状态栏，我们可以看到状态栏的尺寸是：24px*360px，刚好是前面讲过的状态栏应该的高度。</p>
+<h2 id="修改背景色"><a href="#修改背景色" class="headerlink" title="修改背景色"></a>修改背景色</h2><p>将状态栏的背景颜色修改成之前设定的<code>Primary Color</code>：#3F51B5，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_statusbar_color.png" width="600" alt=" sketch_statusbar_color"></div>
+
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;静态原型的状态栏&quot;&gt;&lt;a href=&quot;#静态原型的状态栏&quot; class=&quot;headerlink&quot; title=&quot;静态原型的状态栏&quot;&gt;&lt;/a&gt;静态原型的状态栏&lt;/h1&gt;&lt;h2 id=&quot;状态栏Symbol&quot;&gt;&lt;a href=&quot;#状态栏Symbol&quot; class=&quot;he
+    
+    </summary>
+    
+      <category term="第3章-产品原型" scheme="http://book.anddle.com/categories/%E7%AC%AC3%E7%AB%A0-%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>3 Sketch静态原型设计</title>
+    <link href="http://book.anddle.com/3_%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/3_Sketch%E9%9D%99%E6%80%81%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/"/>
+    <id>http://book.anddle.com/3_产品原型/3_Sketch静态原型设计/</id>
+    <published>2017-01-15T01:00:00.000Z</published>
+    <updated>2017-03-03T01:59:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Sketch静态原型设计"><a href="#Sketch静态原型设计" class="headerlink" title="Sketch静态原型设计"></a>Sketch静态原型设计</h1><p>对于静态原型的设计，我们使用<code>Sketch</code>。</p>
+<p>启动<code>Sketch</code>后，我们将看到类似如下的界面，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_ui_layout_empty.png" width="600" alt=" sketch_ui_layout_empty"></div>
+
+<h2 id="工具栏"><a href="#工具栏" class="headerlink" title="工具栏"></a>工具栏</h2><p>它的顶部是<code>工具栏</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_ui_layout_toolbar.png" width="600" alt=" sketch_ui_layout_toolbar"></div>
+
+<p>可以通过菜单栏<code>View -&gt; Customize Toolbar...</code>来自定义工具栏。<br>在弹出的窗口中，将下方的图标拖拽到上方的<code>工具栏</code>中就可以了。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_customize_tool_bar.png" width="600" alt=" sketch_customize_tool_bar"></div>
+
+<h2 id="导航栏"><a href="#导航栏" class="headerlink" title="导航栏"></a>导航栏</h2><p>左边是<code>导航栏</code>，用来展示这个项目拥有的<code>page</code>和<code>page</code>中包含的详细内容。</p>
+<p><code>page</code>是一张张单独页面，</p>
+<ul>
+<li>每个页面上可以放多个手机屏幕的画板：展开、折叠、图标等等；</li>
+<li>每个<code>page</code>中的画板都进一步的在导航栏的下半区域展示出来：展开、折叠、图标等等；</li>
+<li>多个<code>page</code>被归类到了<code>pages</code>的下面：Weather、 Symbols等等；</li>
+</ul>
+<p>我们设计的程序界面，就是某个<code>page</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_page_workspace.gif" width="700" alt=" sketch_page_workspace"></div>
+
+<h2 id="工作区域"><a href="#工作区域" class="headerlink" title="工作区域"></a>工作区域</h2><p><code>工作区域</code>显示的是<code>page</code>的详细内容。我们设计的程序界面具体样子，就是通过<code>工作区域</code>展现出来的。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_ui_layout.png" width="700" alt=" sketch_ui_layout"></div>
+
+<h2 id="属性设置区域"><a href="#属性设置区域" class="headerlink" title="属性设置区域"></a>属性设置区域</h2><p><code>属性设置区域</code>用来设定某个选定图形的属性，例如它的大小、透明度、文字内容、字体颜色等等。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_layout_property_settings.png" width="650" alt=" sketch_layout_property_settings"></div>
+
+<h1 id="添加设备画板"><a href="#添加设备画板" class="headerlink" title="添加设备画板"></a>添加设备画板</h1><p>在新建的 <code>Sketch</code>项目中，双击<code>导航栏</code>的<code>page1</code>，把页面的名字改成一个有意义的名字-<code>Weathear</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_page_rename.gif" width="500" alt=" sketch_page_rename"></div>
+
+<p>通过<code>工具栏</code>的<code>Insert -&gt; Artboard</code>，调出画板，选择<code>Material Design</code>下的<code>Mobile Portrait</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_add_artboard.gif" width="700" alt=" sketch_add_artboard"></div>
+
+<p>通过右侧的<code>属性设置区域</code>，可以看到这个画板的大小为360px*640px，正好是一个mdpi的安卓设备屏幕尺寸。所以我们在这样的尺寸上做设计，能够很容易的顾及到其他像素密度的设备。</p>
+<p>可以看到<code>Sketch</code>为多种界面提供了默认的尺寸，iphone的，安卓设备的，网页的，MacOS应用的，可以说是应有尽有。这也说明<code>Sketch</code>就是为了这些产品而设计出来的。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_artboard.png" width="300" alt=" sketch_artboard"></div>
+
+<p><em>除了使用菜单栏调出画板，你也可以使用快捷方式：<code>A</code>。这也是操作<code>Sketch</code>必须记住的快捷方式之一。</em></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Sketch静态原型设计&quot;&gt;&lt;a href=&quot;#Sketch静态原型设计&quot; class=&quot;headerlink&quot; title=&quot;Sketch静态原型设计&quot;&gt;&lt;/a&gt;Sketch静态原型设计&lt;/h1&gt;&lt;p&gt;对于静态原型的设计，我们使用&lt;code&gt;Sketch&lt;/co
+    
+    </summary>
+    
+      <category term="第3章-产品原型" scheme="http://book.anddle.com/categories/%E7%AC%AC3%E7%AB%A0-%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>2 前期准备</title>
+    <link href="http://book.anddle.com/3_%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/2_%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87/"/>
+    <id>http://book.anddle.com/3_产品原型/2_前期准备/</id>
+    <published>2017-01-14T01:00:00.000Z</published>
+    <updated>2017-03-03T01:59:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><p>设计师首先在头脑中、草稿中勾勒出静态效果图，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_app_static_effect_complete.png" width="250" alt=" sketch_weather_app_static_effect_complete"></div>
+
+<p>之后就需要收集制作时需要的各种素材、确定界面的配色方案。</p>
+<h2 id="收集素材"><a href="#收集素材" class="headerlink" title="收集素材"></a>收集素材</h2><p>界面中需要使用各种天气图标：晴天、雨天、大雾、下雪、下雨、多云等等；还有天气信息中的风力、风向等等。</p>
+<p>我们可以使用<code>Sketch</code>工具进行完全的从无到有的自由创作，也可以适用现有的素材，减少设计的工作量。</p>
+<p>这里并不打算讲如何<code>画出</code>一个完美的图形，我想作为一名设计师，这点基本的艺术功底应该还是有的。因此我决定去之前介绍过的<code>资源池</code>-<a href="http://www.iconfont.cn/" target="_blank" rel="external">iconfont</a>网站寻找合适的图标。</p>
+<ol>
+<li><p>输入各种图标的关键字，就能看到各种图标，例如<code>多云</code>，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/cloudy_icon_search_result.png" width="350" alt=" cloudy_icon_search_result"></div>
+</li>
+<li><p>点击希望的图标，准备下载，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/cloudy_icon_download1.png" width="350" alt=" cloudy_icon_download1"></div>
+</li>
+<li><p>可以选择图标的颜色、尺寸和下载的图标格式。这里我们选择<code>SVG下载</code>，也就是下载矢量图标（矢量图我们将在后一小节相信介绍）。至于颜色和尺寸就都无所谓了，因为后面我们使用的时候都会做出调整的。</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/cloudy_icon_download2.png" width="550" alt=" cloudy_icon_download2"></div>
+
+</li>
+</ol>
+<p>以此方法，我们接着下载完成所有设计中需要使用到的图标，它们包括：风力、风向、湿度、空气质量、运动、紫外线、晴天、雨天、多云、多云间晴、雾、雪。</p>
+<p>如果你的时间很宝贵不想把精力放到挨个下载上，那么我这里为你提供了打包好的所有可用素材，快去<a href="https://pan.baidu.com/s/1mhGk0as" target="_blank" rel="external">下载</a>吧。</p>
+<h2 id="矢量图"><a href="#矢量图" class="headerlink" title="矢量图"></a>矢量图</h2><p><code>矢量图</code>是设计当中经常使用到的图片类型。当设计师放大图片的时候，<code>矢量图</code>会跟着放大，但是图形的线条并不会变的模糊出现锯齿的形状。所以这是设计师的最爱。因此在前面下载矢量图标的时候，我说不用在意图标的尺寸，就是这个道理。</p>
+<p>矢量图通常用在手动制图当中，占用的磁盘空间很小，它其实就是一个对笔划进行描述的文本文件，用文本编辑器打开的话，可以看到他的文本内容，例如，</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</div><div class="line"><span class="meta">&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">svg</span> <span class="attr">xmlns</span>=<span class="string">"http://www.w3.org/2000/svg"</span> <span class="attr">xmlns:xlink</span>=<span class="string">"http://www.w3.org/1999/xlink"</span> <span class="attr">t</span>=<span class="string">"1484009234652"</span> <span class="attr">class</span>=<span class="string">"icon"</span> <span class="attr">style</span>=<span class="string">""</span> <span class="attr">viewBox</span>=<span class="string">"0 0 1204 1024"</span> <span class="attr">version</span>=<span class="string">"1.1"</span> <span class="attr">p-id</span>=<span class="string">"2794"</span> <span class="attr">width</span>=<span class="string">"18.8125"</span> <span class="attr">height</span>=<span class="string">"16"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">defs</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">"text/css"</span>/&gt;</span><span class="xml"></span></div><div class="line">  <span class="tag">&lt;/<span class="name">defs</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">path</span> <span class="attr">d</span>=<span class="string">"M882.526316 286.796992q-17.323308 17.323308-42.345865 17.323308t-42.345865-17.323308q-18.285714-18.285714-18.285714-42.827068t18.285714-42.827068l42.345865-42.345865q17.323308-17.323308</span></span></div><div class="line">  42.345865-17.323308t42.345865 17.323308q18.285714 17.323308 18.285714 42.345865t-18.285714 43.308271zM250.225564 </div><div class="line">611.12782q-3.849624-16.360902-6.255639-33.684211t-2.406015-35.609023q0-61.593985 </div><div class="line">23.578947-116.451128t64.481203-95.278195 95.278195-64"/&gt;</div><div class="line"><span class="tag">&lt;/<span class="name">svg</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>这就是矢量图的描述语言。在安卓应用的设计当中，我们也有机会与矢量图进一步的打交道。</p>
+<p><em>安卓应用的图形资源是支持开发者直接使用矢量图形的，安卓5.0开始的tint功能就经常需要和矢量图配合着使用。</em></p>
+<h2 id="配色方案"><a href="#配色方案" class="headerlink" title="配色方案"></a>配色方案</h2><p><code>天气预报</code>的整体配色，我决定从Google提供的<code>Material Design</code>调色板中进行选择。</p>
+<p><code>天气预报</code>讲的是天空的故事，提到天空，第一感觉就是蓝色，因此我决定将配色方案定调成<code>Indigo 500</code>，金色代表太阳，作为与之配合的<code>Accent Color</code>。</p>
+<p>打开配色方案的工具网站<a href="https://www.materialpalette.com/" target="_blank" rel="external">material palette</a>，选择对应的颜色，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/weather_app_color_solution.png" width="750" alt=" weather_app_color_solution"></div>
+
+<p>我们就得到了下面对应的颜色值，</p>
+<table>
+<thead>
+<tr>
+<th>颜色项目</th>
+<th>颜色名称</th>
+<th>颜色RGB值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Primary Color</td>
+<td>Indigo 500</td>
+<td>#3F51B5</td>
+</tr>
+<tr>
+<td>Primary Dark Color</td>
+<td>Indigo 700</td>
+<td>#303F9F</td>
+</tr>
+<tr>
+<td>Accent Color</td>
+<td>Amber 500</td>
+<td>#FFC107</td>
+</tr>
+</tbody>
+</table>
+<p>图中的<code>Light Primary Color</code>和<code>Divider Color</code>我们这里暂时用不到。</p>
+<p>图中的<code>Primary Text</code>和<code>Secondary Text</code> 就是我们前面提到的文字颜色。亮色背景下，这里看到的颜色分别是<code>#212121</code>和<code>#757575</code>。准确的讲，它们应该是：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">使用的场景</th>
+<th style="text-align:center">透明度</th>
+<th style="text-align:center">颜色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Primary text</td>
+<td style="text-align:center">87%</td>
+<td style="text-align:center">#000000</td>
+</tr>
+<tr>
+<td style="text-align:center">Secondary text</td>
+<td style="text-align:center">54%</td>
+<td style="text-align:center">#000000</td>
+</tr>
+</tbody>
+</table>
+<p>假如背景是白色，那么这个透明度的黑色在去除了alpha值以后，就分别对应<code>#212121</code>和<code>#757575</code>了。</p>
+<p>图标的颜色应该是：</p>
+<table>
+<thead>
+<tr>
+<th>颜色透明度</th>
+<th>颜色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>54%</td>
+<td>#000000</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前期准备&quot;&gt;&lt;a href=&quot;#前期准备&quot; class=&quot;headerlink&quot; title=&quot;前期准备&quot;&gt;&lt;/a&gt;前期准备&lt;/h1&gt;&lt;p&gt;设计师首先在头脑中、草稿中勾勒出静态效果图，&lt;/p&gt;
+&lt;div align=&quot;center&quot;&gt;&lt;img src=&quot;http:
+    
+    </summary>
+    
+      <category term="第3章-产品原型" scheme="http://book.anddle.com/categories/%E7%AC%AC3%E7%AB%A0-%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>1 原型设计</title>
+    <link href="http://book.anddle.com/3_%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/1_%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/"/>
+    <id>http://book.anddle.com/3_产品原型/1_原型设计/</id>
+    <published>2017-01-13T01:00:00.000Z</published>
+    <updated>2017-03-03T01:59:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="原型设计"><a href="#原型设计" class="headerlink" title="原型设计"></a>原型设计</h1><p>通过前面几个章节，我们已经掌握了安卓系统<code>Material Design</code>设计的大致原则。接下来，我们开始尝试将这些原则和方式运用到实际的项目当中。</p>
+<h2 id="效果图与交互原型"><a href="#效果图与交互原型" class="headerlink" title="效果图与交互原型"></a>效果图与交互原型</h2><p>产品原型的设计又可以分成两个阶段，</p>
+<ol>
+<li><p>高保真效果图：这是产品的静态效果图，图纸上的设计效果与最后实际产品基本上是一模一样。产品中使用到的各种图标都可以从高保真效果图中截取出来使用（这里其实指的是使用<code>sketch</code>进行界面原型设计，它可以从效果图中提取图标素材）。</p>
+</li>
+<li><p>可以交互的原型产品：为了向产品的规划者（PM-产品经理）确认设计的正确性，同时向后继的开发人员展示正确的设计意图，设计师需要创建出一种能具有交互功能的原型产品。这种原型产品就像是一个已经开发完成了的最终产品，可以进行点击操作，具有互动性。</p>
+<p> 当然这毕竟只是一个“虚假”的产品，只是具备了展示的功能。</p>
+</li>
+</ol>
+<p>接着创意阶段的工作，需要我们将<code>天气应用</code>框线图的规划，变成一个像模像样的产品原型。设计师需要根据功能点，结合<code>Material Design</code>的设计里面，创造出一个让用户在视觉和交互上满意的产品。这种创造需要结合设计师的个人能力和经验。</p>
+<p>我们的<code>天气应用</code>很简单，它简化了很多的功能，按照原型设计的两个阶段，可以将他们设计成下面这个样子，</p>
+<ul>
+<li><p>高保真效果图：</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_app_static_effect_complete.png" width="250" alt=" sketch_weather_app_static_effect_complete"></div>
+</li>
+<li><p>可以交互的原型产品：</p>
+  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_weather_app_complete.gif" width="300" alt=" origami_weather_app_complete"></div>
+
+</li>
+</ul>
+<p>假如设计师设计的产品交互方式，很容易被开发者理解，那么动态交互原型也是可以不用设计的。不过，为了更加全面的展示设计的具体过程，我们这里会首先设计一套<code>天气应用</code>的高保真效果图。然后在此基础上，设计一套可以互动的产品原型。</p>
+<p>这里我们的交互设计，参考了<code>Material Design</code>中<code>Appbar</code>可以上下滑动的效果，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/appbar_scroll_toolbar_txt.gif" width="300" alt=" appbar_scroll_toolbar_txt"></div>
+
+<h2 id="设计工具"><a href="#设计工具" class="headerlink" title="设计工具"></a>设计工具</h2><p>设计高保真的效果图时，我们选择采用了MacOS上才能使用的<code>Sketch</code>。这是一款付费软件，大家可以在它的<a href="https://www.sketchapp.com/" target="_blank" rel="external">官网</a>看到详细的信息。官网也提供了功能完善的<code>试用版</code>，作为初次的学习，大家可以通过它来练练手，实际的感受一下。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_website.png" width="500" alt=" sketch_website"></div>
+
+<p><code>Sketch</code>绝对是当今甚至未来几年应用程序界面设计行业中的主角，越来越多的设计师使用它来进行原型设计。</p>
+<p>它的优点有，</p>
+<ul>
+<li>体积小，运行时占用的资源少，性能高；</li>
+<li>可以从设计的效果图中，直接导出开发时需要使用的图片；</li>
+<li>导出的图片可以针对不同屏幕解析度的设备；</li>
+<li>内置了安卓系统、iOS系统常用的公共组件（例如状态栏、常用控件、屏幕标准尺寸），可以拿来就用，不必全部重新设计；</li>
+</ul>
+<hr>
+<p>设计可交互原型时，使用了<code>FaceBook</code>推出的<a href="http://origami.design/" target="_blank" rel="external"><code>Origami Studio</code></a>，它可以把我们的静态效果图，转化成一个可以交互的原型。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/origami_website.png" width="500" alt=" origami_website"></div>
+
+<p>使用它有两个原因，</p>
+<ol>
+<li>这是一个免费的工具，有着强大的动画交互功能；</li>
+<li><code>Sketch</code>制作的原型文件，可以直接导入到<code>Origami Studio</code>当中，减少设计的工作量；</li>
+</ol>
+<p><code>Sketch</code>与<code>Origami Studio</code>一前一后互相配合，奠定了一个产品的牢固基石。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;原型设计&quot;&gt;&lt;a href=&quot;#原型设计&quot; class=&quot;headerlink&quot; title=&quot;原型设计&quot;&gt;&lt;/a&gt;原型设计&lt;/h1&gt;&lt;p&gt;通过前面几个章节，我们已经掌握了安卓系统&lt;code&gt;Material Design&lt;/code&gt;设计的大致原则。接下来，我们
+    
+    </summary>
+    
+      <category term="第3章-产品原型" scheme="http://book.anddle.com/categories/%E7%AC%AC3%E7%AB%A0-%E4%BA%A7%E5%93%81%E5%8E%9F%E5%9E%8B/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>9 界面模式</title>
@@ -1651,129 +2983,6 @@
     <summary type="html">
     
       &lt;h1 id=&quot;功能的确定&quot;&gt;&lt;a href=&quot;#功能的确定&quot; class=&quot;headerlink&quot; title=&quot;功能的确定&quot;&gt;&lt;/a&gt;功能的确定&lt;/h1&gt;&lt;p&gt;产品的功能并不是在确定了产品之后才开始考虑的，功能与创意选择其实是一个“你中有我，我中有你”的关系。为了体现产品设计
-    
-    </summary>
-    
-      <category term="第1章-创意" scheme="http://book.anddle.com/categories/%E7%AC%AC1%E7%AB%A0-%E5%88%9B%E6%84%8F/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>1 创意</title>
-    <link href="http://book.anddle.com/1_%E5%88%9B%E6%84%8F/1_%E5%88%9B%E6%84%8F/"/>
-    <id>http://book.anddle.com/1_创意/1_创意/</id>
-    <published>2017-01-02T01:00:00.000Z</published>
-    <updated>2017-02-04T15:04:46.000Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="创意"><a href="#创意" class="headerlink" title="创意"></a>创意</h1><p>我们总会羡慕、崇拜那些创造出了伟大产品的人。提到乔布斯，大家一定会竖起大拇指，他创造出了革命性的ipod、macbook、iphone、ipad等等极具创意、使用方便、同时又设计优雅的产品。</p>
-<p>对于从事软件行业的人来讲，最有成就感的事情莫过于开发出一款让人交口称赞的应用软件了。</p>
-<h2 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h2><p>好的产品要有好的创意，人对创造产品的创意来自于哪里呢？</p>
-<p>我觉得产品的创意来源于三个方面：</p>
-<ul>
-<li><p>最直接的创意来源于自己的实际需要。比如，曾经有位程序员想写一部小说，他尝试了市面上很多文字编辑器，觉得都不能满足自己的需要，于是就自己开发了一款。最后，他原打算要写的书没有了下文，但是却创造出了Mac系统上非常经典的应用-<a href="https://ulyssesapp.com" target="_blank" rel="external"><code>Ulysses</code></a>，成为了很多作家的创作利器。<code>Ulysses</code>将写作爱好者的写作体验带入了天堂。</p>
-  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/ulysses_logo.png" width="150" alt=" ulysses_logo"></div>
-</li>
-<li><p>更多的创意来源于对现有生活的归纳总结。用智能手机听音乐，几乎是每个使用者的刚性需求，所以开发一款音乐播放器的灵感就很容易跑进我们的大脑。</p>
-  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/music_ui.jpeg" width="200" alt=" music_ui"></div>
-</li>
-<li><p>还有的创意来源于对现有产品的差异化。例如音乐播放器这样的刚需应用有很多，QQ音乐、阿里音乐，虾米音乐，酷狗音乐，安卓系统自带的音乐播放器等等。不过网易云音乐在众多的音乐播放器中脱引而出，依靠的正是它对其他类似应用差异化的挖掘–基于音乐的社交模式。</p>
-  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/netease_music_logo.png" width="150" alt=" netease_music_logo"></div>
-
-</li>
-</ul>
-<h2 id="标准"><a href="#标准" class="headerlink" title="标准"></a>标准</h2><p>好的创意是什么？我的理解是：</p>
-<ul>
-<li>实实在在的解决了一个问题，至少它能让我们觉得方便了我们的工作或者生活。</li>
-<li>它的解决方法很简单，不需要复杂的操作，也许简单的让人意想不到。</li>
-<li>产品的外观设计的深入人心，一看到它就有使用的欲望。</li>
-</ul>
-<h2 id="记录工具"><a href="#记录工具" class="headerlink" title="记录工具"></a>记录工具</h2><p>创意宝贵，可能我们一转眼就把它忘记了，所以我们要能随时将它们记录下来，</p>
-<ul>
-<li><p>最传统的方式就是笔和纸，好记性比不过烂笔头，随时带着一个小本子和笔，一旦有了产品的灵感，就把它记录下来。</p>
-  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/note_and_pen.png" width="200" alt=" note_and_pen"></div>
-
-<p>  iPad和apple pencil也是一对极好的搭档，用电子的方式做记录能便于我们做后继的整理。iPad上有很多好用的笔记类App，例如我正在使用的Notablitiy。</p>
-  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/notability_logo.png" width="150" alt=" notability_logo"></div>
-</li>
-<li><p>手机是我们形影不离的帮手，你可以用手机中的记事本，记录下自己的想法。如果还觉得麻烦，可以通过录音，把它们保留下来。</p>
-  <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/note_and_recorder.png" width="200" alt=" note_and_recorde"></div>
-
-
-</li>
-</ul>
-<p>有了创意，我们下一步就需要将它们整理起来，看看它们实现的可行性。</p>
-<h2 id="选择"><a href="#选择" class="headerlink" title="选择"></a>选择</h2><p>创意怎么来，我是不能帮助大家的，这只能靠大家各自的能力、经验、体验和运气了。<br>我只能帮助大家如何从众多的创意中选择一个适合自己的。</p>
-<p>并不是所有的创意都有让你去实现的价值。也许你有一个很好的创意，但是要花费很大的经济成本，那对你个人来说是有很大风险的，你不得不放弃。也许你有另外一个创意，但是也许别人已经在做了，只是你不知道而已，今后撞车的可能性很大。所以我们需要将它们筛选一遍，选择最适合的一个。</p>
-<p>怎么选择呢？</p>
-<p>我想选择的标准很多，主要还是看你的目的是什么，你为了实现这个创意，愿意付出多大的代价：</p>
-<ul>
-<li>为实现创意投入的资金是多少；</li>
-<li>为实现创意投入的精力是多少；</li>
-<li>实现创意的目的是为了自己的个人爱好，还是说为了靠它养家糊口；</li>
-</ul>
-<p>当我们面对众多诱惑需要进行选择的时候，你可以把要选择的对象横向铺开，像我们网上购物时比较商品一样，列出它们各自具备的优点和缺点，比较它们各自的异同，找出你最偏向的那个。</p>
-<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/goods_compare.png" width="500" alt=" goods_compare"></div>
-
-
-<h2 id="举个例子"><a href="#举个例子" class="headerlink" title="举个例子"></a>举个例子</h2><p>这本书将把理论和实践结合在一起，所以我需要一个合适的创意做为我们后面讲解的例子。</p>
-<p>首先明确我的目标。这个例子不能太复杂，门槛太高，会吓走很多人；但是也不能过于傻瓜，要涵盖一定的知识点，否则读完以后脑袋中还是空空如也。</p>
-<p>计算器、视频播放器、记事本、音乐播放器、天气预报，都是一些经常可能用到的小应用。它们开发起来都不太困难，只是类型不同。</p>
-<p>对于没有进行过安卓开发的你来说，也许根本就不知道是否困难，至少要亲自做一次之后才能知道。这里我就自己的经历来说，它们的实现还是很简单的，大家不必惊慌。</p>
-<p>然后将这些项目在脑中进行横向对比后，给他们的各个项目点按照难易程度从1到5打分:</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">项目</th>
-<th style="text-align:center">计算器</th>
-<th style="text-align:center">音乐播放器</th>
-<th style="text-align:center">记事本</th>
-<th style="text-align:center">视频播放器</th>
-<th style="text-align:center">天气预报</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">体现安卓设计</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">4</td>
-</tr>
-<tr>
-<td style="text-align:center">技术简单</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">4</td>
-</tr>
-<tr>
-<td style="text-align:center">界面布局简单</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center">2</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">3</td>
-<td style="text-align:center">4</td>
-</tr>
-<tr>
-<td style="text-align:center">合计得分</td>
-<td style="text-align:center">11</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">7</td>
-<td style="text-align:center">7</td>
-<td style="text-align:center">12</td>
-</tr>
-</tbody>
-</table>
-<p>上面所列出的项目和得分都是非常主观的，项目是根据开发者的目标来制定，而得分完全根据开发者个人的偏好和经验。所以要做到评估准确，最好的办法就是多做项目，增加自己的经验值。</p>
-<p>通过上面的评比，我决定选择<code>天气预报</code>来做为本书讲解的范例。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;创意&quot;&gt;&lt;a href=&quot;#创意&quot; class=&quot;headerlink&quot; title=&quot;创意&quot;&gt;&lt;/a&gt;创意&lt;/h1&gt;&lt;p&gt;我们总会羡慕、崇拜那些创造出了伟大产品的人。提到乔布斯，大家一定会竖起大拇指，他创造出了革命性的ipod、macbook、iphone、ip
     
     </summary>
     

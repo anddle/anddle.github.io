@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>6 静态原型的天气详情 | 从设计到实现 | 手把手教你做android应用开发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="静态原型的天气预报未来5天的天气预报，可以看成由5个类似的天气模块构成，只要完成一个，其他几个就可以通过复制+修改内容实现改变。
+首先来明确一下各个组件的尺寸和参数，
+
+整个区域的大小，我设定成360dp*100dp；
+左右边距设置成16dp；
+这样一来，每日的天气模块就是（360-16-16）/ 5 = 65.6dp，我将它们设定成65dp宽；
+天气的图标的大小设定成30dp的正方形区域（注意，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="6 静态原型的天气详情">
+<meta property="og:url" content="http://book.anddle.com/3_产品原型/6_静态原型的天气详情/index.html">
+<meta property="og:site_name" content="从设计到实现">
+<meta property="og:description" content="静态原型的天气预报未来5天的天气预报，可以看成由5个类似的天气模块构成，只要完成一个，其他几个就可以通过复制+修改内容实现改变。
+首先来明确一下各个组件的尺寸和参数，
+
+整个区域的大小，我设定成360dp*100dp；
+左右边距设置成16dp；
+这样一来，每日的天气模块就是（360-16-16）/ 5 = 65.6dp，我将它们设定成65dp宽；
+天气的图标的大小设定成30dp的正方形区域（注意，">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/3_3_table_date_font.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/3_3_table_temp_font.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_area_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_bound.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_icon_color.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_date_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_temp_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_group.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_2.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_2_icon_settings.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_5.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_group.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_bg_adjust_center.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_bg_adjust_center2.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_bg_adjust_center3.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_complete.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_gap_settings.png">
+<meta property="og:updated_time" content="2017-03-03T01:59:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="6 静态原型的天气详情">
+<meta name="twitter:description" content="静态原型的天气预报未来5天的天气预报，可以看成由5个类似的天气模块构成，只要完成一个，其他几个就可以通过复制+修改内容实现改变。
+首先来明确一下各个组件的尺寸和参数，
+
+整个区域的大小，我设定成360dp*100dp；
+左右边距设置成16dp；
+这样一来，每日的天气模块就是（360-16-16）/ 5 = 65.6dp，我将它们设定成65dp宽；
+天气的图标的大小设定成30dp的正方形区域（注意，">
+<meta name="twitter:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/3_3_table_date_font.png">
+    
+        <link rel="alternative" href="/atom.xml" title="从设计到实现" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">安豆</h5>
+          <a href="mailto:anddlecn@gmail.com" title="anddlecn@gmail.com" class="mail">anddlecn@gmail.com</a>
+          <span class="mail">QQ群：348702074</span><br/>
+          <span class="mail"></span>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                网站首页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第1章-创意/"  >
+                <i class="icon icon-lg icon-birthday-cake"></i>
+                第1章 创意
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第2章-设计原理/"  >
+                <i class="icon icon-lg icon-eyedropper"></i>
+                第2章 设计原理
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第3章-产品原型/"  >
+                <i class="icon icon-lg icon-flask"></i>
+                第3章 产品原型
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resources/"  >
+                <i class="icon icon-lg icon-download"></i>
+                资源下载
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://anddle.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                安豆主站
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/index.html"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">6 静态原型的天气详情</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">6 静态原型的天气详情</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-18T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-18
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>本节目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#静态原型的天气预报"><span class="post-toc-text">静态原型的天气预报</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建预报区域"><span class="post-toc-text">创建预报区域</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加一个预报模块"><span class="post-toc-text">添加一个预报模块</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加第二个预报模块"><span class="post-toc-text">添加第二个预报模块</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#添加三个预报模块"><span class="post-toc-text">添加三个预报模块</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#位置排列"><span class="post-toc-text">位置排列</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#添加隔断"><span class="post-toc-text">添加隔断</span></a></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-3_产品原型/6_静态原型的天气详情"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">6 静态原型的天气详情</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月18日 9:00" datetime="2017-01-18T01:00:00.000Z"  itemprop="datePublished">2017-01-18</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="静态原型的天气预报"><a href="#静态原型的天气预报" class="headerlink" title="静态原型的天气预报"></a>静态原型的天气预报</h1><p>未来5天的天气预报，可以看成由5个类似的天气模块构成，只要完成一个，其他几个就可以通过复制+修改内容实现改变。</p>
+<p>首先来明确一下各个组件的尺寸和参数，</p>
+<ol>
+<li>整个区域的大小，我设定成360dp*100dp；</li>
+<li>左右边距设置成<code>16dp</code>；</li>
+<li>这样一来，每日的天气模块就是（360-16-16）/ 5 = 65.6dp，我将它们设定成<code>65dp</code>宽；</li>
+<li>天气的图标的大小设定成30dp的正方形区域（注意，这些图标不算是系统图标，所以它的尺寸不需要参考设计成24dp的系统图标）；</li>
+<li><p>日期的文字，参考<code>Body 2</code>的文字类型：</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/3_3_table_date_font.png" width="150" alt=" 3_3_table_date_font"></div>
+</li>
+<li><p>温度范围的文字，参考<code>Caption</code>的文字类型：</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/3_3_table_temp_font.png" width="150" alt=" 3_3_table_temp_font"></div>
+
+</li>
+</ol>
+<h2 id="创建预报区域"><a href="#创建预报区域" class="headerlink" title="创建预报区域"></a>创建预报区域</h2><p>接下来，我们开始创建预报区域。划定一个360dp*100dp的区域，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_area_settings.png" width="600" alt=" sketch_forcast_area_settings"></div>
+
+<h2 id="添加一个预报模块"><a href="#添加一个预报模块" class="headerlink" title="添加一个预报模块"></a>添加一个预报模块</h2><p>添加一个65dp*100dp的背景限制区域-<code>bound</code>，以后每个预报模块的内容都要放到这个区域当中。这也是一个很有用的技巧。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_bound.png" width="600" alt=" sketch_forcast_item_bound"></div>
+
+<p>从事先准备好的资源文件夹中，添加<code>雪</code>，并使用<code>Primary Color</code>-<code>#3F51B5</code>给它上色，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_icon_color.png" width="600" alt=" sketch_forcast_item_icon_color"></div>
+
+<p>将预测温度和温度范围添加进去，并用<code>Body 2</code>和<code>Caption</code>分别设定它们的属性，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_date_settings.png" width="600" alt=" sketch_forcast_item_date_settings"></div>
+
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_temp_settings.png" width="600" alt=" sketch_forcast_item_temp_settings"></div>
+
+<p>将<code>雪``bound``明天``18℃～21℃</code>组合起来，形成-<code>明天</code>；并调整它们的位置，使之居中，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_group.png" width="250" alt=" sketch_forcast_item_group"></div>
+
+<h2 id="添加第二个预报模块"><a href="#添加第二个预报模块" class="headerlink" title="添加第二个预报模块"></a>添加第二个预报模块</h2><p>复制<code>明天</code>组件，产生第二个预报模块，修改第二个模块的名称和内容为<code>星期六</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_2.png" width="400" alt=" sketch_forcast_item_2"></div>
+
+<p>修改<code>雪</code>的图标成<code>晴</code>。</p>
+<ol>
+<li>将资源<code>晴</code>从文件中拖到<code>工作区域</code>；</li>
+<li>参考之前的方式调整图标的大小、位置和颜色；</li>
+<li>将原来的图标<code>雪</code>，删除；</li>
+</ol>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_2_icon_settings.png" width="600" alt=" sketch_forcast_item_2_icon_settings"></div>
+
+<h2 id="添加三个预报模块"><a href="#添加三个预报模块" class="headerlink" title="添加三个预报模块"></a>添加三个预报模块</h2><p>之后，重复之前的动作，完成<code>星期日</code> <code>星期一</code> <code>星期二</code>的内容创建，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_item_5.png" width="500" alt=" sketch_forcast_item_5"></div>
+
+<h2 id="位置排列"><a href="#位置排列" class="headerlink" title="位置排列"></a>位置排列</h2><p>将<code>明天</code> <code>星期六</code> <code>星期日</code> <code>星期一</code> <code>星期二</code>与<code>forcast_bg</code>组合到一起，形成<code>Forcast</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_group.png" width="250" alt=" sketch_forcast_group"></div>
+
+<p>因为要给左右两端留下<code>16dp</code>的内容，<code>明天</code> <code>星期六</code> <code>星期日</code> <code>星期一</code> <code>星期二</code>没有办法水平瓜分<code>forcast_bg</code>占据的空间。所以这里我就使用了一个小把戏：把<code>forcast_bg</code>的宽度缩短<code>32dp</code>，变成<code>328dp</code>，并将它水平居中，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_bg_adjust_center.png" width="600" alt=" sketch_forcast_bg_adjust_center"></div>
+
+<p>再调整<code>明天</code>和<code>星期二</code>的水平位置，使之刚好位于<code>forcast_bg</code>区域之内，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_bg_adjust_center2.png" width="600" alt=" sketch_forcast_bg_adjust_center"></div>
+
+
+<p>再选中<code>明天</code> <code>星期六</code> <code>星期日</code> <code>星期一</code> <code>星期二</code>与<code>forcast_bg</code>，使用<code>水平分配空间</code>的功能，让预报模块平均占用空间，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_bg_adjust_center3.png" width="600" alt=" sketch_forcast_bg_adjust_center"></div>
+
+<p>最后，出去背景颜色，预报区域就全部完成了，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_forcast_complete.png" width="300" alt=" sketch_forcast_complete"></div>
+
+<h1 id="添加隔断"><a href="#添加隔断" class="headerlink" title="添加隔断"></a>添加隔断</h1><p>为了界面分层，逻辑清楚，我在预报区域的下面，设计了一个360dp*10dp的隔离带，颜色为：#BDBDBD，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_gap_settings.png" width="600" alt=" sketch_gap_settings"></div>
+
+
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-03T01:59:31.000Z" itemprop="dateUpdated">2017年3月3日 9:59</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://book.anddle.com">
+            <img src="/img/avatar.png" alt="安豆">
+            安豆
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/6_静态原型的天气详情/&title=《6 静态原型的天气详情》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/6_静态原型的天气详情/&title=《6 静态原型的天气详情》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/3_产品原型/5_静态原型的Appbar/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">5 静态原型的Appbar</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/3_产品原型/7_静态原型的更多天气信息/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">7 静态原型的更多天气信息</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            <span>本站内容均为原创内容，欢迎转载，但请务必注明出处</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>从设计到实现 &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/6_静态原型的天气详情/&title=《6 静态原型的天气详情》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/6_静态原型的天气详情/&title=《6 静态原型的天气详情》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvklEQVR42u3a0WrjQAwF0Pz/T7ewT4Um9r2amTQsx08h2I7PBEaypMcjPr7+HT8///xmdv7vc17dJ/nFpQMPDw9v9OivjpVHye9wff71kt0sAR4eHt4xXrK5z4LE7OFWAgkeHh7e5/CuMUkweHUOHh4e3v/Ka/E5OD8fDw8P73N4SYKbb9a7HjoPMxtqLXh4eHgxb9YA+9vPx/t7eHh4eKOu+qzYep3g5kWNNhg8uTMeHh7eAV7bxJo1+5PEN2+qtUuMh4eHd4K3Pj41K93mZYi2IVf8n3h4eHglb1Z4nZUJkuR7Pbl/kkzj4eHhHebNtvUk5c3LFkWh4fr+eHh4eId5eXli1vjPz8/fA26+wcPDwzvGu97KZ82wbeNQJR4PDw/vPbxdW/beJShS51fn4OHh4R3jtYGh3bjz++RJfPQygIeHh3eA144x5WlxW3JdSc1vnhwPDw9vK2+9Pd8+VtsMyxtsUdzDw8PDO8bLf6b+yXKoa1bgeMyqHXh4eHgxb7btzhalHURoi7l4eHh47+HlL/kbNutRIBkOFuDh4eEd5rUDqesNrfyq2d+Ah4eHd4J3fbuVTXlX8Tdh31yLh4eHt5U3S6NXCgptIp6XJ4paCx4eHt4CL2/et5v+3nZaG+tukHh4eHibeCtp7qxN1V6VFIJf3gEPDw/vGC/ZypMkux2lWlnoIo3Gw8PDO5BAr4w97S3jrgyB4eHh4b2H16bOedus/X69CYeHh4d3jvdVHnnbab140RaI8fDw8N7Da7fdWcuqHc/K0/2lAQI8PDy8BV4SDGYF2byF1rbNisXFw8PDO8Zb7xy1RYo2Hc9D15PAgIeHh/envBNtsCRUtK0yPDw8vE/gte3/tiicBJU2LOHh4eGd4yXFiLbVNGtftQMK22oteHh4eKtv9/WA1GzsYBaE8uXAw8PD28r7BuyX0HX8z1OIAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261181710&web_id=1261181710')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+
+</body>
+</html>

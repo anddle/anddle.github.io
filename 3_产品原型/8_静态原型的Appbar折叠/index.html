@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    <title>8 静态原型的Appbar折叠 | 从设计到实现 | 手把手教你做android应用开发</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="静态原型的hexAppbar折叠接下来，我们开始设计Appbar被滑动收缩以后的界面效果。
+
+
+可以看到，这个效果图绝大部分和展开时的效果图时一样的。
+所以我们可以将整个画板修改一个名字为-展开，并复制出一个新的画板命名为折叠，修改一下其中的元素就好了。
+
+
+使用Symbol这样做完全没有问题，但是可能会给以后内容的修改留下一个隐患：假如我要把风力从3级修改为5级，除了要修改展开画板，还要修改折叠">
+<meta property="og:type" content="article">
+<meta property="og:title" content="8 静态原型的Appbar折叠">
+<meta property="og:url" content="http://book.anddle.com/3_产品原型/8_静态原型的Appbar折叠/index.html">
+<meta property="og:site_name" content="从设计到实现">
+<meta property="og:description" content="静态原型的hexAppbar折叠接下来，我们开始设计Appbar被滑动收缩以后的界面效果。
+
+
+可以看到，这个效果图绝大部分和展开时的效果图时一样的。
+所以我们可以将整个画板修改一个名字为-展开，并复制出一个新的画板命名为折叠，修改一下其中的元素就好了。
+
+
+使用Symbol这样做完全没有问题，但是可能会给以后内容的修改留下一个隐患：假如我要把风力从3级修改为5级，除了要修改展开画板，还要修改折叠">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_app_fold_complete.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_fold_unfold_1.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_content_group.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_content_create_symbol.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_symbol_page_content.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_fold_artboard.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_fold_content_adjust.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_fold_toolbar_location.png">
+<meta property="og:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_fold_statusbar_color.png">
+<meta property="og:updated_time" content="2017-03-03T01:59:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="8 静态原型的Appbar折叠">
+<meta name="twitter:description" content="静态原型的hexAppbar折叠接下来，我们开始设计Appbar被滑动收缩以后的界面效果。
+
+
+可以看到，这个效果图绝大部分和展开时的效果图时一样的。
+所以我们可以将整个画板修改一个名字为-展开，并复制出一个新的画板命名为折叠，修改一下其中的元素就好了。
+
+
+使用Symbol这样做完全没有问题，但是可能会给以后内容的修改留下一个隐患：假如我要把风力从3级修改为5级，除了要修改展开画板，还要修改折叠">
+<meta name="twitter:image" content="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_app_fold_complete.png">
+    
+        <link rel="alternative" href="/atom.xml" title="从设计到实现" type="application/atom+xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.4.7">
+    <script>window.lazyScripts=[]</script>
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.png">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">安豆</h5>
+          <a href="mailto:anddlecn@gmail.com" title="anddlecn@gmail.com" class="mail">anddlecn@gmail.com</a>
+          <span class="mail">QQ群：348702074</span><br/>
+          <span class="mail"></span>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                网站首页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories"  >
+                <i class="icon icon-lg icon-th-list"></i>
+                文章目录
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第1章-创意/"  >
+                <i class="icon icon-lg icon-birthday-cake"></i>
+                第1章 创意
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第2章-设计原理/"  >
+                <i class="icon icon-lg icon-eyedropper"></i>
+                第2章 设计原理
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories/第3章-产品原型/"  >
+                <i class="icon icon-lg icon-flask"></i>
+                第3章 产品原型
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/resources/"  >
+                <i class="icon icon-lg icon-download"></i>
+                资源下载
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://anddle.com" target="_blank" >
+                <i class="icon icon-lg icon-link"></i>
+                安豆主站
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/about/index.html"  >
+                <i class="icon icon-lg icon-user"></i>
+                关于
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">8 静态原型的Appbar折叠</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">8 静态原型的Appbar折叠</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2017-01-20T01:00:00.000Z" itemprop="datePublished" class="page-time">
+  2017-01-20
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap" id="post-toc">
+            <h4>本节目录</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#静态原型的hexAppbar折叠"><span class="post-toc-text">静态原型的hexAppbar折叠</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#使用Symbol"><span class="post-toc-text">使用Symbol</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#创建折叠界面"><span class="post-toc-text">创建折叠界面</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+<article id="post-3_产品原型/8_静态原型的Appbar折叠"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">8 静态原型的Appbar折叠</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2017年01月20日 9:00" datetime="2017-01-20T01:00:00.000Z"  itemprop="datePublished">2017-01-20</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/第3章-产品原型/">第3章-产品原型</a></li></ul>
+
+
+
+            
+
+            
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="静态原型的hexAppbar折叠"><a href="#静态原型的hexAppbar折叠" class="headerlink" title="静态原型的hexAppbar折叠"></a>静态原型的hexAppbar折叠</h1><p>接下来，我们开始设计Appbar被滑动收缩以后的界面效果。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_weather_app_fold_complete.png" width="300" alt=" sketch_weather_app_fold_complete"></div>
+
+<p>可以看到，这个效果图绝大部分和展开时的效果图时一样的。</p>
+<p>所以我们可以将整个画板修改一个名字为-<code>展开</code>，并复制出一个新的画板命名为<code>折叠</code>，修改一下其中的元素就好了。</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_fold_unfold_1.png" width="500" alt=" sketch_fold_unfold_1"></div>
+
+<h2 id="使用Symbol"><a href="#使用Symbol" class="headerlink" title="使用Symbol"></a>使用Symbol</h2><p>这样做完全没有问题，但是可能会给以后内容的修改留下一个隐患：假如我要把<code>风力</code>从<code>3级</code>修改为<code>5级</code>，除了要修改<code>展开</code>画板，还要修改<code>折叠</code>画板，要修改两个地方。</p>
+<p>不过假如我将<code>More info</code>和<code>Forcast</code>做成了<code>Symbol</code>，那么只需要修改一处，两个画板中的内容就都可以变化了。</p>
+<p>将<code>More info</code> <code>Forcast</code>和<code>gap</code>，组合成一个组件<code>Content</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_content_group.png" width="250" alt=" sketch_content_group"></div>
+
+<p>然后，使用转换Symbol的功能，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_content_create_symbol.png" width="200" alt=" sketch_content_create_symbol"></div>
+
+<p>之后，在<code>Symbols</code>页面，就能看到<code>Content</code>的内容了，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_symbol_page_content.png" width="500" alt=" sketch_symbol_page_content"></div>
+
+<p>之后，只要修改这个<code>Symbol</code>中的任何内容，都可以同步的反应到使用了它的界面之上。</p>
+<h2 id="创建折叠界面"><a href="#创建折叠界面" class="headerlink" title="创建折叠界面"></a>创建折叠界面</h2><p>在<code>Weather</code>页面，复制<code>展开</code>，改名为<code>折叠</code>，</p>
+<div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_fold_artboard.png" width="500" alt=" sketch_fold_artboard"></div>
+
+<p>修改<code>Appbar</code>中的内容，</p>
+<ol>
+<li><p>移除<code>Weather detail</code>，将<code>Content</code>的位置上挪，并调整画板的高度至合适位置，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_fold_content_adjust.png" width="600" alt=" sketch_fold_content_adjust"></div>
+</li>
+<li><p>显示<code>Toolbar</code>中的位置-<code>成都</code>，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_fold_toolbar_location.png" width="400" alt=" sketch_fold_toolbar_location"></div>
+</li>
+<li><p>修改状态栏的背景颜色为<code>Primary Dark Color</code>：#303F9F，</p>
+ <div align="center"><img src="http://7xrwhw.com1.z0.glb.clouddn.com/sketch_fold_statusbar_color.png" width="600" alt=" sketch_fold_statusbar_color"></div>
+
+
+</li>
+</ol>
+<hr>
+<p>至此，使用<code>Sketch</code>进行界面设计的工作就全部完成了。</p>
+<p>文中使用到的完整的<code>Sketch</code>项目工程文件，可以在<a href="https://pan.baidu.com/s/1miBaZvM" target="_blank" rel="external">这里</a>下载到。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2017-03-03T01:59:31.000Z" itemprop="dateUpdated">2017年3月3日 9:59</time>
+</span><br>
+
+
+        
+    </div>
+    <footer>
+        <a href="http://book.anddle.com">
+            <img src="/img/avatar.png" alt="安豆">
+            安豆
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/8_静态原型的Appbar折叠/&title=《8 静态原型的Appbar折叠》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/8_静态原型的Appbar折叠/&title=《8 静态原型的Appbar折叠》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/3_产品原型/7_静态原型的更多天气信息/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">7 静态原型的更多天气信息</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/3_产品原型/9_Origami动态原型设计/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">9 Origami动态原型设计</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢您的鼓励！
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <ul class="reward-items">
+        
+        <li>
+            <img src="/img/wechat.png" title="微信打赏二维码" alt="微信打赏二维码">
+            <p>微信</p>
+        </li>
+        
+
+        
+        <li>
+            <img src="/img/alipay.jpeg" title="支付宝打赏二维码" alt="支付宝打赏二维码">
+            <p>支付宝</p>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+
+        <p>
+            <span>本站内容均为原创内容，欢迎转载，但请务必注明出处</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p>
+            <span>Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a></span>
+            <span>从设计到实现 &copy; 2017</span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://book.anddle.com/3_产品原型/8_静态原型的Appbar折叠/&title=《8 静态原型的Appbar折叠》 — 从设计到实现&pic=http://book.anddle.com/img/avatar.png" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://book.anddle.com/3_产品原型/8_静态原型的Appbar折叠/&title=《8 静态原型的Appbar折叠》 — 从设计到实现&source=手把手教你做android应用开发" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuklEQVR42u3aQW4jMQwEwPz/01lgr14Puikx8QKlkzF2NCodJIbk11c8vv+O5yev376OdzO8m+15hmsDDw8Pb7T05wUlU+eAZLOS9SSbiIeHh7fHe17uydLf/Sa/NmZvwcPDw/sE3nNomywoOeJfn+Ph4eH9v7wkTdAucUbCw8PD+wRe/s9/stB38+eLzt94LdeCh4eHF/PaAtgnfF6s7+Hh4eEdVNXz0ZbE8kM8vwz+MTMeHh7eAi8JiGchcrspbbGtuDDw8PDw1nizIv3z0T8rpOUbGrUd4OHh4V3ltQFxe0nks+VJ5DzRjIeHh7fHS/5sFjrnIfvJPBcqe3h4eHgx7+7rT/IAbcIif4KHh4e3zTsPbfPlztoXLt9+eHh4eCUvLyPlIXIboCe/nF1geHh4eBu8WYkrD5HbS6LdFDw8PLyf581K+HmbVPs8bxeIGh3w8PDwFngtY1YG20j+zq4NPDw8vFu82YuT0DY/4m+lLaIsNR4eHt4B76Sl6VZxKy+2tduKh4eH91u8GbJNVdRRf7JNeHh4eGu8PPVw0suUl9baS+jt1uDh4eEt8PLDPTmI84O+yJSM0rt4eHh4v8ubHf1Juna2KfVFhYeHh7fGa1usZrC90lpUBsPDw8O7yjsp8EehbZkUbtMZF0JqPDw8vMl7j9IBbekrCZHbYltUJcPDw8M75p0kC2Yh+Ma3b68EPDw8vDXerBEqD6DzZEd9mz2nMPDw8PCu8r7LkacM8nRDspI8aYKHh4e3zWuP3eieiY/v88aCooEADw8P7yovP5TbVqo2aZuXzYpWBjw8PLw1Xtt01TYT5PWpk2TEtZ4yPDw8vKu8tgUqL2UlJa58fjw8PLxP4CUJiPPA+iQJgoeHh/eTvFnxae+Iz1sKruVa8PDw8E5rVcUBPfs2T+bOimR4eHh4C7w/XDoiFmrLBhAAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+
+lazyScripts.push('//s95.cnzz.com/z_stat.php?id=1261181710&web_id=1261181710')
+
+</script>
+
+<script src="/js/main.min.js?v=1.4.7"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.4.7" async></script>
+
+
+
+
+
+
+
+</body>
+</html>
